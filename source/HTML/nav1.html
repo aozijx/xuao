@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 基础样式 */
+        .navbar {
+            background: #333;
+            font-family: Arial;
+        }
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .nav-item {
+            position: relative;
+        }
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .nav-link:hover {
+            background: #555;
+        }
+
+        /* 下拉菜单样式 */
+        .subnav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            min-width: 200px;
+        }
+        /* 展开状态 */
+        .subnav.active {
+            max-height: 500px;
+            /* 根据实际内容调整 */
+        }
+        .sub-item {
+            border-bottom: 1px solid #555;
+        }
+        .sub-link {
+            display: block;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .sub-link:hover {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#" class="nav-link">首页</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">产品 ▼</a>
+                <ul class="subnav">
+                    <li class="sub-item"><a href="#" class="sub-link">产品1</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">产品2</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">产品3</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">服务 ▼</a>
+                <ul class="subnav">
+                    <li class="sub-item"><a href="#" class="sub-link">服务1</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">服务2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取所有导航项
+            const navItems = document.querySelectorAll('.nav-item');
+            // 为每个导航项添加事件监听
+            navItems.forEach(item => {
+                const subnav = item.querySelector('.subnav');
+                // 鼠标悬停时展开
+                item.addEventListener('mouseenter', () => {
+                    closeAllSubnavs();
+                    if (subnav) subnav.classList.add('active');
+                });
+                // 鼠标离开时收起
+                item.addEventListener('mouseleave', () => {
+                    if (subnav) subnav.classList.remove('active');
+                });
+                // 点击移动设备友好
+                item.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        subnav.classList.toggle('active');
+                    }
+                });
+            });
+            // 关闭所有下拉菜单
+            function closeAllSubnavs() {
+                document.querySelectorAll('.subnav').forEach(sub => {
+                    sub.classList.remove('active');
+                });
+            }
+            // 点击页面其他区域关闭菜单
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-item')) {
+                    closeAllSubnavs();
+                }
+            });
+            // 窗口调整时关闭菜单
+            window.addEventListener('resize', closeAllSubnavs);
+        });
+    </script>
+</body>
+</html>

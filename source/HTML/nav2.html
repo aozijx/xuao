@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 修改后的CSS */
+.navbar {
+    background: #333;
+    font-family: Arial;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    position: relative;
+    transition: all 0.3s;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.nav-link:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
+/* 下拉菜单样式优化 */
+.subnav {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(68, 68, 68, 0.95);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 
+        opacity 0.3s ease,
+        visibility 0.3s,
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.subnav.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+}
+
+.sub-item {
+    border-bottom: 1px solid rgba(85, 85, 85, 0.5);
+    transition: background 0.2s;
+}
+
+.sub-item:last-child {
+    border-bottom: none;
+}
+
+.sub-link {
+    display: block;
+    padding: 12px 25px;
+    color: #fff;
+    text-decoration: none;
+    transition: 
+        transform 0.2s,
+        background 0.3s;
+}
+
+.sub-link:hover {
+    background: rgba(102, 102, 102, 0.8);
+    transform: translateX(5px);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+    }
+    
+    .subnav {
+        position: static;
+        transform: none;
+        box-shadow: none;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#" class="nav-link">首页</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">产品 ▼</a>
+                <ul class="subnav">
+                    <li class="sub-item"><a href="#" class="sub-link">产品1</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">产品2</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">产品3</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">服务 ▼</a>
+                <ul class="subnav">
+                    <li class="sub-item"><a href="#" class="sub-link">服务1</a></li>
+                    <li class="sub-item"><a href="#" class="sub-link">服务2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        // 优化后的JS
+            document.addEventListener('DOMContentLoaded', function () {
+                const navItems = document.querySelectorAll('.nav-item');
+                let activeSubnav = null;
+
+                const toggleSubnav = (item, show) => {
+                    const subnav = item.querySelector('.subnav');
+                    if (!subnav) return;
+
+                    if (show) {
+                        subnav.classList.add('active');
+                        activeSubnav = subnav;
+                    } else {
+                        subnav.classList.remove('active');
+                        activeSubnav = null;
+                    }
+                };
+
+                // 桌面端悬停逻辑
+                const handleHover = (item, isEnter) => {
+                    if (window.innerWidth > 768) {
+                        toggleSubnav(item, isEnter);
+                        if (isEnter) closeOtherSubnavs(item);
+                    }
+                };
+
+                // 移动端点击逻辑
+                const handleClick = (item, e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const isActive = item.querySelector('.subnav').classList.contains('active');
+                        closeAllSubnavs();
+                        toggleSubnav(item, !isActive);
+                    }
+                };
+
+                // 绑定事件
+                navItems.forEach(item => {
+                    item.addEventListener('mouseenter', () => handleHover(item, true));
+                    item.addEventListener('mouseleave', () => handleHover(item, false));
+                    item.addEventListener('click', (e) => handleClick(item, e));
+                });
+
+                // 关闭其他菜单
+                function closeOtherSubnavs(currentItem) {
+                    navItems.forEach(item => {
+                        if (item !== currentItem) toggleSubnav(item, false);
+                    });
+                }
+
+                // 全闭菜单
+                function closeAllSubnavs() {
+                    navItems.forEach(item => toggleSubnav(item, false));
+                }
+
+                // 点击外部关闭
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.nav-item')) closeAllSubnavs();
+                });
+
+                // 窗口resize处理
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) closeAllSubnavs();
+                });
+
+                // ESC键关闭
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeAllSubnavs();
+                });
+            });
+    </script>
+
+</body>
+
+</html>
