@@ -1,8 +1,63 @@
 // MD5在线链接
-{/* <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script> */}
+/* <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script> */
+// 切换主题函数
+function toggleDarkMode(event) {
+  const button = event.currentTarget;
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  button.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
+  // **切换主题后，立即更新 navbar 颜色**
+  updateNavbarBackground();
+  // 强制触发重绘（如果过渡无效）
+  document.body.offsetHeight;
+}
+function updateNavbarBackground() {
+    var navbar = document.querySelector('.navbar');
+    var scrollY = window.scrollY;
+    var windowHeight = window.innerHeight;
+    var opacity = Math.min(0.9, Math.max(0, scrollY / windowHeight));
+
+    if (scrollY === 0) {
+        opacity = 0; // 滚动到顶部时透明度为 0
+    }
+    // 获取当前主题
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    // 选择不同的背景颜色
+    const bgColor = isDark ? `rgba(26, 26, 26, ${opacity})` : `rgba(255, 255, 255, ${opacity})`;
+    // 立即更新 navbar 背景色
+    navbar.style.backgroundColor = bgColor;
+}
+// **页面加载时立即执行**
+document.addEventListener('DOMContentLoaded', updateNavbarBackground);
+// **滚动时动态更新**
+window.onscroll = updateNavbarBackground;
+// 初始化主题（页面加载时检查）
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const darkModeButton = document.getElementById('dark');
+  // 确定要应用的主题
+  const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  // 应用主题并设置按钮文字
+  document.documentElement.setAttribute('data-theme', theme);
+  darkModeButton.textContent = theme === 'dark' ? 'Light' : 'Dark';
+}
+// DOM加载完成后初始化
+document.addEventListener('DOMContentLoaded', () => {
+  const darkModeButton = document.getElementById('dark');
+  darkModeButton.addEventListener('click', toggleDarkMode);
+  initTheme();
+});
+
+
 let isF12Blocked = true; // 初始状态：禁用 F12
 // 创建右上角按钮
 const toggleButton = document.createElement("button");
+toggleButton.id = "f12-toggle"; // 添加 ID
 toggleButton.textContent = "启用防护";
 toggleButton.style.position = "fixed";
 toggleButton.style.top = "10px";
@@ -15,7 +70,7 @@ toggleButton.style.borderRadius = "5px";
 toggleButton.style.cursor = "pointer";
 toggleButton.style.fontFamily = "Arial, sans-serif";
 toggleButton.style.fontSize = "14px";
-toggleButton.style.zIndex = "10000";
+toggleButton.style.zIndex = "6666";
 document.body.appendChild(toggleButton);
 // 添加按钮点击事件
 toggleButton.addEventListener("click", () => {
@@ -38,7 +93,7 @@ document.addEventListener("keydown", function (event) {
       // 创建提示框逻辑
       const warningDiv = document.createElement("div");
       warningDiv.id = "f12-warning";
-      warningDiv.textContent = "扒源码，被我逮到了吧!👻";
+      warningDiv.textContent = "被我逮到了吧!👻";
 
       warningDiv.style.position = "fixed";
       warningDiv.style.top = "20px";
@@ -72,63 +127,63 @@ document.addEventListener("keydown", function (event) {
 
 //刷新不中断播放https://yeelz.com/post/564.html
 ap = null
-    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
-        set: function(aplayer) {
-            ap=aplayer
-            ready();
-        }
-    });
-    isRecover = false;
-    function ready(){
-        ap.on('canplay', function () {
-            if(!isRecover){
-                if(localStorage.getItem("musicIndex") != null){
-                    musicIndex = localStorage.getItem("musicIndex");
-                    musicTime = localStorage.getItem("musicTime");
-                    if(ap.list.index != musicIndex){
-                        ap.list.switch(musicIndex);
-                    }else{
-                        ap.seek(musicTime);
-                        ap.play();
-                        localStorage.clear();
-                        isRecover = true;
-                    }
-                }else{
-                    isRecover = true;
-                }
-            }
-        });
-    }
-    window.onbeforeunload = function(event) {
-        if(!ap.audio.paused){
-            musicIndex = ap.list.index;
-            musicTime = ap.audio.currentTime;
-            localStorage.setItem("musicIndex",musicIndex);
-            localStorage.setItem("musicTime",musicTime);
-        }
-    };
+  Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
+      set: function(aplayer) {
+          ap=aplayer
+          ready();
+      }
+  });
+  isRecover = false;
+  function ready(){
+      ap.on('canplay', function () {
+          if(!isRecover){
+              if(localStorage.getItem("musicIndex") != null){
+                  musicIndex = localStorage.getItem("musicIndex");
+                  musicTime = localStorage.getItem("musicTime");
+                  if(ap.list.index != musicIndex){
+                      ap.list.switch(musicIndex);
+                  }else{
+                      ap.seek(musicTime);
+                      ap.play();
+                      localStorage.clear();
+                      isRecover = true;
+                  }
+              }else{
+                  isRecover = true;
+              }
+          }
+      });
+  }
+  window.onbeforeunload = function(event) {
+      if(!ap.audio.paused){
+          musicIndex = ap.list.index;
+          musicTime = ap.audio.currentTime;
+          localStorage.setItem("musicIndex",musicIndex);
+          localStorage.setItem("musicTime",musicTime);
+      }
+  };
 
 
 var now = new Date();
-  function createtime() {
-    now.setTime(now.getTime() + 1000);// 每秒更新
-    var start = new Date("2025-01-07 00:00:00");// 设置开始时间,使用 ISO 格式
-    var dis = Math.trunc(23400000000 + ((now - start) / 1000) * 17);// 计算距离，速度为17千米/秒
-    var unit = (dis / 149600000).toFixed(6);// 计算天文单位
-    var grt = new Date("2025-01-07 00:00:00");// 网站诞生的时间
-    let currentTimeHtml = "";
-    var days = Math.floor((now - grt) / (1000 * 60 * 60 * 24));// 计算天数
-    var hours = Math.floor(((now - grt) / (1000 * 60 * 60)) % 24);// 计算小时数
-    var minutes = Math.floor(((now - grt) / (1000 * 60)) % 60);// 计算分钟数
-    var seconds = Math.floor((now - grt) / 1000 % 60);// 计算秒数
-    (currentTimeHtml =
-      hours < 18 && hours >= 9
-        ? `<div style="font-size:13px;font-weight:bold">本站居然苟活了 ${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`
-        : `<div style="font-size:13px;font-weight:bold">本站居然苟活了 ${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`),
-      document.getElementById("workboard") &&
-      (document.getElementById("workboard").innerHTML = currentTimeHtml);
-  }
-  setInterval(createtime, 1000);// 每秒更新一次
+function createtime() {
+  now.setTime(now.getTime() + 1000);// 每秒更新
+  var start = new Date("2025-01-07 00:00:00");// 设置开始时间,使用 ISO 格式
+  var dis = Math.trunc(23400000000 + ((now - start) / 1000) * 17);// 计算距离，速度为17千米/秒
+  var unit = (dis / 149600000).toFixed(6);// 计算天文单位
+  var grt = new Date("2025-01-07 00:13:00");// 网站诞生的时间
+  let currentTimeHtml = "";
+  var days = Math.floor((now - grt) / (1000 * 60 * 60 * 24));// 计算天数
+  var hours = Math.floor(((now - grt) / (1000 * 60 * 60)) % 24);// 计算小时数
+  var minutes = Math.floor(((now - grt) / (1000 * 60)) % 60);// 计算分钟数
+  var seconds = Math.floor((now - grt) / 1000 % 60);// 计算秒数
+  (currentTimeHtml =
+    hours < 18 && hours >= 9
+      ? `<div style="font-size:13px;font-weight:bold">本站居然苟活了 ${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`
+      : `<div style="font-size:13px;font-weight:bold">本站居然苟活了 ${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`),
+    document.getElementById("workboard") &&
+    (document.getElementById("workboard").innerHTML = currentTimeHtml);
+}
+setInterval(createtime, 1000);// 每秒更新一次
 
 
 window.onscroll = function() {
@@ -142,8 +197,13 @@ window.onscroll = function() {
   if (scrollY === 0) {
     opacity = 0;  // 当滚动到顶部时透明度为 0
   }
-  // 设置背景颜色的透明度
-  navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+  // 判断当前主题
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  // 根据主题选择颜色,设置背景颜色的透明度
+  const bgColor = isDark ? `rgba(26, 26, 26, ${opacity})` : `rgba(255, 255, 255, ${opacity})`;
+  // 直接设置背景色
+  navbar.style.backgroundColor = bgColor;
+  // navbar.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
 };
 
 
@@ -163,72 +223,88 @@ function maintainCache(url) {
     cache.delete(oldestKey);
   }
 }
-// 鼠标悬停时预加载
-document.querySelectorAll('[data-pjax]').forEach(link => {
-  link.addEventListener('mouseenter', () => {
-    fetch(link.href)
-  }, { once: true })
-})
-// PJAX 配置
-const config = {
-  container: '#content',
-  timeout: 5000
-}
-// 创建加载动画
-function createLoader() {
-  const loader = document.createElement('div')
-  loader.className = 'loading-spinner'
-  document.body.appendChild(loader)
-  return loader
-}
-// PJAX 跳转逻辑
-async function handlePjaxNavigation(event) {
-  event.preventDefault()
-  const link = event.currentTarget
-  const url = link.href
-  const targetContainer = document.querySelector(config.container)
-  // 显示加载状态
-  targetContainer.style.opacity = '0.5'
-  const loader = createLoader()
+
+
+// fetch 超时封装（使用 AbortController）
+async function fetchWithTimeout(url, timeout = config.timeout) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
   try {
-    // 发起 PJAX 请求
-    const response = await Promise.race([
-      fetch(url),
-      new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Timeout')), config.timeout))
-    ])
-    if (!response.ok) throw new Error('请求失败')
-    // 解析 HTML
-    const text = await response.text()
-    const parser = new DOMParser()
-    const newDoc = parser.parseFromString(text, 'text/html')
-    const newContent = newDoc.querySelector(config.container).innerHTML
-    // 更新内容
-    targetContainer.innerHTML = newContent
-    history.pushState({}, '', url)
-    // 初始化新内容
-    initPjaxLinks()
-  } catch (error) {
-    console.warn('PJAX 失败，执行普通跳转:', error)
-    window.location.href = url
-  } finally {
-    // 隐藏加载状态
-    targetContainer.style.opacity = '1'
-    loader.remove()
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error('网络请求失败');
+    return await res.text();
+  } catch (err) {
+    clearTimeout(timer);
+    throw err;
   }
 }
-// 初始化 PJAX 链接
-function initPjaxLinks() {
-  document.querySelectorAll('[data-pjax]').forEach(link => {
-    link.addEventListener('click', handlePjaxNavigation)
-  })
+
+// // PJAX 跳转逻辑
+async function pjaxNavigate(link) {
+  const url = link.href;
+  const container = document.querySelector(config.container);
+  container.style.opacity = '0.5';
+  const loader = document.createElement('div');
+  loader.className = 'loading-spinner';
+  document.body.appendChild(loader);
+  
+  try {
+    let html = cache.get(url) || await fetchWithTimeout(url);
+    if (!cache.has(url)) updateCache(url, html);
+    
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const newContent = doc.querySelector(config.container);
+    if (newContent) {
+      container.innerHTML = newContent.innerHTML;
+      history.pushState({ html, url }, '', url);
+    }
+  } catch (e) {
+    console.warn('PJAX 跳转失败:', e);
+    window.location.href = url;
+  } finally {
+    container.style.opacity = '1';
+    loader.remove();
+  }
 }
-// 浏览器后退/前进处理
-window.addEventListener('popstate', () => {
-  handlePjaxNavigation({ preventDefault: () => {} })
-})
-// 初始加载
-initPjaxLinks()
+
+// 点击事件：事件委托处理所有 [data-pjax] 链接
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-pjax]');
+  if (link) {
+    e.preventDefault();
+    pjaxNavigate(link);
+  }
+});
+
+// 鼠标悬停预加载（确保每个链接只预加载一次）
+document.addEventListener('mouseover', e => {
+  const link = e.target.closest('[data-pjax]');
+  if (link && !link.dataset.prefetched) {
+    link.dataset.prefetched = "true";
+    fetchWithTimeout(link.href)
+      .then(html => updateCache(link.href, html))
+      .catch(console.warn);
+  }
+});
+
+// 处理浏览器前进/后退
+window.addEventListener('popstate', e => {
+  if (e.state && e.state.html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(e.state.html, 'text/html');
+    const container = document.querySelector(config.container);
+    const newContent = doc.querySelector(config.container);
+    if (newContent) {
+      container.innerHTML = newContent.innerHTML;
+    } else {
+      window.location.reload();
+    }
+  } else {
+    window.location.reload();
+  }
+});
 
 
 // 预存滚动位置（适用于静态页面）
