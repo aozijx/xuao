@@ -31,6 +31,9 @@
   <meta name="theme-color" content="#ffffff"><!--控制浏览器地址栏/移动端状态栏颜色-->
   <title>Hiner' Web</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       padding: 0;
@@ -38,6 +41,15 @@
       background-image: url(https://t.alcy.cc/bd);
       background-attachment: fixed;
       background-size: cover;
+      overflow-x: hidden;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background-color 2s ease-in-out, color 0.8s ease;
+      transition: fadeBackground 1s ease-in-out;
+    }
+    @keyframes fadeBackground {
+    0% { background-color: var(--primary-bg); }
+    100% { background-color: var(--primary-bg); }
     }
     .splash-screen {
       position: fixed;
@@ -97,18 +109,16 @@
     }
     .welcome-title {
       font-size: 3rem;
-      /* justify-content: center; */
-      /* animation: fadeIn 2s ease-out; */
+      justify-content: center;
+      z-index: 666;
       animation: float 3s infinite ease-in-out;
       text-shadow: 0 4px 15px rgba(0,0,0,0.7);
     }
     .welcome-text {
       font-size: 1.2rem;
       max-width: 600px;
-      margin-bottom: 30px;
       line-height: 1.5;
       animation: fadeIn 2.5s ease-out;
-      background: transparent;
     }
     /* 淡入动画 */
     @keyframes fadeIn {
@@ -131,6 +141,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <!--字体-->
   <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css' as="style" onload="this.rel='stylesheet'" />
+  <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/xuandongkaishu/dist/XuandongKaishu/result.css' as="style" onload="this.rel='stylesheet'" />
 </head>
 <body>
     <div class="splash-screen" id="splash-screen">
@@ -146,18 +157,13 @@
             <a href="#b">页脚</a>
           </li>
           <li class="nav-item">
-            <a href="#b">更多</a>
+            <a>更多</a>
             <ul class="subnav">
               <li><a href="https://stardew.info/planner/">农场规划器</a></li>
               <li><a href="source/markdown/player">HTML Player</a></li>
               <li><a href="source/markdown/audio">audio标签</a></li>
               <li><a href="source/HTML/table">表格</a></li>
               <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">MDN</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a>菜鸟</a>
-            <ul class="subnav" id="two-nav">
               <li><a href="source/HTML/fireworks.html">烟花</a></li>
               <li><a href="source/HTML/canvas">万花筒</a></li>
               <li><a href="source/HTML/gobang">五子棋</a></li>
@@ -165,12 +171,14 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="https://aozijx.github.io/xuao/source/HTML/me.html">关于</a>
-            <ul class="subnav" id="two-nav">
+            <a>关于</a>
+            <ul class="subnav">
               <li><a href="https://aozijx.github.io/xuao/source/HTML/me.html">ME</a></li>
               <li><a href="assistance/re1">smile</a></li>
+              <li><a href="source/HTML/welcome">test</a></li>
             </ul>
           </li>
+          <button id="dark" title="切换模式"></button>
         </ul>
       </nav>
       <div class="welcome-content">
@@ -184,7 +192,7 @@
       </div>
     </div>
     <div id="c"></div>
-    <div style="margin-top: 60px;text-align: center;"><h1>乱搞</h1></div>
+    <div style="margin-top: 60px;text-align: center;"><h1>效果</h1></div>
     <div class="deep-container">
       <div class="deep" style="background-image: url(https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Update-Aquatic_1280x768.jpg);background-size: cover;background-position: center;">
       </div>
@@ -222,19 +230,40 @@
       </div>
     </div>
     <div style="margin-top: 40px;">
-      <section>
+      <section style="background-image: url(https://moe.jitsu.top/img/?sort=pc&34);background-size: cover;height: 400px;">
       </section>
       <section style="background-image: url(https://img.alicdn.com/imgextra/i2/2209748222339/O1CN010muxj21T9JF0IPCI2_!!2209748222339.jpg);width: 100%;height: 250px;background-size: cover;background-position: center;color: #ffffff;">
-        <a href="https://github.com/skills/github-pages"><h2>创建自己的blog</h2></a>
       </section>
       <section>
         <a href="https://git-scm.com/book/zh/v2"><h2>Git的使用</h2></a>
         <p>本章为 Git 入门。 我们从介绍版本控制工具的背景知识开始，然后讲解如何在你的系统上运行 Git，最后是关于如何设置 Git 以便开始工作。 通过本章的学习，你应该能了解为什么 Git 这么流行，为什么你应该使用 Git 以及你应该如何设置以便使用 Git。</p>
       </section>
+      <section >
+        <h2>justify-content</h2><p>作用于容器，控制容器内 <c>所有子元素</c> 在 <c>主轴</c> 上的整体对齐方式。</p>
+        <p>flex-start（默认）：左对齐（横向）或顶部对齐（纵向）</p>
+        <p>flex-end：右对齐（横向）或底部对齐（纵向）</p>
+        <p>center：居中对齐</p>
+        <p>space-between：两端对齐，子元素间距均分</p>
+        <p>space-around：子元素两侧间距均分</p>
+        <p>space-evenly：所有间距完全均分</p>
+        <h2>justify-items</h2>
+        <p>作用于容器，控制容器内 每个子元素 在 自身格子/区域 内的主轴对齐方式。</p>
+        <p>注意：</p>
+        <p>主要在 Grid 布局 中生效，Flexbox 不支持此属性</p>
+        <p>类似于统一设置所有子元素的 justify-self</p>
+        <h2>justify-self</h2>
+        <p>作用于子元素,覆盖父容器的 justify-items，控制单个子元素在 自身格子/区域 内的主轴对齐方式。</p>
+        <p>注意；</p>
+        <p>主要在 Grid 布局 中生效</p>
+        <p>Flexbox 中仅在特定场景下有效（如多行换行布局）</p>
+        <h3>align-content: 控制多行/多列在交叉轴的整体对齐（类似 justify-content 的交叉轴版本）</h3>
+        <h3>align-items: 控制所有子元素在交叉轴的对齐（类似 justify-items）</h3>
+        <h3>align-self: 覆盖单个子元素的交叉轴对齐（类似 justify-self）</h3>
+      </section>
     </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px; justify-content: center;color: #ffffff;" class="view">
-      <div style="width: 40%;background: rgb(0, 0, 0, 0.5);">
-        <div style="display: flex; gap: 20px;">
+    <div class="view-container">
+      <div class="view">
+        <div>
           <img src="https://p0.pipi.cn/basicdata/54ecde717a3c7eb86051ba69302a462ab0f66.jpg?imageView2/1/w/464/h/644" alt="埃德·斯塔福特">
           <div>
             <h2>埃德·斯塔福德</h2>
@@ -245,8 +274,8 @@
         </div>
         <div>埃德·斯塔福德（Ed Stafford，1976年-），出生于英国彼得伯勒，前驻阿富汗英国陆军上尉，被誉为“现代鲁宾逊”。2010年4月，斯塔福德独自穿越亚马逊河，耗时860天，创下吉尼斯世界纪录：第一个走完亚马逊全程的人。这段经历被写成《徒步亚马孙》一书，并被“探索”频道拍成纪录片。2011年，皇家苏格兰地理学会授予斯塔福德蒙戈·帕克奖。2013年，斯塔福德在南太平洋一个荒无人烟的小岛，独自生活60天。2014年-2019年，参加的节目《单挑荒野第三季》《求生之路》《街道流浪60天》等相继播出。2020年4月24日，参加的野外生存类节目《决胜荒野之华夏秘境》在哔哩哔哩播出。</div>
       </div>
-      <div style="width: 40%;background: rgb(0, 0, 0, 0.5);">
-        <div style="display: flex; gap: 20px;">
+      <div class="view">
+        <div>
           <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20210810125402-1592366609_jpeg_1955_2444_1840509.jpg/800" alt="杰瑞米·维德">
           <div>
             <h2>杰瑞米·维德</h2>
@@ -257,8 +286,8 @@
         </div>
         <div>杰瑞米·瓦德（Jeremy Wade，1956年3月23日-），出生于英国萨福德郡，毕业于布里斯托尔大学，英国男生物学家、主持人、极限钓鱼者、作家。2009年-2017年，主持电视系列节目《河中巨怪》第一季至第九季。2018年，主演的纪录片《狂野之河》播出。2022年8月，主演的纪录片《深海之谜第二季》播出</div>
       </div>
-      <div style="width: 40%;background: rgb(0, 0, 0, 0.5);">
-        <div style="display: flex; gap: 20px;">
+      <div class="view">
+        <div>
           <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20220319103622-64309780_jpeg_353_456_41939.jpg/800" alt="贝尔·格里尔斯">
           <div>
             <h2>贝尔·格里尔斯</h2>
@@ -269,13 +298,22 @@
         </div>
         <div>贝尔·格里尔斯（Bear Grylls，1974年6月7日-），出生于英国怀特岛本布里奇城，毕业于伦敦大学，英国男主持人、探险家、英国童子军总会的主席]。2006年-2011年，凭借真人秀《荒野求生》第一季至第七季走红。在主持节目中所食用的东西太过惊人，而被冠以“站在食物链顶端的男人”的称号。2016年-2017年，主持的真人秀《贝爷的求生学校》播出。2023年3月3日，主演的纪录片《圣母峰消失之谜》上映。</div>
       </div>
-      <div style="width: 40%;">
-
+      <div class="view"></div>
+    </div>
+    <div class="stardew">
+      <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.1.10">SMAPI</a>
+      <a href="https://www.nexusmods.com/stardewvalley/mods/25395">N网25395</a>
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/headers/25395_1719048617.jpg" width="100%">
+      <a href="https://www.nexusmods.com/stardewvalley/mods/999">前置mod 999</a>
+      <a href="https://www.nexusmods.com/stardewvalley/mods/15234">N网15234</a>
+      <div>
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1675604855-1750177193.jpeg" width="400px">
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1712295321-202562341.png" width="400px">
       </div>
     </div>
     <div style="height: 100vh;" id="content"></div>
     <div id="workboard"></div>
-    <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a href="https://chinese-font.netlify.app/zh-cn/fonts/lxgwwenkai/LXGWWenKai-Bold" style="text-decoration: none;">霞鹜文楷</a></footer>
+    <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a href="https://chinese-font.netlify.app/zh-cn/">中文网字计划</a>·<p>霞鹜文楷</p>|<p>玄冬楷书</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery.min.js@3.5.1/jquery.min.js"></script>
     <meting-js
       server="tencent"
