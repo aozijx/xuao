@@ -35,6 +35,7 @@
       scroll-behavior: smooth;
     }
     body {
+      position: relative;
       margin: 0;
       padding: 0;
       font-family: 'LXGW WenKai', Georgia, sans-serif;
@@ -42,10 +43,9 @@
       background-attachment: fixed;
       background-size: cover;
       overflow-x: hidden;
-      background-color: var(--primary-bg);
+      z-index: -2;
       color: var(--primary-text);
       transition: background-color 2s ease-in-out, color 0.8s ease;
-      transition: fadeBackground 1s ease-in-out;
     }
     @keyframes fadeBackground {
     0% { background-color: var(--primary-bg); }
@@ -132,8 +132,10 @@
         }
     }
   </style>
-  <link rel="preload" href="source/image/logo.png" as="image" onload="this.rel='icon'">
-  <link rel="preload" href="source/CSS/re0/main.css" as="style" onload="this.rel='stylesheet'">
+  <!--通过 onload 将 rel 设置为 null，避免某些浏览器多次触发-->
+  <link rel="icon" href="source/image/logo.png">
+  <link rel="preload" href="source/CSS/re0/main.css" as="style" onload="this.onload='null';this.rel='stylesheet'">
+  <link rel="preload" href="source/CSS/re0/mini.css" as="style" media="(max-width: 768px)"  onload="this.onload='null';this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="source/CSS/re0/main.css">
   </noscript>
@@ -232,7 +234,7 @@
     <div style="margin-top: 40px;">
       <section style="background-image: url(https://moe.jitsu.top/img/?sort=pc&34);background-size: cover;height: 400px;">
       </section>
-      <section style="background-image: url(https://img.alicdn.com/imgextra/i2/2209748222339/O1CN010muxj21T9JF0IPCI2_!!2209748222339.jpg);width: 100%;height: 250px;background-size: cover;background-position: center;color: #ffffff;">
+      <section style="background-image: url(https://img.alicdn.com/imgextra/i2/2209748222339/O1CN010muxj21T9JF0IPCI2_!!2209748222339.jpg);height: 250px;background-size: cover;background-position: center;color: #ffffff;">
       </section>
       <section>
         <a href="https://git-scm.com/book/zh/v2"><h2>Git的使用</h2></a>
@@ -313,6 +315,16 @@
     </div>
     <div style="height: 100vh;" id="content"></div>
     <div id="workboard"></div>
+    <!-- 自定义右键菜单 -->
+    <div id="menu">
+      <ul>
+        <li><a href="#">操作 1</a></li>
+        <li><a href="#">操作 2</a></li>
+        <li><a href="#">操作 3</a></li>
+        <li class="separator"></li>
+        <li><a href="#">设置</a></li>
+      </ul>
+    </div>
     <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a href="https://chinese-font.netlify.app/zh-cn/">中文网字计划</a>·<p>霞鹜文楷</p>|<p>玄冬楷书</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery.min.js@3.5.1/jquery.min.js"></script>
     <meting-js
