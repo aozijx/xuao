@@ -10,21 +10,20 @@ function toggleDarkMode(event) {
   html.setAttribute("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
   button.textContent = newTheme === "dark" ? "Light" : "Dark";
+  button.title = newTheme === 'dark' ? '切换到浅色模式' : '切换到深色模式'; // 更新 title
   // **切换主题后，立即更新 navbar 颜色**
   updateNavbarBackground();
   // 强制触发重绘（如果过渡无效）
   document.body.offsetHeight;
 }
 function updateNavbarBackground() {
-  var navbar = document.querySelector(".navbar");
-  var scrollY = window.scrollY;
-  var windowHeight = window.innerHeight;
-  var opacity = Math.min(0.9, Math.max(0, scrollY / windowHeight));
+  const navbar = document.querySelector(".navbar");
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
 
-  if (scrollY === 0) {
-    opacity = 0; // 滚动到顶部时透明度为 0
-  }
-  // 获取当前主题
+  let opacity = Math.min(1, Math.max(0, scrollY / windowHeight));
+  if (scrollY === 0) opacity = 0; // 滚动到顶部时透明度为 0
+  // 检查暗色主题
   const isDark = document.documentElement.getAttribute("data-theme") === "dark";
   // 选择不同的背景颜色
   const bgColor = isDark
@@ -32,6 +31,7 @@ function updateNavbarBackground() {
     : `rgba(255, 255, 255, ${opacity})`;
   // 立即更新 navbar 背景色
   navbar.style.backgroundColor = bgColor;
+  // navbar.style.transition = "background-color 2s ease-in-out"
 }
 // **页面加载时立即执行**
 document.addEventListener("DOMContentLoaded", updateNavbarBackground);
@@ -49,6 +49,7 @@ function initTheme() {
   // 应用主题并设置按钮文字
   document.documentElement.setAttribute("data-theme", theme);
   darkModeButton.textContent = theme === "dark" ? "Light" : "Dark";
+  darkModeButton.title = savedTheme === 'dark' ? '切换到浅色模式' : '切换到深色模式';
 }
 // DOM加载完成后初始化
 document.addEventListener("DOMContentLoaded", () => {
@@ -186,28 +187,6 @@ function createtime() {
 }
 setInterval(createtime, 1000); // 每秒更新一次
 
-window.onscroll = function () {
-  var navbar = document.querySelector("nav");
-  var scrollY = window.scrollY;
-  var windowHeight = window.innerHeight;
-  var documentHeight = document.documentElement.scrollHeight;
-  // 动态计算透明度，确保透明度在 0 和 x 之间
-  var opacity = Math.min(0.9, Math.max(0, scrollY / windowHeight));
-  // 防止在滚动到顶部时背景色依然是黑色
-  if (scrollY === 0) {
-    opacity = 0; // 当滚动到顶部时透明度为 0
-  }
-  // 判断当前主题
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  // 根据主题选择颜色,设置背景颜色的透明度
-  const bgColor = isDark
-    ? `rgba(26, 26, 26, ${opacity})`
-    : `rgba(255, 255, 255, ${opacity})`;
-  // 直接设置背景色
-  navbar.style.backgroundColor = bgColor;
-  // navbar.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
-};
-
 // 缓存已加载的页面（使用LRU缓存策略）
 const cache = new Map(); // 改用Map提高性能及维护键的顺序
 const MAX_CACHE_SIZE = 20;
@@ -224,70 +203,6 @@ function maintainCache(url) {
     cache.delete(oldestKey);
   }
 }
-
-// fetch 超时封装（使用 AbortController）
-async function fetchWithTimeout(url, timeout = config.timeout) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeout);
-  try {
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timer);
-    if (!res.ok) throw new Error("网络请求失败");
-    return await res.text();
-  } catch (err) {
-    clearTimeout(timer);
-    throw err;
-  }
-}
-
-// // PJAX 跳转逻辑
-async function pjaxNavigate(link) {
-  const url = link.href;
-  const container = document.querySelector(config.container);
-  container.style.opacity = "0.5";
-  const loader = document.createElement("div");
-  loader.className = "loading-spinner";
-  document.body.appendChild(loader);
-
-  try {
-    let html = cache.get(url) || (await fetchWithTimeout(url));
-    if (!cache.has(url)) updateCache(url, html);
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const newContent = doc.querySelector(config.container);
-    if (newContent) {
-      container.innerHTML = newContent.innerHTML;
-      history.pushState({ html, url }, "", url);
-    }
-  } catch (e) {
-    console.warn("PJAX 跳转失败:", e);
-    window.location.href = url;
-  } finally {
-    container.style.opacity = "1";
-    loader.remove();
-  }
-}
-
-// 点击事件：事件委托处理所有 [data-pjax] 链接
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-pjax]");
-  if (link) {
-    e.preventDefault();
-    pjaxNavigate(link);
-  }
-});
-
-// 鼠标悬停预加载（确保每个链接只预加载一次）
-document.addEventListener("mouseover", (e) => {
-  const link = e.target.closest("[data-pjax]");
-  if (link && !link.dataset.prefetched) {
-    link.dataset.prefetched = "true";
-    fetchWithTimeout(link.href)
-      .then((html) => updateCache(link.href, html))
-      .catch(console.warn);
-  }
-});
 
 // 处理浏览器前进/后退
 window.addEventListener("popstate", (e) => {
