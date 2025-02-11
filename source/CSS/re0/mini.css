@@ -1,0 +1,45 @@
+@media (max-width: 1080px) {
+    body {
+        background-image: url(https://t.mwm.moe/mp);
+        background-size: cover;
+    }
+    @font-face {
+        font-family: 'LXGW WenKai';
+        src: url('https: //chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css') format('woff2');
+        font-display: swap;
+    }
+    .splash-title {
+        text-align: center;
+    }
+    .welcome-container {
+        background-image: url(https://t.alcy.cc/moemp);
+    }
+    .welcome-title {
+        font-size: 20px;
+    }
+    .nav-item>a {
+        font-size: 13px;
+    }
+    footer {
+        font-size: 10px;
+        bottom: 80px;
+    }
+    .deep {
+        width: 90%;
+        height: 500px;
+        object-fit: fill;
+        backdrop-filter: blur(5px);
+    }
+    .view img {
+        height: 200px;
+    }
+
+    .stardew img {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .deep {
+        height: 200px;
+    }
+}

@@ -5,7 +5,7 @@
 /* 自动匹配用户系统主题 */
 @media (prefers-color-scheme: dark) {
     :root {
-        /* --primary-bg: #ffffff; */
+        --primary-bg: #ffffff;
         --primary-text: #000000;
         --accent-color: #007bff;
         --box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
@@ -29,7 +29,7 @@
         pointer-events: none;
         z-index: -1;
         background-color: var(--overlay-color);
-        transition: background-color 1s ease-in-out; /* 使用过渡实现颜色变化 */
+        transition: background-color 2s ease-in-out;
     }
 }
 #dark {
@@ -47,7 +47,6 @@
     height: 60px;
     display: flex;
     position: fixed;
-    /* background-color: var(--primary-bg); */
     backdrop-filter: blur(3px);
     justify-content: center;
     align-items: center;
@@ -85,7 +84,7 @@
     margin: 0;
     padding: 0;
     backdrop-filter: blur(5px);
-    background-color: var(--primary-bg);
+    background-color: rgb(0, 0, 0, 0);
     border-radius: 5px;
     box-shadow: 1px 3px 5px rgba(0, 0, 0);
     max-height: 0;
@@ -199,11 +198,12 @@ section p {
     width: 450px;
     height: 340px;
     padding: 10px;
+    background-size: cover;
+    background-position: center;
     backdrop-filter: blur(2px);
     border: 1px solid var(--primary-bg);
     border-radius: 6px;
     box-shadow: 2px 4px 6px rgba(152, 151, 151, 0.7);
-    box-shadow: var(--primary-bg);
 }
 @keyframes slideIn {
     0% {
@@ -230,8 +230,14 @@ section p {
     flex-wrap: wrap;
     margin: 0 180px;
     justify-content: center;
-    /* box-shadow: 5px 7px 10px var(--primary-bg); */
     backdrop-filter: blur(2px);
+}
+.pop {
+    position: absolute;
+    backdrop-filter: blur(8px);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 .view {
     width: 600px;
@@ -258,48 +264,6 @@ footer a {
     color: #e66d11;
     text-decoration: none;
 }
-@media (max-width: 1080px) {
-    body {
-        background-image: url(https://t.mwm.moe/mp);
-        background-size: cover;
-    }
-    @font-face {
-        font-family: 'LXGW WenKai';
-        src: url('https: //chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css') format('woff2');
-        font-display: swap;
-    }
-    .splash-title {
-        text-align: center;
-    }
-    .welcome-container {
-        background-image: url(https://t.alcy.cc/moemp);
-    }
-    .welcome-title {
-        font-size: 20px;
-    }
-    .nav-item > a {
-        font-size: 13px;
-    }
-    footer {
-        font-size: 10px;
-        bottom: 80px;
-    }
-    .deep {
-        width: 90%;
-        height: 500px;
-        object-fit: fill;
-        backdrop-filter: blur(5px);
-    }
-    .view img {
-        height: 200px;
-    }
-    #f12-toggle {
-        display: none !important;
-    }
-    .stardew img {
-        width: 100%;
-    }
-}
 #waifu {
     left: auto !important;
     right: 20px !important;
@@ -313,10 +277,6 @@ footer a {
     text-align: center;
     justify-content: center;
     color: #c8c7c7;
-}
-#workboard img {
-    width: 150px;
-    margin-bottom: 10px;
 }
 c {
     color: rgb(235, 211, 27);
@@ -379,11 +339,15 @@ c {
     background: #e5e5e5;
     margin: 5px 0;
 }
-#f12-toggle {
-    display: block;
-    position: fixed;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
+.deep:hover div {
+    transform: translateY(0);
+    opacity: 1;
+}
+.unfold {
+    max-height: 200px;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+.unfold:hover {
+    max-height: 1000px;
 }
