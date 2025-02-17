@@ -35,21 +35,30 @@
       scroll-behavior: smooth;
     }
     body {
-      position: relative;
       margin: 0;
       padding: 0;
       font-family: 'LXGW WenKai', Georgia, sans-serif;
-      background-image: url(https://t.alcy.cc/bd);
+      /* background-image: url(https://t.alcy.cc/bd); */
+      background-image: url(source/image/liu.webp);
       background-attachment: fixed;
       background-size: cover;
       overflow-x: hidden;
-      z-index: -2;
       color: var(--primary-text);
       transition: background-color 2s ease-in-out, color 0.8s ease;
     }
     @keyframes fadeBackground {
     0% { background-color: var(--primary-bg); }
     100% { background-color: var(--primary-bg); }
+    }
+    #dark {
+      color: var(--primary-text);
+      font-family: XuandongKaishu;
+      font-size: 25px;
+      background-color: transparent;
+      border: none;
+    }
+    #dark:hover {
+      color: pink;
     }
     .splash-screen {
       position: fixed;
@@ -61,14 +70,8 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      background: rgb(0,0,0,1);
+      background: rgba(0,0,0,1);
       animation: fadeOut 1.5s ease-out 1s forwards;
-    }
-    .splash-title {
-      font-size: 3rem;
-      color: white;
-      opacity: 1;
-      animation: slideDown 1.5s ease-in-out;
     }
     /* 开屏动画消失效果 */
     @keyframes fadeOut {
@@ -76,6 +79,12 @@
         opacity: 0;
         visibility: hidden;
       }
+    }
+    .splash-title {
+      font-size: 3rem;
+      color: white;
+      opacity: 1;
+      animation: slideDown 1.5s ease-in-out;
     }
     /* 开屏标题向下滑动 */
     @keyframes slideDown {
@@ -89,7 +98,6 @@
       }
     }
     .welcome-container {
-      /* position: relative; */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -98,8 +106,8 @@
       padding: 20px;
       background-image: url(https://t.alcy.cc/pc);
       background-size: cover;
-      background-attachment: fixed;
-      box-shadow: inset 0px -20px 40px 5px rgb(0, 0, 0);
+      background-attachment: scroll;
+      box-shadow: inset 0px -20px 40px 5px rgba(0, 0, 0);
       z-index: -1;
     }
     .welcome-content {
@@ -110,10 +118,20 @@
     }
     .welcome-title {
       font-size: 3rem;
-      justify-content: center;
+      font-size: 4em;
       z-index: 666;
       animation: float 3s infinite ease-in-out;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      text-shadow: 1px 4px 15px rgba(0,0,0,0.8);
+    }
+    /* 浮动动画 */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translate(0, 0)
+        }
+        50% {
+            transform: translate(0, 15px)
+        }
     }
     .welcome-text {
       font-size: 1.2rem;
@@ -145,6 +163,7 @@
   <!--字体-->
   <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css' as="style" onload="this.rel='stylesheet'" />
   <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/xuandongkaishu/dist/XuandongKaishu/result.css' as="style" onload="this.rel='stylesheet'" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.min.js"></script>
 </head>
 <body>
     <div class="splash-screen" id="splash-screen">
@@ -194,23 +213,172 @@
         <a href="#c" aria-label="Scroll Down"></a>
       </div>
     </div>
-    <div id="c"></div>
-    <div style="margin-top: 60px;text-align: center;"><h1>效果</h1></div>
-    <div class="deep-container">
+    <div style="margin-top: 20px;text-align: center;"><h2>效果<h1></div>
+    <div class="deep-container" id="c">
+      <div class="deep" style="width: 80%;height: 400px;">
+        <div class="qin">
+          <div class="box">
+            <img src="source/image/love/Violet b.jpg" class="lo" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/love/Frieren.jpg" class="lo" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/love/jun.jpg" class="lo" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/love/02.jpg" class="lo" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/love/Violet.jpg" class="lo" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="deep" style="width: 940px;">
+        <div class="qin">
+          <div class="box">
+            <img src="source/image/th (1).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/th (2).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/th (6).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/th (4).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="source/image/th (5).jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="deep" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <div class="tu">
+          <img src="" class="tu-role" alt="">
+          <img src="" class="tu-cover" alt="">
+        </div>
+      </div>
+        <div class="deep">
+          <div class="letter">
+            <h3>A Covenant Between Civilization and Nature</h3>
+            <div>
+              Environmental crises now threaten humanity’s survival. Polar ice melting at unprecedented rates, 90% of seabirds ingesting plastics, and rampant deforestation expose a fractured ecosystem. These are not isolated issues but symptoms of a broken human-nature covenant.
+              True solutions demand dual action: individuals adopting sustainable habits and governments enforcing green policies. As Jane Goodall warned, "Protecting nature is not a choice but a necessity for civilization’s continuity." Environmentalism must evolve from "saving Earth" to redefining humanity’s role as stewards of a shared biological legacy. Only by honoring this planetary covenant can we safeguard tomorrow’s world.
+            </div>
+          </div>
+        </div>
+        <div class="deep" style="display: flex;flex-direction: column;">
+        <div class="carousel">
+          <div class="slider-container">
+            <div class="slide"><img src="source/image/th.jpg" alt=""></div>
+            <div class="slide"><img src="source/image/th (3).jpg" alt=""></div>
+            <div class="slide"><img src="source/image/th (4).jpg" alt=""></div>
+            <div class="slide"><img src="source/image/th (5).jpg" alt=""></div>
+          </div>      
+          <div class="l-controls">
+            <div class="prev">←</div>
+            <div class="next">→</div>
+          </div>
+          <div class="dots"></div> 
+        </div>
+      </div>
+      <div class="deep">
+        <div class="shan" style="margin: 20px auto;"></div>
+      </div>
+      <div class="deep" style="overflow: hidden;">
+        <div class="ltu">
+          <img src="source/image/xinfamily.jpg" alt="">
+          <img src="source/image/default.webp" alt="">
+          <img src="source/image/love/不知火.png" alt="">
+          <img src="source/image/love/索尔维会议.jpeg" alt="">
+          <img src="source/image/xinfamily.jpg" alt="">
+        </div>
+      </div>
+      <div class="deep ro">
+        <div class="jiu">
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+        </div>
+        <p style="position: fixed;bottom: -14px;">点击也有效果,想通过按钮来切换,奈何不才</p>
+      </div>
+      <div class="deep lo" style="gap: 10px;">
+        <div class="card">
+          <img class="face" src="source/image/smile.jpg" alt="smile">
+          <div class="back">
+            <span>Smile</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="face" src="source/image/hu.jpg" alt="smile">
+          <div class="back">
+            <span>Slience</span>
+          </div>
+        </div>
+        <p style="position: fixed;bottom: 0;">背景也可换为图片等等其他样式,需要更改选择器或者bgi</p>
+      </div>
+      <div class="deep">
+        <div class="color">
+          <span>C</span>
+          <span>O</span>
+          <span>L</span>
+          <span>O</span>
+          <span>R</span>
+        </div>
+        <div style="width: 100%;height: 200px;filter: drop-shadow(1px 3px 5px black);">
+          <img src="https://patchwiki.biligame.com/images/dwrg/e/e8/b86u5blf6w5ujwvsqdyqfovkku5fcsq.png" height="300px" alt="">
+        </div>
+        <div style="float: right;">CSS：filter: drop-shadow();<br>添加brightness(x)亮度，及scale(x)大小</div>
+      </div>
+      <div class="deep line">
+        <span>“The supreme happiness of life is the conviction that we are loved; loved for ourselves—say rather, loved in spite of ourselves.”</span><br>
+        <span>“It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness...”</span>
+        <p>可以更改下划线颜色为任意，纯色或多色渐变皆可</p>
+      </div>
+      <div class="deep" style="display: flex;flex-wrap: wrap;gap: 10px;justify-content: space-around;">
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(from 0deg at 50% 50%,#ff0000 0%,#ff007f 8.33%,#ff00ff 16.66%,#7f00ff 25%,#0000ff 33.33%,#007fff 41.66%,#00ffff 50%,#00ff7f 58.33%,#00ff00 66.66%,#7fff00 75%,#ffff00 83.33%,#ff7f00 91.66%,#ff0000 100%);"></div>
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(#00f 180deg, transparent);"></div>
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(#f00 90deg, transparent 90deg 360deg, #f00 0deg);"></div>
+        <div class="circle"></div>
+      </div>
       <div class="deep" style="background-image: url(https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Update-Aquatic_1280x768.jpg);">
       </div>
       <div class="deep" style="background-image: url(https://www.stardewvalley.net/wp-content/uploads/2024/03/steam_cover.png);color: #ffffff;">
-        <a href="https://zh.stardewvalleywiki.com/Stardew_Valley_Wiki">星露谷物语</a>
+        <a href="https://zh.stardewvalleywiki.com/Stardew_Valley_Wiki" style="color: #fff;">星露谷物语</a>
         <div class="pop">妈妈，人生要真是星露谷就好了。随时可以到达的海边，送出礼物就能获得的友谊，付出努力就一定会有收获，失败了也只是掉东西，永远有再来的机会，而且就算什么也不干每天躺在床上评定等级的时候．爷爷也只是希望你远离世俗开开心心。妈妈，人生要真是星露谷就好了。我想有很多很多朋友，想有疼爱我的长辈。种下去就能长出来的菜，放进小桶就能酿出的酒：下雨也可以去海滩钓一整天的鱼：砍树也是充实的一天。妈妈，为什么我一直都只是在小房间里打转呢。</div>
       </div>
       <div class="deep" style="background-image: url(https://game.mhcdkey.com/image/ask/200228/ashikmdu3l1.jpg);">
       </div>
       <div class="deep" style="background-image: url(https://img1.vqs.com/vqs/imgfile/20240712/12131934yp9j.jpg);">
       </div>
-      <div class="deep"></div>
-      <div class="deep" style="background-image: url(source/image/five/dwrg.jpg);">
-        <a href="source/HTML/fw.html" target="_blank">第五人格</a>
-        <p>图片太大，拖累网页的加载速度，所以做了转移。</p>
+      <div class="deep">
+        引入 JavaScript jquery.ripples-min.js<br>
+        初始化
+        <pre style="white-space: pre-wrap;">
+        $('body').ripples({ 
+          resolution: 1080,// 分辨率。默认值：256
+          dropRadius: 5,// 水波涟漪的半径。默认值：20
+          perturbance: 0.05,// 干扰效果。默认值：0.03
+          interactive: true // 是否可以用鼠标进行互动。默认值：false。
+        });</pre>
+      </div>
+      <div class="deep" style="display: flex;flex-direction: column;">
+        <span>transform的skew、scale</span>
+        <span>mask、mask-image、mask-size、mix-blend-mode</span>
+        <span>锥形渐变conic-gradient()</span>
+        <span>filter:drop-shadow();</span>
+        <span>animation的alternate,step</span>
+        <span>animation-play-state</span>
+        <span>letter-space、contrast</span>
+        <span>scale实现下拉菜单</span>
+        <span>aspect-ratio: 16/9;  宽高比为 16:9 </span>
       </div>
       <div class="deep">
         <div id="aplayer01" style="height: 60px;"></div>
@@ -227,19 +395,22 @@
           您的浏览器不支持音频播放。
         </audio>
       </div>
-      <div class="deep" style="background-image: url(source/image/cup.png);background-size: cover;"></div>
+      <div class="deep"></div>
       <div class="deep">
-        <a href="source/HTML/nav1">导航栏效果1</a>
-        <a href="source/HTML/nav2">导航栏效果2</a>
+        <a href="source/HTML/fw.html">第五人格</a>
       </div>
     </div>
     <div style="margin-top: 40px;">
-      <section style="background-image: url(https://moe.jitsu.top/img/?sort=pc&34);background-size: cover;height: 400px;">
+      <section class="unfold">
+        <img src="source/image/five/dwrg.jpg" alt="">
+      </section>
+      <section class="unfold">
+        <img src="https://moe.jitsu.top/img/?sort=pc&34">
       </section>
       <section style="background-image: url(https://img.alicdn.com/imgextra/i2/2209748222339/O1CN010muxj21T9JF0IPCI2_!!2209748222339.jpg);height: 250px;background-size: cover;background-position: center;color: #ffffff;">
       </section>
       <section>
-        <a href="https://git-scm.com/book/zh/v2"><h2>Git的使用</h2></a>
+        <span class="line"><a href="https://git-scm.com/book/zh/v2">Git的使用</a></span>
         <p>本章为 Git 入门。 我们从介绍版本控制工具的背景知识开始，然后讲解如何在你的系统上运行 Git，最后是关于如何设置 Git 以便开始工作。 通过本章的学习，你应该能了解为什么 Git 这么流行，为什么你应该使用 Git 以及你应该如何设置以便使用 Git。</p>
       </section>
       <section class="unfold">
@@ -302,18 +473,23 @@
         </div>
         <div>贝尔·格里尔斯（Bear Grylls，1974年6月7日-），出生于英国怀特岛本布里奇城，毕业于伦敦大学，英国男主持人、探险家、英国童子军总会的主席]。2006年-2011年，凭借真人秀《荒野求生》第一季至第七季走红。在主持节目中所食用的东西太过惊人，而被冠以“站在食物链顶端的男人”的称号。2016年-2017年，主持的真人秀《贝爷的求生学校》播出。2023年3月3日，主演的纪录片《圣母峰消失之谜》上映。</div>
       </div>
-      <div class="view"></div>
+      <div class="view">
+      </div>
     </div>
     <div class="stardew">
+      <!--https://ctf-wiki.org/misc/introduction/-->
       <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.1.10">SMAPI</a>
       <a href="https://www.nexusmods.com/stardewvalley/mods/25395">N网25395</a>
-      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/headers/25395_1719048617.jpg" width="100%">
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/headers/25395_1719048617.jpg">
       <a href="https://www.nexusmods.com/stardewvalley/mods/999">前置mod 999</a>
       <a href="https://www.nexusmods.com/stardewvalley/mods/15234">N网15234</a>
       <div>
-      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1675604855-1750177193.jpeg" width="400px">
-      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1712295321-202562341.png" width="400px">
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1675604855-1750177193.jpeg">
+      <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1712295321-202562341.png">
       </div>
+    </div>
+    <div id="app" style="margin: 0, auto;">
+      <button @click="pop">123</button>
     </div>
     <div style="height: 100vh;" id="content"></div>
     <div id="workboard"></div>
@@ -329,6 +505,14 @@
     </div>
     <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a href="https://chinese-font.netlify.app/zh-cn/">中文网字计划</a>·<p>霞鹜文楷</p>|<p>玄冬楷书</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery.min.js@3.5.1/jquery.min.js"></script>
+    <script src="source/JavaScript/re0/main.js"></script>
+    <script src="source/JavaScript/re0/vue.js"></script>
+    <!--live2d支持-->
+    <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js" defer></script>
+    <!--APlayer-->
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <!-- MetingJS -->
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" defer></script>
     <meting-js
       server="tencent"
       type="playlist"
@@ -339,14 +523,6 @@
       order="list"
       mutex="true">
     </meting-js>
-    
-    <!--live2d支持-->
-    <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js" defer></script>
-    <!--APlayer-->
-    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <!-- MetingJS -->
-    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" defer></script>
-    <script src="source/JavaScript/re0/main.js"></script>
     <script>
       //APlayer
       window.onload = function () {
@@ -361,7 +537,7 @@
             artist: '當山みれい (当山真玲)',
             url: 'https://aozijx.github.io/xuao/source/music/願い〜あの頃のキミへ〜/願い〜あの頃のキミへ〜.mp3',
             cover: 'https://y.qq.com/music/photo_new/T002R300x300M000002TOVre3tDgBD_2.jpg?max_age=2592000',
-            lrc: 'source/music/願い〜あの頃のキミへ〜/當山みれい---願い〜あの頃のキミへ〜.lrc'
+            lrc: ''
           }]
         });
       };
