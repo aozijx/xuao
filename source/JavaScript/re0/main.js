@@ -64,8 +64,8 @@ const toggleButton = document.createElement("button");
 toggleButton.id = "f12-toggle"; // 添加 ID
 toggleButton.textContent = "启用防护";
 toggleButton.style.position = "fixed";
-toggleButton.style.top = "10px";
-toggleButton.style.right = "10px";
+toggleButton.style.top = "6px";
+toggleButton.style.right = "5px";
 toggleButton.style.backgroundColor = "#28a745";
 toggleButton.style.color = "white";
 toggleButton.style.border = "none";
@@ -73,7 +73,7 @@ toggleButton.style.padding = "10px 20px";
 toggleButton.style.borderRadius = "5px";
 toggleButton.style.cursor = "pointer";
 toggleButton.style.fontFamily = "Arial, sans-serif";
-toggleButton.style.fontSize = "14px";
+toggleButton.style.fontSize = "12px";
 toggleButton.style.zIndex = "6666";
 document.body.appendChild(toggleButton);
 // 添加按钮点击事件
@@ -117,7 +117,6 @@ document.addEventListener("keydown", function (event) {
       setTimeout(() => {
         warningDiv.style.left = "20px";
       }, 50);
-
       setTimeout(() => {
         warningDiv.style.left = "-300px";
         setTimeout(() => warningDiv.remove(), 500);
@@ -128,43 +127,41 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-//刷新不中断播放https://yeelz.com/post/564.html
-ap = null;
-Object.defineProperty(document.querySelector("meting-js"), "aplayer", {
-  set: function (aplayer) {
-    ap = aplayer;
-    ready();
-  },
-});
-isRecover = false;
-function ready() {
-  ap.on("canplay", function () {
-    if (!isRecover) {
-      if (localStorage.getItem("musicIndex") != null) {
-        musicIndex = localStorage.getItem("musicIndex");
-        musicTime = localStorage.getItem("musicTime");
-        if (ap.list.index != musicIndex) {
-          ap.list.switch(musicIndex);
+// 保存播放进度
+window.addEventListener('DOMContentLoaded', () => {
+  let ap, isRecover = false;
+  const metingElement = document.querySelector("meting-js");
+  
+  if (!metingElement) {
+    console.error("找不到 meting-js 元素");
+    return;
+  }
+
+  Object.defineProperty(metingElement, "aplayer", {
+    set(a) {
+      ap = a;
+      ap.on("canplay", () => {
+        if (isRecover) return;
+        const idx = localStorage.getItem("musicIndex");
+        if (idx !== null) {
+          const time = localStorage.getItem("musicTime");
+          ap.list.index != idx
+            ? ap.list.switch(idx)
+            : (ap.seek(time), ap.play(), localStorage.clear(), (isRecover = true));
         } else {
-          ap.seek(musicTime);
-          ap.play();
-          localStorage.clear();
           isRecover = true;
         }
-      } else {
-        isRecover = true;
-      }
+      });
     }
   });
-}
-window.onbeforeunload = function (event) {
-  if (!ap.audio.paused) {
-    musicIndex = ap.list.index;
-    musicTime = ap.audio.currentTime;
-    localStorage.setItem("musicIndex", musicIndex);
-    localStorage.setItem("musicTime", musicTime);
-  }
-};
+
+  window.onbeforeunload = () => {
+    if (ap && !ap.audio.paused) {
+      localStorage.setItem("musicIndex", ap.list.index);
+      localStorage.setItem("musicTime", ap.audio.currentTime);
+    }
+  };
+});
 
 var now = new Date();
 function createtime() {
@@ -296,6 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 窗口调整时关闭菜单
   window.addEventListener("resize", closeAllSubnavs);
 });
+
 // 推荐方案：监听动画结束事件
 document.addEventListener("DOMContentLoaded", () => {
   const splash = document.getElementById("splash-screen");
@@ -318,62 +316,139 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const menu = document.getElementById('menu');
-    /**
-     * 根据鼠标点击的位置判断右侧和下方空间是否足够，
-     * 若不足则将菜单定位到鼠标点击点的左侧或上方，
-     * 保证菜单不会超出点击点右侧和下方的区域。
-     *
-     * @param {MouseEvent} e 右键事件对象
-     */
-    function showMenu(e) {
-      e.preventDefault();  // 阻止浏览器默认右键菜单
-      // 先显示菜单（不加动画类）以便获取菜单的尺寸
-      menu.style.display = 'block';
-      menu.classList.remove('show');
-      // 获取菜单尺寸
-      const menuWidth = menu.offsetWidth;
-      const menuHeight = menu.offsetHeight;
-      /*  
-          使用 e.clientX 与 e.clientY 获取鼠标在视口内的位置，
-          便于计算点击点右侧与下方的剩余空间。
-          使用 e.pageX 与 e.pageY 设置菜单绝对定位时会自动考虑滚动条偏移
-      */
-      const clientX = e.clientX;
-      const clientY = e.clientY;
-      let posX = e.pageX;
-      let posY = e.pageY;
-      // 判断鼠标右侧的可用空间是否足够放置菜单
-      if (window.innerWidth - clientX < menuWidth) {
-        // 如果不足，则将菜单放置到鼠标点击点的左侧
-        posX = e.pageX - menuWidth;
-      }
-      // 判断鼠标下方的可用空间是否足够放置菜单
-      if (window.innerHeight - clientY < menuHeight) {
-        // 如果不足，则将菜单放置到鼠标点击点的上方
-        posY = e.pageY - menuHeight;
-      }
-      // 设置菜单的最终位置
-      menu.style.left = posX + 'px';
-      menu.style.top = posY + 'px';
-      // 使用 setTimeout 使动画类在渲染后生效，达到淡入效果
-      setTimeout(() => {
-        menu.classList.add('show');
-      }, 0);
+  function showMenu(e) {
+    e.preventDefault();  // 阻止浏览器默认右键菜单
+    // 先显示菜单（不加动画类）以便获取菜单的尺寸
+    menu.style.display = 'block';
+    menu.classList.remove('show');
+    // 获取菜单尺寸
+    const menuWidth = menu.offsetWidth;
+    const menuHeight = menu.offsetHeight;
+    /*  
+        使用 e.clientX 与 e.clientY 获取鼠标在视口内的位置，
+        便于计算点击点右侧与下方的剩余空间。
+        使用 e.pageX 与 e.pageY 设置菜单绝对定位时会自动考虑滚动条偏移
+    */
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    let posX = e.pageX;
+    let posY = e.pageY;
+    // 判断鼠标右侧的可用空间是否足够放置菜单
+    if (window.innerWidth - clientX < menuWidth) {
+      // 如果不足，则将菜单放置到鼠标点击点的左侧
+      posX = e.pageX - menuWidth;
     }
-    // 隐藏菜单函数
-    function hideMenu() {
-      menu.classList.remove('show');
-      setTimeout(() => {
-        menu.style.display = 'none';
-      }, 200);  // 等待动画结束后隐藏
+    // 判断鼠标下方的可用空间是否足够放置菜单
+    if (window.innerHeight - clientY < menuHeight) {
+      // 如果不足，则将菜单放置到鼠标点击点的上方
+      posY = e.pageY - menuHeight;
     }
-    // 右键点击时显示自定义菜单
-    document.addEventListener('contextmenu', showMenu);
-    // 点击页面其他地方时隐藏菜单
-    document.addEventListener('click', function(e) {
-      if (!menu.contains(e.target)) {
-        hideMenu();
-      }
+    // 设置菜单的最终位置
+    menu.style.left = posX + 'px';
+    menu.style.top = posY + 'px';
+    // 使用 setTimeout 使动画类在渲染后生效，达到淡入效果
+    setTimeout(() => {
+      menu.classList.add('show');
+    }, 0);
+  }
+  // 隐藏菜单函数
+  function hideMenu() {
+    menu.classList.remove('show');
+    setTimeout(() => {
+      menu.style.display = 'none';
+    }, 200);  // 等待动画结束后隐藏
+  }
+  // 右键点击时显示自定义菜单
+  document.addEventListener('contextmenu', showMenu);
+  // 点击页面其他地方时隐藏菜单
+  document.addEventListener('click', function(e) {
+    if (!menu.contains(e.target)) {
+      hideMenu();
+    }
+  });
+  // 窗口大小改变时隐藏菜单
+  window.addEventListener('resize', hideMenu);
+
+const items = document.querySelectorAll('.jiu-item');
+for (let i = 0; i < items.length; i++) {
+  const item = items[i];
+  const r = Math.floor(i / 3);
+  const c = i % 3;
+  const bgX = -c * 100 + '%';  // 每格宽度 100px
+  const bgY = -r * 100 + '%';  // 每格高度 100px
+  // 鼠标悬停时每个格子向外偏移20px，中心格（c=1, r=1）不动
+  const disX = (c - 1) * 20 + 'px';
+  const disY = (r - 1) * 20 + 'px';
+  item.style.setProperty('--bgX', bgX);
+  item.style.setProperty('--bgY', bgY);
+  item.style.setProperty('--disX', disX);
+  item.style.setProperty('--disY', disY);
+}
+
+class Carousel {
+  constructor(container) {
+    this.container = container;
+    this.slides = container.querySelector('.slider-container');
+    this.items = container.querySelectorAll('.slide');
+    this.currentIndex = 0;
+    this.total = this.items.length;
+    
+    this.initControls();
+    this.createDots();
+    this.startAutoPlay();
+    this.addHoverEvents();
+  }
+
+  initControls() {
+    this.container.querySelector('.prev').addEventListener('click', () => this.prev());
+    this.container.querySelector('.next').addEventListener('click', () => this.next());
+  }
+
+  createDots() {
+    const dotsContainer = this.container.querySelector('.dots');
+    this.dots = [];
+    
+    for (let i = 0; i < this.total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => this.goTo(i));
+      dotsContainer.appendChild(dot);
+      this.dots.push(dot);
+    }
+  }
+
+  update() {
+    const offset = -this.currentIndex * 100;
+    this.slides.style.transform = `translateX(${offset}%)`;
+    
+    this.dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === this.currentIndex);
     });
-    // 窗口大小改变时隐藏菜单
-    window.addEventListener('resize', hideMenu);
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.total;
+    this.update();
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.total) % this.total;
+    this.update();
+  }
+
+  goTo(index) {
+    this.currentIndex = index;
+    this.update();
+  }
+
+  startAutoPlay() {
+    this.autoPlay = setInterval(() => this.next(), 3000);
+  }
+
+  addHoverEvents() {
+    this.container.addEventListener('mouseenter', () => clearInterval(this.autoPlay));
+    this.container.addEventListener('mouseleave', () => this.startAutoPlay());
+  }
+}
+// 初始化轮播
+new Carousel(document.querySelector('.carousel'));
