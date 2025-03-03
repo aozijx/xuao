@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推箱子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .game-map {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            gap: 2px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            border: 1px solid #eee;
+            user-select: none;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 50px);
+            grid-template-rows: repeat(3, 50px);
+            gap: 5px;
+            margin: 20px;
+        }
+        .controls button {
+            padding: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .controls button:hover {
+            background-color: #45a049;
+        }
+        .controls button:nth-child(1) { /* 上 */
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .controls button:nth-child(2) { /* 左 */
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .controls button:nth-child(3) { /* 下 */
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .controls button:nth-child(4) { /* 右 */
+            grid-column: 3;
+            grid-row: 2;
+        }
+        #restart {
+            grid-column: 1 / span 3;
+            grid-row: 3;
+            background-color: #2196F3;
+        }
+        #restart:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>推箱子</h1>
+        <div class="status">步数：<span id="steps">0</span></div>
+        <div class="game-map" id="gameMap"></div>
+        <div class="controls">
+            <button onclick="handleMove(-1, 0)">↑</button>
+            <button onclick="handleMove(0, -1)">←</button>
+            <button onclick="handleMove(1, 0)">↓</button>
+            <button onclick="handleMove(0, 1)">→</button>
+            <button id="restart" onclick="startGame()">重新开始</button>
+        </div>
+    </div>
+
+    <script>
+        const WALL = '🧱';
+        const SPACE = '⬜';
+        const BOX = '📦';
+        const PLAYER = '🙂';
+        const TARGET = '🎯';
+        
+        let gameMap = [];
+        let targets = [];
+        let steps = 0;
+        
+        function getRandomPosition(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function isNearWall(y, x) {
+            const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+            for(let [dy, dx] of directions) {
+                let ny = y + dy;
+                let nx = x + dx;
+                if(gameMap[ny][nx] === WALL) return true;
+            }
+            return false;
+        }
+
+        function createGameMap() {
+            const width = 7, height = 7;
+            // 创建基础地图
+            gameMap = Array(height).fill().map((_, y) => 
+                Array(width).fill().map((_, x) => 
+                    (x === 0 || x === width-1 || y === 0 || y === height-1) ? WALL : SPACE
+                )
+            );
+            
+            // 随机放置玩家
+            let py, px;
+            do {
+                py = getRandomPosition(1, height-2);
+                px = getRandomPosition(1, width-2);
+            } while(gameMap[py][px] !== SPACE);
+            gameMap[py][px] = PLAYER;
+            
+            // 随机放置箱子（避免靠墙）
+            const numBoxes = 2;
+            for(let i = 0; i < numBoxes; i++) {
+                let by, bx;
+                do {
+                    by = getRandomPosition(1, height-2);
+                    bx = getRandomPosition(1, width-2);
+                } while(gameMap[by][bx] !== SPACE || isNearWall(by, bx));
+                gameMap[by][bx] = BOX;
+            }
+            
+            // 随机放置目标点
+            targets = [];
+            const numTargets = 2;
+            for(let i = 0; i < numTargets; i++) {
+                let ty, tx;
+                do {
+                    ty = getRandomPosition(1, height-2);
+                    tx = getRandomPosition(1, width-2);
+                } while(gameMap[ty][tx] !== SPACE);
+                gameMap[ty][tx] = TARGET;
+                targets.push([ty, tx]);
+            }
+            
+            renderMap();
+        }
+        
+        function renderMap() {
+            const mapElement = document.getElementById('gameMap');
+            mapElement.innerHTML = '';
+            
+            gameMap.forEach(row => {
+                row.forEach(cell => {
+                    const cellDiv = document.createElement('div');
+                    cellDiv.className = 'cell';
+                    cellDiv.textContent = cell;
+                    mapElement.appendChild(cellDiv);
+                });
+            });
+            
+            document.getElementById('steps').textContent = steps;
+        }
+        
+        function findPlayer() {
+            for(let y = 0; y < gameMap.length; y++) {
+                for(let x = 0; x < gameMap[y].length; x++) {
+                    if(gameMap[y][x] === PLAYER) {
+                        return [y, x];
+                    }
+                }
+            }
+        }
+        
+        function handleMove(dy, dx) {
+            const [py, px] = findPlayer();
+            const ny = py + dy;
+            const nx = px + dx;
+            
+            if(gameMap[ny][nx] === WALL) return;
+            
+            if(gameMap[ny][nx] === BOX) {
+                const boxNewY = ny + dy;
+                const boxNewX = nx + dx;
+                if(gameMap[boxNewY][boxNewX] === WALL || gameMap[boxNewY][boxNewX] === BOX) return;
+                gameMap[boxNewY][boxNewX] = BOX;
+                gameMap[ny][nx] = SPACE;
+            }
+            
+            gameMap[py][px] = SPACE;
+            
+            // 恢复目标点
+            if(targets.some(([ty, tx]) => ty === py && tx === px)) {
+                gameMap[py][px] = TARGET;
+            }
+            
+            gameMap[ny][nx] = PLAYER;
+            steps++;
+            
+            renderMap();
+            checkWin();
+        }
+        
+        function checkWin() {
+            const won = targets.every(([y, x]) => gameMap[y][x] === BOX);
+            if(won) {
+                setTimeout(() => {
+                    if(confirm(`恭喜你赢了！总计步数：${steps}\n要开始新游戏吗？`)) {
+                        startGame();
+                    }
+                }, 100);
+            }
+        }
+        
+        function startGame() {
+            steps = 0;
+            createGameMap();
+        }
+        
+        // 添加键盘控制
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowUp':
+                case 'w':
+                    handleMove(-1, 0);
+                    break;
+                case 'ArrowDown':
+                case 's':
+                    handleMove(1, 0);
+                    break;
+                case 'ArrowLeft':
+                case 'a':
+                    handleMove(0, -1);
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                    handleMove(0, 1);
+                    break;
+            }
+        });
+        
+        // 初始化游戏
+        startGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>表格</title>
+        <style>
+            table {
+                border-collapse: collapse; /* 合并表格边框 */
+                width: 97%;
+                border-radius: 10px;
+                overflow: hidden; /* 隐藏溢出的边角 */
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                color: #000000;
+            }
+            th, td {
+                padding: 8px 12px;
+                text-align: left;
+                border: 1.7px solid #ddd; /* 边框颜色 */
+            }
+            th {
+                background-color: #908a8a;
+            }
+            tr:nth-child(even) {
+                background-color: #d8d8d8; /* 偶数行背景色 */
+            }
+            tr:hover {
+                background-color: #d8d8d8; /* 鼠标悬停时背景色 */
+            }
+        </style>
+    </head>
+    <body>
+    <table>
+        <thead>
+            <tr>
+                <th>工具</th>
+                <th>优点</th>
+                <th>缺点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PyInstaller</td>
+                <td>跨平台支持、自动处理依赖、打包为单个文件、适合大多数程序</td>
+                <td>文件较大、启动较慢、兼容性问题、调试困难</td>
+            </tr>
+            <tr>
+                <td>cx_Freeze</td>
+                <td>跨平台支持、定制性强、打包文件体积较小</td>
+                <td>配置复杂、依赖处理不如 PyInstaller 自动</td>
+            </tr>
+            <tr>
+                <td>py2exe</td>
+                <td>打包文件小、Windows 优化、配置简单</td>
+                <td>仅支持 Windows、对新版本 Python 支持差</td>
+            </tr>
+            <tr>
+                <td>PyOxidizer</td>
+                <td>体积小、嵌入 Python 解释器、WebAssembly 支持</td>
+                <td>配置复杂、文档较少、更新较慢</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>介绍</th>
+                <th>配置</th>
+                <th>安装</th>
+                <th>命令</th>
+                <th>解释</th>
+                <th>在线工具</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Terser</td>
+                <td>Terser 是一个现代的 JavaScript 压缩工具，性能和功能上都非常好。</td>
+                <td>无</td>
+                <td>npm install terser --save-dev</td>
+                <td>npx terser src/main.js --compress --mangle --output dist/main.min.js</td>
+                <td>src/main.js 原始文件。
+                    dist/main.min.js 压缩文件。
+                    --compress 开启压缩。
+                    --mangle 混淆变量名。
+                <td><a href="https://www.uglifyjs.net">UglifyJS Online</a><br><a
+                        href="https://www.uglifyjs.net/">JSCompress</a></td>
+            </tr>
+            <tr>
+                <td>CSSNano</td>
+                <td>CSSNano 是一个非常流行的CSS压缩工具，能够优化和压缩 CSS 文件。</td>
+                <td>无</td>
+                <td>npm install cssnano --save-dev</td>
+                <td>npx cssnano src/styles.css dist/styles.min.css</td>
+                <td>src/styles.css是源文件。
+                    dist/styles.min.css是压缩文件。</td>
+                <td><a href="https://www.toptal.com/developers/cssminifier">CSSMinifier</a><br><a
+                        href="https://www.minifier.org/">Minify CSS Online</a></td>
+            </tr>
+            <tr>
+                <td>构建工具:Webpack</td>
+                <td>Webpack是一种强大的模块打包工具，它不仅可以打包代码，还能通过 webpack.config.js配置自动化地压缩 JavaScript 和 CSS 文件。</td>
+                <td>在根目录下创建webpack.config.js配置文件，配置压缩插件</td>
+                <td>npm install --save-dev webpack webpack-cli terser-webpack-plugin css-minimizer-webpack-plugin</td>
+                <td>npx webpack --config webpack.config.js</td>
+                <td>这将自动压缩JavaScript和CSS文件，并将结果输出到指定目录。</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Gulp</td>
+                <td>非常流行的JavaScript自动化任务运行器，可以用来自动化压缩、合并、编译等任务。(JavaScript和CSS)</td>
+                <td>创建gulpfile.js文件，配置任务来压缩文件</td>
+                <td>npm install gulp gulp-uglify gulp-cssnano --save-dev</td>
+                <td>npx gulp</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <td>菊次郎的夏天</td>
+                <td>Pretty Boy</td>
+                <td>やわらかな光</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="7" style="text-align: center;font-weight: bold;">动画片</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>星际宝贝（美国）07</td>
+                <td>加菲猫的幸福生活（法国）11</td>
+                <td>高米迪（意大利&法国）11</td>
+                <td>成龙历险记（美国）04</td>
+                <td>蜘蛛侠（美国）10</td>
+                <td>马达加斯加的企鹅（美国）</td>
+                <td>马丁的早晨（中国&法国）04</td>
+            </tr>
+            <tr>
+                <td>果宝特攻（蓝弧&奥飞）10</td>
+                <td>超兽武装（蓝弧）</td>
+                <td>洛洛历险记（蓝弧）08</td>
+                <td>新世纪福音战士（日本宅社&龙之子）</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>甜心格格（方块动漫）11</td>
+                <td>巴啦啦小魔仙(奥飞)08</td>
+                <td>东京猫猫（日本小丑社）03</td>
+                <td>美少女战士（日本东映）97</td>
+                <td>小公主苏菲亚</td>
+                <td>叶罗丽</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>忍者神龟（美国）04</td>
+                <td>海绵宝宝（美国）06</td>
+                <td>倒霉熊（韩国）15</td>
+                <td>蓝精灵（美国）81引入，动漫世界12</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>赛尔号（淘米）12</td>
+                <td>快乐酷宝（蓝弧）12</td>
+                <td>洛克王国大冒险（腾讯）13</td>
+                <td>摩尔庄园（淘米）11</td>
+                <td>开心宝贝（）10</td>
+                <td>名侦探柯南（）</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>战斗网址飓风战魂（奥飞）12</td>
+                <td>魔幻车神</td>
+                <td>溜溜球</td>
+                <td>fire</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>陀螺</td>
+                <td>铁甲威虫之骑刃王（炫动卡通&蓝弧）</td>
+                <td>小恐龙阿贡</td>
+                <td>神奇啊呦</td>
+                <td>围棋江流儿</td>
+                <td>饼干警长</td>
+                <td>小羊肖恩</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+@media (max-width: 1080px) {
+    body {
+        background-image: none;
+    }
+    @font-face {
+        font-family: 'LXGW WenKai', Arial, sans-serif;
+        src: url('https: //chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css') format('woff2');
+        font-display: swap;
+    }
+    .splash-title {
+        text-align: center;
+    }
+    .welcome-container {
+        background-image: url(https://t.alcy.cc/moemp);
+    }
+    .welcome-title {
+        font-size: 3em;
+    }
+    .nav-item>a {
+        font-size: 13px;
+    }
+    .card {
+        width: 320px;
+        height: 320px;
+    }
+    .face, .back {
+        width: 320px;
+        height: 320px;
+    }
+    footer {
+        font-size: 10px;
+        bottom: 80px;
+    }
+    .deep {
+        width: 90%;
+        height: 500px;
+        backdrop-filter: blur(5px);
+        border: 1px solid #000;
+        font-size: 1.7em;
+    }
+    .view img {
+        height: 200px;
+    }
+
+    .stardew img {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .splash-title {
+        font-size: 1.6rem;
+    }
+    .welcome-title {
+        font-size: 1.2rem;
+    }
+    .welcome-text {
+        font-size: 0.6rem;
+    }
+    .deep {
+        height: auto;
+        min-height: 250px;
+        font-size: 1.5em;
+    }
+    .pop {
+        font-size: 0.8em;
+    }
+    .card {
+        width: 120px;
+        height: 120px;
+    }
+    .face, .back {
+        width: 120px;
+        height: 120px;
+    }
+    #f12-toggle {
+        display: none;
+    }
+    .color {
+        font-size: 3rem;
+    }
+    footer {
+        margin-bottom: 60px;
+    }
+}

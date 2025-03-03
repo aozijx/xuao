@@ -1,0 +1,115 @@
+
+<head>
+    <style>
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(https://t.alcy.cc/pc);
+            background-size: cover;
+            background-attachment: fixed;
+            box-shadow: inset 0px -20px 40px 5px rgb(0, 0, 0);
+            z-index: -1;
+        }
+        .welcome-cotent {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            justify-content: center;
+            animation: fadeIn 2s ease-out;
+            animation: float 3s infinite ease-in-out;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+        }
+        .welcome-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            animation: fadeIn 2.5s ease-out;
+            background: transparent;
+        }
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            0% {
+            opacity: 0;
+            transform: translateY(20px);
+            }
+            100% {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+        .welcome-container {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            background-image: url(https://t.alcy.cc/pc);
+            background-size: cover;
+            background-attachment: fixed;
+            box-shadow: inset 0px -20px 40px 5px rgb(0, 0, 0);
+            z-index: -1;
+        }
+        .welcome-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome-title {
+            font-size: 3rem;
+            justify-content: center;
+            animation: float 3s infinite ease-in-out;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+        }
+        /* 浮动动画 */
+        @keyframes float {
+            0%,
+            100% {
+                transform: translate(-50%, 0)
+            }
+            50% {
+                transform: translate(-50%, -15px)
+            }
+        }
+    </style>
+    <title>we</title>
+</head>
+<body>
+<div class="welcome-container">
+    <div class="welcome-content">
+        <h1 class="welcome-title"> Hello Everyone to Here🎉</h1>
+    </div>
+</div>
+<div style="height: 1000px;"></div>
+<script>
+    // JavaScript
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const bgElement = document.querySelector('.welcome-container');
+        // 调整背景位置（这里让背景向下移动速度为滚动的30%）
+        bgElement.style.transform = `translateY(${scrollY * 0.9}px)`;
+        // 或者调整背景模糊度（可选效果）
+        bgElement.style.filter = `blur(${Math.min(scrollY * 0.05, 5)}px)`;
+    });
+    // 优化性能：使用 requestAnimationFrame
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+        window.cancelAnimationFrame(isScrolling);
+        isScrolling = window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            document.querySelector('.background').style.transform =
+                `translateY(${scrollY * 0.3}px)`;
+        });
+    });
+</script>
+</body>

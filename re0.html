@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<!-- 
+	pikaへ　　　　　／|
+　　/＼7　　　 ∠＿/
+　 /　│　　 ／　／
+　│　Z ＿,＜　／　　 /`ヽ
+　│　　　　　ヽ　　 /　　〉
+　 Y　　　　　`　 /　　/
+　ｲ●　､　●　　⊂⊃〈　　/
+　()　 へ　　　　|　＼〈
+　　>ｰ ､_　 ィ　 │ ／／
+　 / へ　　 /　ﾉ＜| ＼＼
+　 ヽ_ﾉ　　(_／　 │／／
+　　7　　　　　　　|／
+　　＞―r￣￣`ｰ―＿6
+-->
+<html lang="zh-CN">
+<head >
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="max-age=259200, must-revalidate">
+  <!--SEO优化-->
+  <meta name="description" content="一个学习HTML并用来实践的Web页面">
+  <meta name="keywords" content="HTML,CSS,JavaScript">
+  <meta name="author" content="Hiner">
+  <meta name="robots" content="noindex, nofollow"> <!-- 禁止收录和跟踪 -->
+  <meta name="referrer" content="no-referrer-when-downgrade"><!--控制请求头中的 Referrer 信息传递。-->
+  <meta name="format-detection" content="telephone=no, email=no, address=no"><!--禁用自动格式检测（iOS Safari）(自动识别电话号码、邮箱等)-->
+  <meta name="theme-color" content="#ffffff"><!--控制浏览器地址栏/移动端状态栏颜色-->
+  <title>Hiner' Web</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'LXGW WenKai', Georgia, sans-serif;
+      /* background-image: url(https://t.alcy.cc/bd); */
+      background-image: url(src/image/liu.webp);
+      background-attachment: fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      color: var(--primary-text);
+      transition: background-color 2s ease-in-out, color 0.8s ease;
+    }
+    @keyframes fadeBackground {
+    0% { background-color: var(--primary-bg); }
+    100% { background-color: var(--primary-bg); }
+    }
+    #dark {
+      color: var(--primary-text);
+      font-family: XuandongKaishu;
+      font-size: 25px;
+      background-color: transparent;
+      border: none;
+    }
+    #dark:hover {
+      color: pink;
+    }
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background: rgba(0,0,0,1);
+      animation: fadeOut 1.5s ease-out 1s forwards;
+    }
+    /* 开屏动画消失效果 */
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .splash-title {
+      font-size: 3rem;
+      color: white;
+      opacity: 1;
+      animation: slideDown 1.5s ease-in-out;
+    }
+    /* 开屏标题向下滑动 */
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .welcome-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      background-image: url(https://t.alcy.cc/pc);
+      background-size: cover;
+      background-attachment: fixed;
+      box-shadow: inset 0px -20px 40px 10px rgba(0, 0, 0);
+      z-index: -1;
+    }
+    .welcome-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .welcome-title {
+      font-size: 3rem;
+      font-size: 4em;
+      z-index: 666;
+      letter-spacing: 5px;
+      animation: float 3s infinite ease-in-out;
+      text-shadow: 1px 4px 15px rgba(0,0,0,0.8);
+    }
+    /* 浮动动画 */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translate(0, 0)
+        }
+        50% {
+            transform: translate(0, 15px)
+        }
+    }
+    .welcome-text {
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.5;
+      animation: fadeIn 2.5s ease-out;
+    }
+    /* 淡入动画 */
+    @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+    }
+  </style>
+  <!--通过 onload 将 rel 设置为 null，避免某些浏览器多次触发-->
+  <link rel="icon" href="src/image/logo.png">
+  <link rel="preload" href="src/CSS/re0/main.css" as="style" onload="this.onload='null';this.rel='stylesheet'">
+  <link rel="preload" href="src/CSS/re0/mini.css" as="style" media="(max-width: 1080px)"  onload="this.onload='null';this.rel='stylesheet'">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> -->
+  <noscript>
+    <link rel="stylesheet" href="src/CSS/re0/main.css">
+  </noscript>
+  <!--APlayer-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <!--字体-->
+  <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css' as="style" onload="this.rel='stylesheet'" />
+  <link rel='preload' href='https://chinese-fonts-cdn.deno.dev/packages/xuandongkaishu/dist/XuandongKaishu/result.css' as="style" onload="this.rel='stylesheet'" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.min.js"></script>
+</head>
+<body>
+    <div class="splash-screen" id="splash-screen">
+      <h1 class="splash-title">Welcome to the Website!</h1>
+    </div> 
+    <div class="welcome-container" id="home">
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#home">首页</a>
+          </li>
+          <li class="nav-item">
+            <a href="#b">页脚</a>
+          </li>
+          <li class="nav-item">
+            <a>更多</a>
+            <ul class="subnav">
+              <li><a href="src/markdown/player">HTML Player</a></li>
+              <li><a href="src/markdown/audio">audio标签</a></li>
+              <li><a href="src/HTML/table">表格</a></li>
+              <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">MDN</a></li>
+              <li><a href="src/HTML/fireworks.html">烟花</a></li>
+              <li><a href="src/HTML/canvas">万花筒</a></li>
+              <li><a href="src/HTML/gobang">五子棋</a></li>
+              <li><a href="https://www.jyshare.com/examples">菜鸟教程</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a>关于</a>
+            <ul class="subnav">
+              <li><a href="https://aozijx.github.io/xuao/src/HTML/me.html">ME</a></li>
+              <li><a href="src/HTML/welcome">test</a></li>
+            </ul>
+          </li>
+          <button id="dark" title="切换模式"></button>
+        </ul>
+      </nav>
+      <div class="welcome-content">
+        <h1 class="welcome-title"> Hello Everyone to Here🎉</h1>
+        <div class="welcome-text">
+          <p>This is a simple HTML page.</p>
+        </div>  
+      </div>
+      <div class="scroll-down">
+        <a href="#c" aria-label="Scroll Down"></a>
+      </div>
+    </div>
+    <div class="deep-container" id="c">
+      <div class="deep" style="width: 90%;height: 500px;">
+      </div>
+      <div class="deep" style="width: 40%;height: 500px;">
+        <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline">[outline]</a></span>
+        <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">[cursor]</a></span>
+        <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration">[text-decoration]</a></span>
+        <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow">[text-shadow]</a></span>
+        <span><a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#%E7%BD%91%E9%A1%B5%E5%AE%89%E5%85%A8%E5%AD%97%E4%BD%93">[文本和字体样式]</a></span>
+        </span>
+      </div>
+      <div class="deep" style="width: 40%;height: 500px;">
+        <div class="qin">
+          <div class="ph">
+            <img src="src/image/love/Violet b.jpg" alt="">
+          </div>
+          <div class="ph">
+            <img src="src/image/love/Frieren.jpg" alt="">
+            <span>芙莉莲</span>
+          </div>
+          <div class="ph">
+            <img src="src/image/love/jun.jpg" alt="">
+          </div>
+          <div class="ph">
+            <img src="src/image/love/02.jpg" alt="">
+          </div>
+          <div class="ph">
+            <img src="src/image/love/Violet.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="deep" style="display: flex;flex-direction: column;">
+        <span>translate3d(x, y, z)：沿 X/Y/Z 轴平移元素。</span>
+        <span>rotate3d(x, y, z, angle)：绕自定义轴旋转。</span>
+        <span>scale3d(x, y, z)：沿 X/Y/Z 轴缩放。</span>
+        <span>perspective（透视）定义观察者与 3D 空间的“距离”，数值越小，透视效果越强（类似镜头），可在transform中设置</span>
+        <span>transform-style: preserve-3d，让子元素在 3D 空间中保持位置（默认是 flat，子元素会被拍平到 2D 平面），必须设置在父容器</span>
+        <span>backface-visibility,控制元素背面是否可见（如翻转卡片时隐藏背面）。</span>
+      </div>
+      <div class="deep" style="width: 940px;">
+        <div class="qin">
+          <div class="box">
+            <img src="https://cdn.img2ipfs.com/ipfs/QmVfYmRkDZ7fGdSmeU5UZFR6rQ5GdSihrqrPLhLAF3mm4Y?filename=th%20(1).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="https://cdn.img2ipfs.com/ipfs/QmWAYybyJT7KK1e55HBoSDKvQnCY3ZtcLwEXsNPaw8Mawu?filename=th%20(2).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="https://cdn.img2ipfs.com/ipfs/Qmex3uRVbg6eRcnxPBkoBFP8VCSkbteZU4NMsskuQ3udNY?filename=th%20(6).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="https://cdn.img2ipfs.com/ipfs/QmTVBiPQZGiRk19uMoeDTuD4SVzWFonx1wjNvk869Wcmtw?filename=th%20(4).jpg" alt="">
+          </div>
+          <div class="box">
+            <img src="https://cdn.img2ipfs.com/ipfs/QmRTgvKcPYsiabGx9qEL5FAuhRUmdz8h6jSLEVFE5Y6KUj?filename=th%20(5).jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="deep" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <div class="tu">
+          <img src="src/image/love/RachelMoore.jpg" class="tu-role" alt="">
+          <img src="" class="tu-cover" alt="">
+        </div>
+      </div>
+        <div class="deep">
+          <div class="letter">
+            <h3>A Covenant Between Civilization and Nature</h3>
+            <div>
+              Environmental crises now threaten humanity’s survival. Polar ice melting at unprecedented rates, 90% of seabirds ingesting plastics, and rampant deforestation expose a fractured ecosystem. These are not isolated issues but symptoms of a broken human-nature covenant.
+              True solutions demand dual action: individuals adopting sustainable habits and governments enforcing green policies. As Jane Goodall warned, "Protecting nature is not a choice but a necessity for civilization’s continuity." Environmentalism must evolve from "saving Earth" to redefining humanity’s role as stewards of a shared biological legacy. Only by honoring this planetary covenant can we safeguard tomorrow’s world.
+            </div>
+          </div>
+        </div>
+        <div class="deep" style="display: flex;flex-direction: column;">
+        <div class="carousel">
+          <div class="slider-container">
+            <div class="slide"><img src="https://cdn.img2ipfs.com/ipfs/QmT4YXQetKUrp7DAy4Ct6mBojHwbssgmLNWk6JpxG8YPfT?filename=th.jpg" alt=""></div>
+            <div class="slide"><img src="https://cdn.img2ipfs.com/ipfs/QmZifA7EcBZCmapkuN2zPJVu9wr952UnQ134ivPEGQ7m52?filename=th%20(3).jpg" alt=""></div>
+            <div class="slide"><img src="https://cdn.img2ipfs.com/ipfs/QmTVBiPQZGiRk19uMoeDTuD4SVzWFonx1wjNvk869Wcmtw?filename=th%20(4).jpg" alt=""></div>
+            <div class="slide"><img src="https://cdn.img2ipfs.com/ipfs/QmRTgvKcPYsiabGx9qEL5FAuhRUmdz8h6jSLEVFE5Y6KUj?filename=th%20(5).jpg" alt=""></div>
+          </div>      
+          <div class="l-controls">
+            <div class="prev">←</div>
+            <div class="next">→</div>
+          </div>
+          <div class="dots"></div> 
+        </div>
+      </div>
+      <div class="deep">
+        <div class="shan" style="margin: 20px auto;"></div>
+      </div>
+      <div class="deep" style="overflow: hidden;">
+        <div class="ltu">
+          <img src="src/image/xinfamily.jpg" alt="">
+          <img src="src/image/default.webp" alt="">
+          <img src="src/image/love/不知火.png" alt="">
+          <img src="src/image/love/索尔维会议.jpeg" alt="">
+          <img src="src/image/xinfamily.jpg" alt="">
+        </div>
+      </div>
+      <div class="deep ro">
+        <div class="jiu">
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+          <div class="jiu-item"></div>
+        </div>
+        <p style="position: fixed;bottom: -14px;">点击也有效果,想通过按钮来切换,奈何不才</p>
+      </div>
+      <div class="deep ro" style="gap: 10px;">
+        <div class="flip-card">
+          <img class="flip-front" src="src/image/smile.jpg" alt="smile">
+          <div class="flip-back">
+            <span>Smile</span>
+          </div>
+        </div>
+        <div class="flip-card">
+          <img class="flip-front" src="src/image/hu.jpg" alt="slience">
+          <div class="flip-back">
+            <span>Slience</span>
+          </div>
+        </div>
+        <p style="position: fixed;bottom: 0;">背景也可换为图片等等其他样式,需要更改选择器或者bgi</p>
+      </div>
+      <div class="deep">
+        <div class="color">
+          <span>C</span>
+          <span>O</span>
+          <span>L</span>
+          <span>O</span>
+          <span>R</span>
+        </div>
+        <div style="width: 100%;height: 200px;filter: drop-shadow(1px 3px 5px black);">
+          <img src="https://patchwiki.biligame.com/images/dwrg/e/e8/b86u5blf6w5ujwvsqdyqfovkku5fcsq.png" height="300px" alt="">
+        </div>
+        <div style="float: right;">CSS：filter: drop-shadow();<br>添加brightness(x)亮度，及scale(x)大小</div>
+      </div>
+      <div class="deep line">
+        <span>“The supreme happiness of life is the conviction that we are loved; loved for ourselves—say rather, loved in spite of ourselves.”</span><br>
+        <span>“It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness...”</span>
+        <p>可以更改下划线颜色为任意，纯色或多色渐变皆可</p>
+      </div>
+      <div class="deep" style="display: flex;flex-wrap: wrap;gap: 10px;justify-content: space-around;">
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(from 0deg at 50% 50%,#ff0000 0%,#ff007f 8.33%,#ff00ff 16.66%,#7f00ff 25%,#0000ff 33.33%,#007fff 41.66%,#00ffff 50%,#00ff7f 58.33%,#00ff00 66.66%,#7fff00 75%,#ffff00 83.33%,#ff7f00 91.66%,#ff0000 100%);"></div>
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(#00f 180deg, transparent);"></div>
+        <div style="width: 150px;height: 150px;border-radius: 50%;background: conic-gradient(#f00 90deg, transparent 90deg 360deg, #f00 0deg);"></div>
+        <div class="circle"></div>
+      </div>
+      <div class="deep" style="background-image: url(https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/Vanilla-PMP_Collection-Carousel-0_Update-Aquatic_1280x768.jpg);">
+      </div>
+      <div class="deep" style="background-image: url(https://www.stardewvalley.net/wp-content/uploads/2024/03/steam_cover.png);color: #ffffff;">
+        <a href="https://zh.stardewvalleywiki.com/Stardew_Valley_Wiki" style="color: #fff;">星露谷物语</a>
+        <div class="pop">妈妈，人生要真是星露谷就好了。随时可以到达的海边，送出礼物就能获得的友谊，付出努力就一定会有收获，失败了也只是掉东西，永远有再来的机会，而且就算什么也不干每天躺在床上评定等级的时候．爷爷也只是希望你远离世俗开开心心。妈妈，人生要真是星露谷就好了。我想有很多很多朋友，想有疼爱我的长辈。种下去就能长出来的菜，放进小桶就能酿出的酒：下雨也可以去海滩钓一整天的鱼：砍树也是充实的一天。妈妈，为什么我一直都只是在小房间里打转呢。</div>
+        <a href="https://stardew.info/planner/" style=" position: fixed;bottom: 0;left: 37%;">农场规划器</a>
+      </div>
+      <div class="deep" style="background-image: url(https://game.mhcdkey.com/image/ask/200228/ashikmdu3l1.jpg);">
+      </div>
+      <div class="deep" style="background-image: url(https://img1.vqs.com/vqs/imgfile/20240712/12131934yp9j.jpg);">
+      </div>
+      <div class="deep">
+        <a href="">水波效果</a>
+        引入 JavaScript jquery.ripples-min.js<br>
+        初始化
+        <pre style="white-space: pre-wrap;">
+        $('body').ripples({ 
+          resolution: 1080,// 分辨率。默认值：256
+          dropRadius: 5,// 水波涟漪的半径。默认值：20
+          perturbance: 0.05,// 干扰效果。默认值：0.03
+          interactive: true // 是否可以用鼠标进行互动。默认值：false。
+        });</pre>
+      </div>
+      <div class="deep" style="display: flex;flex-direction: column;">
+        <span>transform的skew</span>
+        <span>mask、mask-image、mask-size、mix-blend-mode</span>
+        <span>锥形渐变conic-gradient()</span>
+        <span>物体描边阴影filter:drop-shadow();</span>
+        <span>animation的alternate,step</span>
+        <span>animation-play-state</span>
+        <span>letter-space、contrast</span>
+        <span>scale实现下拉菜单</span>
+        <span>aspect-ratio: 16/9;  宽高比为 16:9 </span>
+      </div>
+      <div class="deep">
+        <div id="aplayer01" style="height: 60px;"></div>
+        <audio controls preload="none">
+          <src src="src/music/千与千寻轻音乐.mp3" type="audio/mp3">
+          您的浏览器不支持音频播放。
+        </audio>
+        <audio controls preload="none">
+          <src src="src/music/AwayFromTheRain.mp3" type="audio/mp3">
+          您的浏览器不支持音频播放。
+        </audio>
+        <audio controls preload="none">
+          <src src="src/music/night crusing.mp3" type="audio/mp3">
+          您的浏览器不支持音频播放。
+        </audio>
+      </div>
+      <div class="deep">
+        <div class="stardew">
+            <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.1.10">SMAPI</a>
+            <a href="https://www.nexusmods.com/stardewvalley/mods/25395">N网25395</a>
+          <img src="https://staticdelivery.nexusmods.com/mods/1303/images/headers/25395_1719048617.jpg" width="450px">
+          <a href="https://www.nexusmods.com/stardewvalley/mods/15234">N网15234</a>
+          <div>
+          <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1675604855-1750177193.jpeg" width="200px">
+          <img src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1712295321-202562341.png" width="200px">
+          </div>
+        </div>
+      </div>
+      <div class="deep">
+        <a href="src/HTML/fw.html">第五人格</a>
+        <div id="app" style="margin: 0, auto;">
+          <button @click="pop">123</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <section class="unfold">
+      </section>
+      <section class="unfold">
+        <img src="https://moe.jitsu.top/img/?sort=pc&34">
+      </section>
+      <section style="background-image: url(https://img.alicdn.com/imgextra/i2/2209748222339/O1CN010muxj21T9JF0IPCI2_!!2209748222339.jpg);height: 250px;background-size: cover;background-position: center;color: #ffffff;">
+      </section>
+      <section>
+        <span class="line"><a href="https://git-scm.com/book/zh/v2">Git的使用</a></span>
+        <p>本章为 Git 入门。 我们从介绍版本控制工具的背景知识开始，然后讲解如何在你的系统上运行 Git，最后是关于如何设置 Git 以便开始工作。 通过本章的学习，你应该能了解为什么 Git 这么流行，为什么你应该使用 Git 以及你应该如何设置以便使用 Git。</p>
+      </section>
+      <section class="unfold">
+        <h2>justify-content</h2><p>作用于容器，控制容器内 <c>所有子元素</c> 在 <c>主轴</c> 上的整体对齐方式。</p>
+        <p>flex-start（默认）：左对齐（横向）或顶部对齐（纵向）</p>
+        <p>flex-end：右对齐（横向）或底部对齐（纵向）</p>
+        <p>center：居中对齐</p>
+        <p>space-between：两端对齐，子元素间距均分</p>
+        <p>space-around：子元素两侧间距均分</p>
+        <p>space-evenly：所有间距完全均分</p>
+        <h2>justify-items</h2>
+        <p>作用于容器，控制容器内 每个子元素 在 自身格子/区域 内的主轴对齐方式。</p>
+        <p>注意：</p>
+        <p>主要在 Grid 布局 中生效，Flexbox 不支持此属性</p>
+        <p>类似于统一设置所有子元素的 justify-self</p>
+        <h2>justify-self</h2>
+        <p>作用于子元素,覆盖父容器的 justify-items，控制单个子元素在 自身格子/区域 内的主轴对齐方式。</p>
+        <p>注意；</p>
+        <p>主要在 Grid 布局 中生效</p>
+        <p>Flexbox 中仅在特定场景下有效（如多行换行布局）</p>
+        <h3>align-content: 控制多行/多列在交叉轴的整体对齐（类似 justify-content 的交叉轴版本）</h3>
+        <h3>align-items: 控制所有子元素在交叉轴的对齐（类似 justify-items）</h3>
+        <h3>align-self: 覆盖单个子元素的交叉轴对齐（类似 justify-self）</h3>
+      </section>
+    </div>
+    <div class="view-container">
+      <div class="view">
+        <div>
+          <img src="https://p0.pipi.cn/basicdata/54ecde717a3c7eb86051ba69302a462ab0f66.jpg?imageView2/1/w/464/h/644" alt="埃德·斯塔福特">
+          <div>
+            <h2>埃德·斯塔福德</h2>
+            <p>Ed Stafford</p>
+            <p>导演 | 演员 | 编剧</p>
+            <p>1975-12-26</p>
+          </div>
+        </div>
+        <div>埃德·斯塔福德（Ed Stafford，1976年-），出生于英国彼得伯勒，前驻阿富汗英国陆军上尉，被誉为“现代鲁宾逊”。2010年4月，斯塔福德独自穿越亚马逊河，耗时860天，创下吉尼斯世界纪录：第一个走完亚马逊全程的人。这段经历被写成《徒步亚马孙》一书，并被“探索”频道拍成纪录片。2011年，皇家苏格兰地理学会授予斯塔福德蒙戈·帕克奖。2013年，斯塔福德在南太平洋一个荒无人烟的小岛，独自生活60天。2014年-2019年，参加的节目《单挑荒野第三季》《求生之路》《街道流浪60天》等相继播出。2020年4月24日，参加的野外生存类节目《决胜荒野之华夏秘境》在哔哩哔哩播出。</div>
+      </div>
+      <div class="view">
+        <div>
+          <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20210810125402-1592366609_jpeg_1955_2444_1840509.jpg/800" alt="杰瑞米·维德">
+          <div>
+            <h2>杰瑞米·维德</h2>
+            <p>Jeremy Wade</p>
+            <p>演员</p>
+            <p>1956-03-23</p>
+          </div>
+        </div>
+        <div>杰瑞米·瓦德（Jeremy Wade，1956年3月23日-），出生于英国萨福德郡，毕业于布里斯托尔大学，英国男生物学家、主持人、极限钓鱼者、作家。2009年-2017年，主持电视系列节目《河中巨怪》第一季至第九季。2018年，主演的纪录片《狂野之河》播出。2022年8月，主演的纪录片《深海之谜第二季》播出</div>
+      </div>
+      <div class="view">
+        <div>
+          <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20220319103622-64309780_jpeg_353_456_41939.jpg/800" alt="贝尔·格里尔斯">
+          <div>
+            <h2>贝尔·格里尔斯</h2>
+            <p>Bear Grylls</p>
+            <p>英国探险家、主持人、作家、演讲家</p>
+            <p>1974-6-7</p>
+          </div>
+        </div>
+        <div>贝尔·格里尔斯（Bear Grylls，1974年6月7日-），出生于英国怀特岛本布里奇城，毕业于伦敦大学，英国男主持人、探险家、英国童子军总会的主席]。2006年-2011年，凭借真人秀《荒野求生》第一季至第七季走红。在主持节目中所食用的东西太过惊人，而被冠以“站在食物链顶端的男人”的称号。2016年-2017年，主持的真人秀《贝爷的求生学校》播出。2023年3月3日，主演的纪录片《圣母峰消失之谜》上映。</div>
+      </div>
+      <div class="view">
+      </div>
+    </div>
+    <div style="height: 100vh;" id="content"></div>
+    <div id="workboard"></div>
+    <!-- 自定义右键菜单 -->
+    <div id="menu">
+      <ul>
+        <li><a href="#">操作 1</a></li>
+        <li><a href="#">操作 2</a></li>
+        <li><a href="#">操作 3</a></li>
+        <li class="separator"></li>
+        <li><a href="#">设置</a></li>
+      </ul>
+    </div>
+    <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a href="https://chinese-font.netlify.app/zh-cn/">中文网字计划</a>·<p>霞鹜文楷</p>|<p>玄冬楷书</p></footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.min.js@3.5.1/jquery.min.js"></script>
+    <script src="src/JavaScript/re0/main.js"></script>
+    <script src="src/JavaScript/re0/vue.js"></script>
+    <!--live2d支持-->
+    <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js" defer></script>
+    <!--APlayer-->
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <!-- MetingJS -->
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" defer></script>
+    <meting-js
+      server="tencent"
+      type="playlist"
+      id="9414564637"
+      fixed="true"
+      autoplay="false"
+      loop="all"
+      order="list"
+      mutex="true">
+    </meting-js>
+    <script>
+      //APlayer
+      window.onload = function () {
+        const ap = new APlayer({
+          container: document.getElementById('aplayer01'),
+          autoplay: true,
+          // mini: true,
+          volume: 0.6,
+          mutex: true,
+          audio: [{
+            name: '願い〜あの頃のキミへ〜',
+            artist: '當山みれい (当山真玲)',
+            url: 'https://aozijx.github.io/xuao/src/music/願い〜あの頃のキミへ〜.mp3',
+            cover: 'https://y.qq.com/music/photo_new/T002R300x300M000002TOVre3tDgBD_2.jpg?max_age=2592000',
+            lrc: ''
+          }]
+        });
+      };
+    </script>
+    <script>
+      function smoothScroll(event) {
+        event.preventDefault(); // 阻止默认行为
+        const targetId = event.currentTarget.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>许昌电气职业学院</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .date-box {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            min-width: 90px;
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #0b5aa8;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.xcevc.cn/images/logo.png" height="50" alt="许昌电气职业学院">
+            </a>
+            <div class="d-flex align-items-center ms-auto me-4 d-none d-md-block">
+                <img src="https://www.xcevc.cn/images/21/04/13/1zbaj28p2b/top_xx.png" 
+                     alt="校训" 
+                     class="img-fluid" 
+                     style="height: 40px; filter: brightness(0.7) contrast(1.2);">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ms-auto d-flex align-items-center">
+                    <form class="search-form me-3" action="search.jsp?wbtreeid=1001" method="post" id="au2a" name="au2a" onsubmit="return _nl_ys_check()" style="display: inline;">
+                        <input type="hidden" id="lucenenewssearchkey255261" name="lucenenewssearchkey" value="">
+                        <input type="hidden" id="_lucenesearchtype255261" name="_lucenesearchtype" value="1">
+                        <input type="hidden" id="searchScope255261" name="searchScope" value="0">
+                        <div class="input-group input-group-sm border rounded-pill overflow-hidden bg-white">
+                            <input class="form-control border-0 ps-3" 
+                                   type="text" 
+                                   aria-label="Search">
+                            <button class="btn border-0 pe-3" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact-footer">联系我们</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.xcevc.cn/index.htm">学校主页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">学院概况</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xygk/xyjj.htm">学院简介</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xygk/xyld.htm">学院领导</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xygk/lxwm.htm">联系我们</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">新闻公告</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xwgg/xydt.htm">学院动态</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xwgg/tzgg.htm">通知公告</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xwgg/mtbd.htm">媒体报道</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/xwgg/yxfc.htm">院系风采</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">机构设置</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jgsz/gljg.htm">管理机构</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jgsz/qtjg.htm">群团机构</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jgsz/jfjg.htm">教辅机构</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.xcevc.cn/jxxb.htm">教学系部</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">教学科研</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jxky/jxgl.htm">教学管理</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jxky/jpkc.htm">精品课程</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jxky/jxcg.htm">教学成果</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jxky/bysj.htm">毕业设计</a></li>
+                            <li><a class="dropdown-item" href="https://www.xcevc.cn/jxky/sxjd.htm">实训基地</a></li>
+                            <li><a class="dropdown-item" href="https://xcdqjdythjs.mh.chaoxing.com/">专业教学资源库</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.xcevc.cn/hzjl.htm">合作交流</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">招生就业</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="http://zhaosheng.xcevc.edu.cn">招生信息网</a></li>
+                            <li><a class="dropdown-item" href="http://jiuye.xcevc.cn/">就业信息网</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">技工教育</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="http://www.xcts.cn/">许昌技师学院</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">电大教育</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="http://xcdd.open.ha.cn/">许昌电大</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.xcevc.edu.cn/xxgkw">信息公开</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 轮播图 -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <!-- 指示器 -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="5"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="6"></button>
+        </div>
+        
+        <!-- 轮播项目 -->
+        <div class="carousel-inner" style="width: 90%;margin: 0 auto;">
+            <div class="carousel-item active">
+                <img src="https://www.xcevc.cn/images/xinxueqibanner1920x800.jpg" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/weixintupian_20241101104109.png" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;"
+                    alt="校园风光2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/weixintupian_20241101102248.png" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/weixintupian_20230913171747.jpg" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/banner4.jpg" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光5">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/banner5.jpg" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光6">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.xcevc.cn/images/banner7.jpg" 
+                    class="d-block w-100" 
+                    style="aspect-ratio: 2.5/1; object-fit: cover;" 
+                    alt="校园风光7">
+            </div>
+        </div>
+
+        <!-- 控制按钮 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="container my-5">
+        <div class="container">
+            <!-- Tab navigation -->
+            <ul class="nav nav-tabs mb-3" id="newsTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" 
+                            id="school-news-tab" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#school-news" 
+                            type="button" 
+                            role="tab">
+                        学校要闻 
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" 
+                            id="department-news-tab" 
+                            data-bs-toggle="tab" 
+                            data-bs-target="#department-news" 
+                            type="button" 
+                            role="tab">
+                        院系风采
+                    </button>
+                </li>
+                <li class="nav-item ms-auto">
+                    <a href="https://www.xcevc.cn/xwgg/xydt.htm" class="btn btn-sm btn-outline-primary">查看更多 → </a>
+                </li>
+            </ul>
+
+            <!-- 轮播图和新闻列表的容器 -->
+            <div class="row">
+            <div class="col-md-6">
+                <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://www.xcevc.cn/__local/9/DC/C9/77EF99F6AB17680CA1A0D227BE4_FA4F4DF5_1670F.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="新闻图片">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">08</div>
+                                        <div class="text-white">2025-01</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="https://www.xcevc.cn/info/1008/7922.htm" class="text-white text-decoration-none">学院召开2024年度院属单位领导班子述职述廉述学及评议考核大会</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.xcevc.cn/__local/2/B3/7A/10F598E55684830B41DBFBEFD93_7338F403_17000.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="新闻图片">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">24</div>
+                                        <div class="text-white">2024-12</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="https://www.xcevc.cn/info/1008/7877.htm" class="text-white text-decoration-none">学院举办学习贯彻党的二十届三中全会精神集中宣讲会</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.xcevc.cn/__local/2/D4/93/604827D52A8C2DCA71219A56965_058FF4CA_10DCC.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="新闻图片">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">22</div>
+                                        <div class="text-white">2024-12</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="https://www.xcevc.cn/info/1008/7873.htm" class="text-white text-decoration-none">中华人民共和国第三届职业技能大赛河南省选拔赛可再生能源（世赛项目）赛项在我院开赛</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.xcevc.cn/__local/2/DD/00/1C853A86992F85E4E42028719AC_108E7DE5_17114.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="新闻图片">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">28</div>
+                                        <div class="text-white">2024-11</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="https://www.xcevc.cn/info/1008/7826.htm" class="text-white text-decoration-none">学院召开第一届教职工代表大会第三次会议</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加轮播图控制按钮 -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <!-- 添加轮播图指示器 -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="3"></button>
+                    </div>
+                </div>
+                <!-- 院系风采轮播图 -->
+                <div id="departmentCarousel" class="carousel slide d-none" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://www.xcevc.cn/__local/2/DD/00/1C853A86992F85E4E42028719AC_108E7DE5_17114.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="院系风采">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">25</div>
+                                        <div class="text-white">2024-02</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="info/1011/7961.htm" class="text-white text-decoration-none">马克思主义学院教师代表参与张琳课程思政名师工作室研讨交流活动</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://www.xcevc.cn/__local/2/DD/00/1C853A86992F85E4E42028719AC_108E7DE5_17114.jpg" 
+                                 class="d-block w-100" 
+                                 style="height: 352px; object-fit: cover;" 
+                                 alt="院系风采">
+                            <div class="carousel-caption p-0 w-90">
+                                <div class="d-flex align-items-center">
+                                    <div class="date-box me-2 text-center" style="background: rgb(0, 0, 0, 0.3);">
+                                        <div class="fs-5 fw-bold text-white">24</div>
+                                        <div class="text-white">2024-02</div>
+                                    </div>
+                                    <h6 class="mb-0"><a href="info/1011/7959.htm" class="text-white text-decoration-none">艺术与设计学院（人文学院）召开新学期管理工作会议</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 轮播图控制按钮 -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#departmentCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#departmentCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <!-- 轮播图指示器 -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#departmentCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#departmentCarousel" data-bs-slide-to="1"></button>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧新闻列表 -->
+            <div class="col-md-6">
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- 学校要闻内容 -->
+                    <div class="tab-pane fade show active" id="school-news" role="tabpanel">
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-26</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7966.htm" class="text-decoration-none text-dark">丁同民到许昌技师学院调研第三届全国职业技能大赛可再生能源...</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-26</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7965.htm" class="text-decoration-none text-dark">学院教师在2024年全省技工院校教研评选活动中喜获佳绩</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-25</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7963.htm" class="text-decoration-none text-dark">我院开展2025年春季学期开学前实验实训室安全专项检查</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-24</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7960.htm" class="text-decoration-none text-dark">我院开展“开学第一课”联合教学督导检查</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-22</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7958.htm" class="text-decoration-none text-dark">我院开展2025年春季开学前校园安全隐患排查工作</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-21</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7957.htm" class="text-decoration-none text-dark">我院团队在2024年高等职业教育技能大赛“我亲爱的老师”师德...</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-08</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1008/7951.htm" class="text-decoration-none text-dark">院长高远浩带队对学院消防改造工程进行督导</a>
+                        </ul>
+                    </div>
+
+                    <!-- 院系风采内容 -->
+                    <div class="tab-pane fade" id="department-news" role="tabpanel">
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-25</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7961.htm" class="text-decoration-none text-dark">马克思主义学院教师代表参与张琳课程思政名师工作室研讨交流活动</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">02-24</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7959.htm" class="text-decoration-none text-dark">艺术与设计学院（人文学院）召开新学期管理工作会议</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">01-10</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7925.htm" class="text-decoration-none text-dark">艺术与设计学院（人文学院）完成期末实训室安全检查工作</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">01-06</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7912.htm" class="text-decoration-none text-dark">电气工程学院组织开展宿舍安全卫生联合检查</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">12-30</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7893.htm" class="text-decoration-none text-dark">艺术与设计学院（人文学院）幼儿教育团队成功举办期末教学成果展活动</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">12-27</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7889.htm" class="text-decoration-none text-dark">电气工程学院（环境工程学院）举办“百辩青春，筑梦同行”主题辩论赛</a>
+                            </li>
+                            <hr class="my-2">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="date-box me-3 text-center">
+                                    <div class="fs-6">12-27</div>
+                                </div>
+                                <a href="https://www.xcevc.cn/info/1011/7901.htm" class="text-decoration-none text-dark">信息工程学院成功举办辅导员沙龙活动</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <!-- 第一行：通知公告和媒体报道 -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                    <h3 class="mb-0">通知公告</h3>
+                    <a href="https://www.xcevc.cn/xwgg/tzgg.htm" class="btn btn-sm btn-outline-primary">更多公告 »</a>
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">20</div>
+                            <div class="text-muted">2025-02</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1009/7956.htm" class="text-decoration-none text-dark" target="_blank">
+                                许昌电气职业学院"数字校园网络安全能力提升工程项目"竞争性磋商公告
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">11</div>
+                            <div class="text-muted">2025-02</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1009/7952.htm" class="text-decoration-none text-dark" target="_blank">
+                                第七届中国·河南招才引智创新发展大会许昌电气职业学院公开招聘工作人员考察结果公告
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">07</div>
+                            <div class="text-muted">2025-02</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1009/7949.htm" class="text-decoration-none text-dark" target="_blank">
+                                第七届中国·河南招才引智创新发展大会许昌电气职业学院公开招聘工作人员考察工作公告
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">07</div>
+                            <div class="text-muted">2025-02</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1009/7948.htm" class="text-decoration-none text-dark" target="_blank">
+                                许昌电气职业学院2024年公开招聘教师考察自愿放弃递补人员名单及体检公告
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                    <h3 class="mb-0">媒体报道</h3>
+                    <a href="https://www.xcevc.cn/xwgg/mtbd.htm" class="btn btn-sm btn-outline-primary">更多报道 »</a>
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">11</div>
+                            <div class="text-muted">2025-02</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1010/7954.htm" class="text-decoration-none text-dark" target="_blank">
+                                【许昌日报】许昌电气职业学院 开展春节走访慰问活动
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">28</div>
+                            <div class="text-muted">2025-01</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1010/7950.htm" class="text-decoration-none text-dark" target="_blank">
+                                【许昌日报】许昌电气职业学院 新春慰问暖人心
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">20</div>
+                            <div class="text-muted">2025-01</div>
+                        </div>
+                        <div>
+                            <a href="https://www.xcevc.cn/info/1010/7943.htm" class="text-decoration-none text-dark" target="_blank">
+                                【许昌日报】加强队伍建设 推动高质量发展 省教育厅调研组调研许昌电气职业学院
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-2">
+                    <div class="d-flex mb-3">
+                        <div class="date-box me-3 text-center">
+                            <div class="fs-5 fw-bold text-primary">13</div>
+                            <div class="text-muted">2025-01</div>
+                        </div>
+                        <div></div>
+                            <a href="https://www.xcevc.cn/info/1010/7942.htm" class="text-decoration-none text-dark" target="_blank">
+                                【许昌日报】优化专业设置 促进产教融合 许昌电气学院当选全国新能源智能制造汽车行业产教融合共同体副理事长单位
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- 第二行：校园印象 -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- 校园印象部分 -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+                            <h3 class="mb-0">校园印象</h3>
+                            <a href="https://www.xcevc.cn/xyyx.htm" class="btn btn-sm btn-outline-primary">更多图片 »</a>
+                        </div>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                            <div class="col">
+                                <div class="card h-100 shadow-sm">
+                                    <img src="https://www.xcevc.cn/__local/4/17/5C/C1BF2F7FDE7FDD4D38D57037A75_F5D68DAE_11F3E.jpg" 
+                                         class="card-img-top" alt="学院下沉广场"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body py-2">
+                                        <p class="card-text text-center mb-0">学院下沉广场</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="https://www.xcevc.cn/__local/5/BD/C9/E0E2671313C8688CAAADE6A09DC_2241C5E1_2617B.jpeg" 
+                                         class="card-img-top" alt="图书馆"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">图书馆</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="https://www.xcevc.cn/__local/0/86/4A/7F407466E914085FB86A5D51BD3_4552F378_97C87.jpg" 
+                                         class="card-img-top" alt="学院天工之门"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">学院天工之门</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="https://www.xcevc.cn/__local/A/44/BE/C7F0B73BB63BA70DA448188B9D9_946A90CE_1BFB3.jpg" 
+                                         class="card-img-top" alt="校园宋应星雕像"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">校园宋应星雕像</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="https://www.xcevc.cn/__local/A/1B/7B/E7AAED119B6CA1EA5078904F130_23D2AAB2_269A4.jpg" 
+                                         class="card-img-top" alt="校园风景"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">校园风景</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100">
+                                    <img src="https://www.xcevc.cn/__local/3/EB/3F/6143FABA0758006ECE3CE643958_D6FF4427_10F7C.jpeg" 
+                                         class="card-img-top" alt="校园风景"
+                                         style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text text-center">校园风景</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 专题专栏部分 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+                            <h3 class="mb-0">专题专栏</h3>
+                        </div>
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+                            <div class="col">
+                                <a href="http://ztjy.people.cn/" target="_blank" class="d-block card border-0 shadow-sm">
+                                    <img src="https://www.xcevc.cn/images/600_fuben.jpg" 
+                                         class="img-fluid rounded" 
+                                         alt="专题教育" 
+                                         style="height: 91px; object-fit: cover;">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <a href="http://20th.cpcnews.cn/" target="_blank" class="d-block card h-100 border-0 shadow-sm text-decoration-none">
+                                    <img src="https://www.xcevc.cn/images/zt1_fuben.png" 
+                                         class="card-img rounded" 
+                                         alt="党建新闻" 
+                                         style="height: 91px; object-fit: cover;">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <a href="https://www.xuexi.cn/" target="_blank" class="d-block card h-100 border-0 shadow-sm text-decoration-none">
+                                    <img src="https://www.xcevc.cn/images/21/04/13/186yl80p2s/zt2.png" 
+                                         class="card-img rounded" 
+                                         alt="学习平台" 
+                                         style="height: 91px; object-fit: cover;">
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <a href="http://www.wenming.cn/" target="_blank" class="d-block card h-100 border-0 shadow-sm text-decoration-none">
+                                    <img src="https://www.xcevc.cn/images/21/04/13/186yl80p2s/zt4.png" 
+                                         class="card-img rounded" 
+                                         alt="文明网" 
+                                         style="height: 91px; object-fit: cover;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="text-light py-5 mt-auto" style="background-color: #1060af;">
+        <div class="container">
+            <div class="row align-items-center mb-3">
+                <!-- 学校logo -->
+                <div class="col-md-3 d-none d-md-block">
+                    <img src="https://www.xcevc.cn/images/21/04/13/1owt95dp87/db_logo.png" 
+                         alt="学校logo" 
+                         class="img-fluid mb-3" 
+                         style="max-height: 80px; filter: brightness(0.95) contrast(1.1);">
+                </div>
+                <!-- 二维码部分 -->
+                <div class="col-md-5 text-center">
+                    <div class="d-flex justify-content-center gap-4">
+                        <div class="text-center">
+                            <img src="https://www.xcevc.cn/images/gfwx.jpg" alt="微信二维码" class="img-fluid rounded" style="max-width: 130px;">
+                            <p class="small mt-2">官方微信</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://www.xcevc.cn/images/gfwb.png" alt="微博二维码" class="img-fluid rounded" style="max-width: 130px;">
+                            <p class="small mt-2">官方微博</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 联系方式 -->
+                <div class="col-md-4">
+                    <h5 id="contact-footer" class="border-bottom border-light pb-2">联系我们</h5>
+                    <div class="text-start">
+                        <p><i class="bi bi-geo-alt-fill me-2"></i>河南省许昌市魏文路与永昌大道（北环路）交叉口</p>
+                        <p><i class="bi bi-telephone-fill me-2"></i>0374-3189898</p>
+                        <p><i class="bi bi-printer-fill me-2"></i>传真：0374-3189889</p>
+                        <p><i class="bi bi-mortarboard-fill me-2"></i>招生就业处：0374-3189962</p>
+                        <p><i class="bi bi-envelope-fill me-2"></i>网络管理中心制作维护 xcdqxy@163.com</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 备案信息 -->
+            <div class="row">
+                <div class="col-12 text-center border-top border-light pt-3">
+                    <p class="mb-2 small">
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41100202000231" class="text-light text-decoration-none me-3">
+                            <img src="https://www.xcevc.cn/__local/D/02/89/DC0A46FC5B15B3363FFA78CF6C7_C267B386_4B38.png?e=.png" 
+                                 alt="备案图标" 
+                                 style="height: 20px; margin-right: 5px; filter: brightness(0.95) contrast(1.1);">
+                            豫公网安备 41100202000231号
+                        </a>
+                        <a href="https://beian.miit.gov.cn/" class="text-light text-decoration-none">
+                            豫ICP备15017068号-1
+                        </a>
+                    </p>
+                    <div style="width:103px; margin: 10px auto 0;">
+                        <a href="https://xyt.xcc.cn/getpcInfo?sn=1768621527902658560&language=CN&certType=8&url=www.xcevc.cn" 
+                           target="_blank" 
+                           style="position: relative; display: inline-block; height: 38px;">
+                            <div style="width:100%; height:100%; position: absolute; top: 0; left: 0;"></div>
+                            <embed src="https://program.xinchacha.com/web/1768621527902658560=www.xcevc.cn.svg" 
+                                   width="103" 
+                                   height="38" 
+                                   type="image/svg+xml" 
+                                   pluginspage="//www.adobe.com/svg/viewer/install/">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--切换轮播图-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsTab = document.getElementById('school-news-tab');
+            const deptTab = document.getElementById('department-news-tab');
+            const newsCarousel = document.getElementById('newsCarousel');
+            const deptCarousel = document.getElementById('departmentCarousel');
+
+            newsTab.addEventListener('shown.bs.tab', function() {
+                newsCarousel.classList.remove('d-none');
+                deptCarousel.classList.add('d-none');
+            });
+
+            deptTab.addEventListener('shown.bs.tab', function() {
+                newsCarousel.classList.add('d-none');
+                deptCarousel.classList.remove('d-none');
+            });
+        });
+        </script>
+</body>
+</html>

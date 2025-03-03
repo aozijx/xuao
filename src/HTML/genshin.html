@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原神</title>
+    <style>
+        .deep-container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .deep {
+            width: 95%;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            margin: 20px auto;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-shadow: 1px 4px 10px rgb(255, 255, 255, 0.7);
+        }
+        .qin {
+            display: flex;
+            height: 100%;
+            flex: 1;
+            justify-content: space-evenly;
+            background-position: center;
+        }
+        .qin div span {
+            font: 200 45px;
+            height: 15%;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ph {
+            flex: 1;
+            overflow: hidden;
+            transition: 0.5s;
+            margin: 0 5px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            border: 4px solid #fff;
+            background-color: #e0e0e0;
+        }
+        .ph img {
+            width: 200%;
+            height: 85%;
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: 0.5s ease-in-out;
+            filter: drop-shadow(2px 3px 10px #000);
+        }
+        .ph:hover {
+            flex-basis: 20%;
+        }
+        .ph:hover img {
+            width: 100%;
+            height: 100%;
+        }
+        .ph1 {
+            flex: 1;
+            overflow: hidden;
+            transition: 1s;
+            margin: 0 5px;
+            position: relative;
+            border-radius: 7px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            border: 4px solid #fff;
+            background-color: #e0e0e0;
+        }
+        .ph1 img {
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: 0.3s ease-in-out;
+            filter: drop-shadow(2px 3px 10px #000);
+        }
+        .up {
+            width: 100%;
+            z-index: 1;
+        }
+        .down {
+            width: 0%;
+            z-index: 2;
+        }
+        .ph1:hover {
+            flex-basis: 20%;
+        }
+        .ph1:hover img {
+            width: 100%;
+            height: 100%;
+        }
+        .flip-card {
+            position: relative;
+            display: flex;
+            width: 250px;
+            height: 400px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+        }
+        .flip-front, .flip-back {
+            width: 250px;
+            height: 400px;
+            border: 1px solid #000;
+            position: absolute;
+            border-radius: 5px;
+            object-fit: cover;
+            backface-visibility: hidden;
+            transition: transform 1s ease-in-out;
+        }
+        .flip-front img, .flip-back img {
+            width: 250px;
+            height: 400px;
+        }
+        .flip-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dotted palevioletred;
+        }
+        .flip-card:hover .flip-front {
+            transform: rotateY(-180deg);
+        }
+        .flip-card .flip-back {
+            transform: rotateY(180deg);
+        }
+        .flip-card:hover .flip-back {
+            transform: rotateY(0deg);
+        }
+        .tu {
+            position: relative;
+            width: 180px;
+            height: 320px;
+            border-radius: 10px;
+        }
+        .tu:hover .tu-role {
+            z-index: 3;
+            opacity: 1;
+        }
+        .tu img {
+            position: absolute;
+            width: 180px;
+            transition: 0.2s;
+        }
+        .tu-role {
+            z-index: 1;
+            opacity: 0;
+            object-fit: cover;
+        }
+        .tu-cover {
+            aspect-ratio: 9/16;
+            z-index: 2;
+        }
+        .tu:hover .tu-cover {
+            box-shadow: 0px 35px 35px -8px rgb(0, 0, 0, 0.75);
+            transform: perspective(500px) rotateX(25deg);
+        }
+    </style>
+</head>
+<body>
+<div class="deep-container">
+    <div class="deep" style="height: 500px;">
+        <div class="qin" style="backdrop-filter: blur(5px);">
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/b45e354f314c24ac46a2d948323c00b9_8479952354828172052.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/f5ae62eff2cf426e98626c882dd0cf0d_3491810425996357724.png" alt="">
+                <span>迪卢克</span>
+            </div>
+            <div class="ph">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/16cff1c00f651f98427fc3fbab7fc855_1013342926215826750.png" alt="">
+                <span>可莉</span>
+            </div>
+            <div class="ph">
+                <img src="https://uploadstatic.mihoyo.com/contentweb/20201103/2020110317320323980.png" alt="">
+                <span>达达利亚</span>
+            </div>
+            <div class="ph">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/300df2aed5060579f08d7db601d8710d_118206614584398576.png" alt="">
+                <span>胡桃</span>
+            </div>
+            <div class="ph">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2023/01/13/52985680295fe1bf3b9eebbbace892f6_6333578342761288152.png" alt="">
+                <span>瑶瑶</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/fe5bfe528fea6d1cf4bf027e11267aa0_889267018846107133.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/073932dc472fa00623cefb70a18df516_4957558339748297584.png" alt="">
+                <span>夜兰</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/a24566a67d80b7643dd87556651bdb28_1805103848595345410.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/930f3ce55517e3c711a962c82e4639c0_8788966481995409698.png" alt="">
+                <span>魈</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/798eab2f0319ecc86019b51c58865737_8153398570244752162.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/e699d7e2413ed5dfb384ee48c2b872d3_5181262111088024686.png" alt="">
+                <span>钟离</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/a24566a67d80b7643dd87556651bdb28_1805103848595345410.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/07/04/44e2d916d9c13bca863d56423004fd98_5259521148631074871.png" alt="">
+                <span>枫原万叶</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/1cc67150ad3a9a75bbfa2bd24f288525_3539348673413691912.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/06/30/fdcbc9ef8859b7077d92ae38d925e15e_7767077963502328666.png" alt="">
+                <span>雷电将军</span>
+            </div>
+            <div class="ph">
+                <img src="https://fastcdn.mihoyo.com/content-v2/hk4e/129667/c2cf4a117398e656a2556274be0fc7c0_8848675056761899792.png" alt="">
+                <span>梦见月瑞希</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/d6467dc16303d1c168b697c0d27282ba_8339084439035580597.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2022/10/24/fe684624008db25ac4b44ea4704f9ba0_4542359697614905341.png" alt="">
+                <span>纳西妲</span>
+            </div>
+            <div class="ph">
+                <img src="https://webstatic.mihoyo.com/upload/contentweb/2023/01/10/1f3bc8199884ff93a04e713809e4aef3_66257121119188218.png" alt="">
+                <span>艾尔海森</span>
+            </div>
+            <div class="ph" style="background-image: url(https://upload-bbs.miyoushe.com/upload/2023/06/04/298130464/fe5bfe528fea6d1cf4bf027e11267aa0_889267018846107133.png?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,png);">
+                <img src="https://act-webstatic.mihoyo.com/upload/contentweb/hk4e/43a4c54c7bf0689f5bd3d7b23798f9e9_6680261336665197454.png" alt="">
+                <span>那维莱特</span>
+            </div>
+            <div class="ph" style="background-color: blue;">
+                <img src="https://act-webstatic.mihoyo.com/upload/contentweb/hk4e/e8d153da1a2dca7a07fd76397cd60612_7641410511196198159.png" alt="">
+                <span>芙宁娜</span>
+            </div>
+            <div class="ph" style="background-color: gold;">
+                <img src="https://act-webstatic.mihoyo.com/upload/contentweb/hk4e/c765b3ba5e3b25ce6e8afd3e758251a8_741046217554426529.png" alt="">
+                <span>娜维娅</span>
+            </div>
+            <div class="ph" style="background-color: firebrick;">
+                <img src="https://fastcdn.mihoyo.com/content-v2/hk4e/123214/cc9c3a4b128dd04cab9f1e64835ddf76_1757860140687980229.png" alt="">
+                <span>阿蕾奇诺</span>
+            </div>
+        </div>
+    </div>
+    <div class="deep">
+        <div class="qin">
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/15/298130464/1b760ea8789abae586f4cd937cfa8079_6792348921065817224.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/15/298130464/800ae2f89abf277d9aec7e149f8c59d8_5199950601516691564.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/18/298130464/d6cb8f68020687f0090e118380b7fae2_7104376946974171781.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/18/298130464/6ff17a9ea78b63e26d718c27aec2d7b0_4702986476350831099.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/17/298130464/3656e10ef5e5426da134d296a69733d2_5679675925034258592.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/17/298130464/848c789c1de78cf823a7ca21cb7153c4_9170325757507082776.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/14/298130464/31861a8d01daff7c6563c2ed734154dc_8829148524313481909.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2025/02/14/298130464/a3e50f4cc0b925d52a63a9eb224093cf_6866395123461482645.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/23/298130464/a9980db71cb5a30ab866c2f918f541cc_6581090728333000720.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/23/298130464/ae0994814fb47f3a86e04150ffa73009_8121323547147889006.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/05/02/298130464/8c6dc1a65da1f77f9b15c9681c1877a7_4506612320401085252.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/05/02/298130464/b5bfd6948bfa5efa32dc2581bdb9a0b0_1780039455554797000.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/06/298130464/07055bc663d89a7aa0b3d434ebcfb393_3212734199690786120.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/06/298130464/6bd72ed99039bd0cade5b95ca0f3b696_5471046243021879705.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/02/298130464/df845afc0277193a7885fe11494c85a1_8444575515975289515.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/04/02/298130464/6f45dd7e3f7e42b8c748732a8d24c400_5650928492711980822.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/02/25/298130464/96641b16d6957f604917a4a606fd1ebe_3541324684353428358.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/02/25/298130464/234e1e6b08922f1081dc4a11cb9e6715_5317787227436471165.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/02/09/298130464/88e7aa1e74ce3540bc42737d3536f536_664745783987657325.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/02/09/298130464/1b320af85463c7c21b755afba6ff7337_2067483645019858081.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/7159c16c1b438d62a20d93a868a3f3c6_1809545553848309616.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/3ee7ea6f865cba2efa18d002e6cefd86_4221626410979722325.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/12/13/298130464/618d80a6abbea8f5bc79a4f821dc22e5_8111937131515277171.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/12/13/298130464/9ff80bf21bec859ddf64306b592c0bf9_3308586739783432183.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/11/22/298130464/6d9192e3b9070ca79ed8bfb799592762_520155589756305265.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/11/22/298130464/a527f5e45e578f6e048396c7ed2013ff_4797072233113935121.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/24/298130464/664655ac49df53e03c009d47f0f30ec4_7034768629955997827.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/24/298130464/31c34f158c224fa5f9a325db09bba961_8446187760389358750.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/04/298130464/976606188a72cdead17d4a917f86b134_4002933439868921517.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/04/298130464/e5cacdc5047347ca8c6fbcbcb79d093b_9060501289117240245.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/04/298130464/f82059751da15eaedf38c916b49791b5_3641172469565470809.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/04/298130464/72a1a2ea5a724317c567383d47a0982d_6444973234559295230.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/20/298130464/d7de4ff927bb95605ad4dd803a72ff21_2049639911254522508.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/09/23/298130464/f5ef618483a0472ec56ed5b4f54cbf5d_618622772208791580.png" alt="" class="down">
+            </div>
+            <div class="ph1">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/20/298130464/6785b47f88b044279e231d259ceb3b44_4308504038325923120.png" alt="" class="up">
+                <img src="https://upload-bbs.miyoushe.com/upload/2023/10/20/298130464/2f096169a6820ca9f9a72efee2def48d_6549489435500262494.png" alt="" class="down">
+            </div>
+        </div>
+    </div>
+    <div class="deep" style="gap: 20px;">
+        <div class="flip-card">
+            <img class="flip-front" src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/7159c16c1b438d62a20d93a868a3f3c6_1809545553848309616.png" alt="smile">
+            <div class="flip-back">
+                <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/3ee7ea6f865cba2efa18d002e6cefd86_4221626410979722325.png" alt="">
+            </div>
+        </div>
+        <div class="tu">
+            <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/3ee7ea6f865cba2efa18d002e6cefd86_4221626410979722325.png" class="tu-role" alt="">
+            <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/7159c16c1b438d62a20d93a868a3f3c6_1809545553848309616.png" class="tu-cover" alt="">
+        </div>
+        <div style="display: flex;flex-direction: column;">
+            <h2>图片来源</h2>
+            <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=298130464">米游社</a>
+            <a href="https://ys.mihoyo.com/main/character/mondstadt?char=0">原神官网</a>
+        </div>
+    </div>
+</body>
+</html>
