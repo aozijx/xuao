@@ -67,18 +67,16 @@
 .subnav {
     position: absolute;
     top: 100%;
-    left: 0;
     list-style: none;
     margin: 0;
     padding: 0;
     backdrop-filter: blur(5px);
-    background-color: rgb(0, 0, 0, 0);
     border-radius: 5px;
     box-shadow: 1px 3px 5px rgba(0, 0, 0);
+    min-width: 130px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
-    min-width: 130px;
 }
 .subnav li {
     display: block;
@@ -108,42 +106,6 @@
         opacity: 0;
         transform: translate(-50%, -50%) scale(2)
     }
-}
-.scroll-down {
-    position: absolute;
-    left: 50%;
-    bottom: 70px;
-    transform: translateX(-50%);
-    animation: float 2s ease-in-out infinite;
-    color: white;
-    opacity: 0.7;
-}
-.scroll-down a {
-    display: block;
-    width: 40px;
-    height: 40px;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s;
-    position: relative;
-}
-/* 绘制箭头图形 */
-.scroll-down a::after {
-    content: '';
-    display: block;
-    width: 15px;
-    height: 15px;
-    border-width: 5px;
-    border-right: 3px solid currentColor;
-    border-bottom: 3px solid currentColor;
-    transform: rotate(45deg);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -7px 0 0 -5px;
-}
-.scroll-down a:hover {
-    color: white;
-    transform: scale(1.2);
 }
 section {
     max-width: 800px;
@@ -179,19 +141,16 @@ section p {
     border-radius: 6px;
     box-shadow: var(--box-shadow);
 }
-.deep a {
-    display: flex;
-    color: var(--primary-text);
-    font-size: 25px;
-    text-decoration: none;
-    justify-content: center;
-}
-.deep p {
-    font-size: 18px;
-}
 .deep:hover .pop {
     transform: translateY(0);
     opacity: 1;
+}
+.pop {
+    position: absolute;
+    backdrop-filter: blur(8px);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 1s ease-in-out;
 }
 .ro {
     display: flex;
@@ -210,13 +169,6 @@ section p {
     margin: 0 180px;
     justify-content: center;
     backdrop-filter: blur(2px);
-}
-.pop {
-    position: absolute;
-    backdrop-filter: blur(8px);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 1s ease-in-out;
 }
 .view {
     width: 600px;

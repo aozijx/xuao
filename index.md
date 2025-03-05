@@ -5,7 +5,7 @@
 
 ---
 - **runoob上的网页**
-[菜鸟手机](xuao/src/HTML/phone) | [百度热力图](src/HTML/map) | [菜单](src/HTML/menu) | [更多](https://www.jyshare.com/examples/)
+[菜鸟手机](xuao/src/html/phone) | [百度热力图](src/html/map) | [菜单](src/html/menu) | [更多](https://www.jyshare.com/examples/)
 
 - **HTML**
 [WebAIM：颜色对比度检查器](https://webaim.org/resources/contrastchecker/)
@@ -20,8 +20,8 @@
 
 ---
 **ChatGPT帮写**
-- [welcome screen](src/HTML/chatgpt)
-- [覆盖](src/HTML/bookf)
+- [welcome screen](src/html/chatgpt)
+- [覆盖](src/html/bookf)
 
 ---
 ### 看到的文章
@@ -39,6 +39,6 @@
 ---
 ### 我的[网页](re0)，看了很多网站后，我感觉我的好简陋。
 [Jekyll主题](https://github.com/jekyll/jekyll/wiki/sites)感觉教程好少啊，都是用hexo、hugo等，难道是外国的原因吗
-[项目仓库](https://github.com/aozijx/xuao1) | [友](assistance/yang) | [试验](src/markdown/test) | [history](src/markdown/history) | [note](src/markdown/diary)
+[项目仓库](https://github.com/aozijx/xuao) | [友](assistance/yang) | [试验](posts/test) | [history](posts/history) | [note](posts/diary)
 
 > 感谢访问我的博客，期待与你一起分享更多的知识与经验！
