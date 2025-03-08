@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* 侧边栏样式 */
+.sidebar {
+    width: 20%;
+    background: #f0f0f0;
+    padding: 20px;
+    position: fixed;
+    top: 20px;
+    margin-left: 20px;
+}
+.sidebar li {
+    line-height: 30px;
+    cursor: pointer;
+}
+/* 导航按钮样式 */
+.nav-btn {
+    display: block;
+    padding: 10px;
+    margin: 5px auto;
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    text-align: left;
+    text-decoration: none;
+    color: black;
+}
+/* 激活状态样式 */
+.nav-btn.active {
+    background: #ead3c0;
+    color: white;
+}
+/* 内容区域 */
+.content {
+    margin-left: 30%;
+    width: 50%;
+    /* margin: 0 auto; */
+}
+ol, ul li {
+    line-height: 30px;
+}
+div {
+    padding: 20px;
+}
+h1, blockquote {
+    text-align: center;
+}
+h3 {
+    color: rgb(241, 114, 41);
+}
+blockquote {
+    color: red;
+}
+div {
+    margin: 0 auto;
+}
+.img {
+    text-align: center;
+}
+img {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+.r {
+    line-height: 40px;
+    color: red;
+}
+t {
+    color: rgb(244, 144, 62);
+    text-decoration: underline;
+    font-size: 1.6rem;
+}
+.h {
+    text-align: center;
+    font-size: 1.1rem;
+}
