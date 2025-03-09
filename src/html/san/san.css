@@ -13,9 +13,11 @@ html {
     top: 20px;
     margin-left: 20px;
 }
-.sidebar li {
+.sidebar li, a {
     line-height: 30px;
     cursor: pointer;
+    text-decoration: none;
+    color: #000;
 }
 /* 导航按钮样式 */
 .nav-btn {
@@ -29,16 +31,10 @@ html {
     text-decoration: none;
     color: black;
 }
-/* 激活状态样式 */
-.nav-btn.active {
-    background: #ead3c0;
-    color: white;
-}
 /* 内容区域 */
 .content {
     margin-left: 30%;
     width: 50%;
-    /* margin: 0 auto; */
 }
 ol, ul li {
     line-height: 30px;

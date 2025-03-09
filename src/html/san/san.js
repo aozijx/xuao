@@ -63,109 +63,82 @@ window.addEventListener('scroll', () => {
 });
 
 
-class ImageOptimizer {
-    constructor() {
-      this.imageObserver = null;
-      this.initImageObserver();
-      this.initPreloadHints();
-    }
-  
-    // 初始化图片懒加载观察器
-    initImageObserver() {
-      this.imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            this.loadImage(img);
-            observer.unobserve(img); // 加载后停止观察
-          }
-        });
-      }, {
-        rootMargin: '200px 0px', // 提前200px加载
-        threshold: 0.01
-      });
-  
-      // 初始页面图片观察
-      document.querySelectorAll('img[data-src]').forEach(img => {
-        this.imageObserver.observe(img);
-      });
-    }
-  
-    // 动态加载图片
-    loadImage(img) {
-      const src = img.dataset.src;
-      const srcset = img.dataset.srcset;
-      
-      // 显示低质量占位图
-      if (img.dataset.lqip) {
-        img.style.background = `url(${img.dataset.lqip}) center/cover`;
-      }
-  
-      // 创建临时图片对象预加载
-      const tempImg = new Image();
-      tempImg.src = src;
-      if (srcset) tempImg.srcset = srcset;
-      
-      tempImg.onload = () => {
-        // 移除占位背景
-        img.style.background = '';
-        
-        // 使用渐显动画
-        img.style.opacity = 0;
-        img.src = src;
-        if (srcset) img.srcset = srcset;
-        img.classList.add('loaded');
-        img.animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 300,
-          easing: 'ease-in-out'
-        });
-      };
-    }
-  
-    // 添加预加载提示
-    initPreloadHints() {
-      const preloadLinks = [];
-      
-      // 预加载首屏图片
-      document.querySelectorAll('.above-fold img[data-src]').forEach(img => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = img.dataset.src;
-        preloadLinks.push(link);
-      });
-  
-      // 使用requestIdleCallback添加预加载
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          preloadLinks.forEach(link => document.head.appendChild(link));
-        }, { timeout: 2000 });
-      }
-    }
-  
-    // 动态内容加载后更新观察器
-    observeNewImages(container) {
-      container.querySelectorAll('img[data-src]').forEach(img => {
-        this.imageObserver.observe(img);
-      });
-    }
+// 简化后的懒加载核心类 (保留核心功能，移除冗余代码)
+class LazyLoader {
+  constructor() {
+    this.observer = new IntersectionObserver(this.handleIntersect, {
+      rootMargin: '200px 0px',
+      threshold: 0.01
+    })
+    this.init()
   }
-  
-  // 初始化优化器
-  const imageOptimizer = new ImageOptimizer();
-  
-  // 修改现有内容加载函数
-  function loadContent(sectionId) {
-    fetch(`/api/content/${sectionId}`)
-      .then(res => res.text())
-      .then(html => {
-        const container = document.getElementById(sectionId);
-        container.innerHTML = html;
-        
-        // 优化新加载内容中的图片
-        imageOptimizer.observeNewImages(container);
-        
-        // 更新导航状态
-        observer.observe(container);
-      });
+
+  // 初始化方法合并
+  init() {
+    this.observeImages() // 初始观察
+    this.addDynamicContentHandler() // 动态内容处理
   }
+
+  // 统一图片处理逻辑
+  handleIntersect = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target
+        this.loadImage(img)
+        this.observer.unobserve(img)
+      }
+    })
+  }
+
+  // 简化图片加载流程
+  loadImage(img) {
+    const setSrc = () => {
+      img.style.opacity = 0
+      img.src = img.dataset.src
+      if (img.dataset.srcset) img.srcset = img.dataset.srcset
+      img.classList.add('loaded')
+      img.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, fill: 'forwards'  })
+    }
+
+    // 统一占位图处理
+    img.dataset.lqip && (img.style.background = `url(${img.dataset.lqip})`)
+    
+    // 预加载与正式加载合并
+    const preloader = new Image()
+    preloader.onload = setSrc
+    preloader.src = img.dataset.src
+  }
+
+  // 自动监听现有及新增图片
+  observeImages(container = document) {
+    container.querySelectorAll('img[data-src]').forEach(img => {
+      this.observer.observe(img)
+    })
+  }
+
+  // 动态内容监听简化
+  addDynamicContentHandler() {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === 1) this.observeImages(node)
+        })
+      })
+    })
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    })
+  }
+}
+
+// 初始化懒加载 (单例模式)
+const lazyLoader = new LazyLoader()
+
+// 动态内容加载函数简化版
+async function loadContent(sectionId) {
+  const res = await fetch(`/api/content/${sectionId}`)
+  const container = document.getElementById(sectionId)
+  container.innerHTML = await res.text()
+}
