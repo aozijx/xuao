@@ -1,10 +1,9 @@
 * {
     box-sizing: border-box;
 }
-html {
+html, body {
     scroll-behavior: smooth;
 }
-/* 侧边栏样式 */
 .sidebar {
     width: 20%;
     background: #f0f0f0;
@@ -12,47 +11,66 @@ html {
     position: fixed;
     top: 20px;
     margin-left: 20px;
+    border-radius: 10px;
 }
 .sidebar li, a {
     line-height: 30px;
     cursor: pointer;
     text-decoration: none;
     color: #000;
+    font-family: LXGW WenKai;
 }
-/* 导航按钮样式 */
 .nav-btn {
     display: block;
     padding: 10px;
-    margin: 5px auto;
+    margin: 7px auto;
     cursor: pointer;
     background: #fff;
-    border: none;
+    box-shadow: 1px 2px 2px #0000009c;
+    border-radius: 5px;
     text-align: left;
-    text-decoration: none;
-    color: black;
+}
+.nav-btn.active {
+    background-color: antiquewhite !important;
+    color: hotpink !important;
+    position: relative;
+}
+.nav-btn.active::after {
+    content: "➤";
+    position: absolute;
+    right: 10px;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.nav-btn:hover {
+    color: aquamarine;
+}
+.nav-btn:active {
+    box-shadow: 1px 2px 5px #000;
+    transform: translateY(5px);
+}
+.quote {
+    line-height: 25px;
+    color: chocolate;
+    font-family: LXGW WenKai;
 }
 /* 内容区域 */
 .content {
     margin-left: 30%;
     width: 50%;
 }
+section {
+    padding: 20px;
+}
 ol, ul li {
     line-height: 30px;
 }
-div {
-    padding: 20px;
-}
 h1, blockquote {
     text-align: center;
-}
-h3 {
-    color: rgb(241, 114, 41);
-}
-blockquote {
-    color: red;
-}
-div {
-    margin: 0 auto;
 }
 .img {
     text-align: center;
@@ -63,12 +81,29 @@ img {
     padding: 10px;
     border-radius: 10px;
 }
+img[data-src] {
+    background: linear-gradient(45deg, #f0f0f0 25%, #ffffff 50%, #f0f0f0 75%);
+    background-size: 200% 200%;
+    animation: placeholderShimmer 1.5s linear infinite;
+}
+  
+@keyframes placeholderShimmer {
+    0% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+  
+/* 加载完成后的样式 */
+img.loaded {
+    animation: none;
+    background: none;
+    opacity: 1 !important;
+}
 .r {
     line-height: 40px;
     color: red;
 }
-t {
-    color: rgb(244, 144, 62);
+.fig {
+    color: rgb(0, 0, 0);
     text-decoration: underline;
     font-size: 1.6rem;
 }

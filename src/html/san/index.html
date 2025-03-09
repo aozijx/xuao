@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>林州市第三中学!</title>
     <link rel="stylesheet" href="san.css">
+    <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Bold/result.css" as="style" onload="this.rel='stylesheet'">
     <style>
         @media (max-width: 768px) {
             .sidebar {
@@ -17,41 +18,37 @@
             .img {
                 width: 100%;
             }
-            div {
+            section {
                 padding: 0;
             }
+
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <span>目录</span>
-        <a href="#home" class="nav-btn active">Home</a>
-        <ol>
-            <li>请按顺序依次往下进行</li>
-            <li> 不要删除前面同学的美好回忆</li>
-            <li>不得出现谩骂、侮辱老师同学的言论</li>
-            <li><a href="#m1">多发表正能量的内容，让我们继续努力前进！</a></li>
-        </ol>
-        <a href="#m2" class="nav-btn">高中有留下遗憾吗？</a>
-        <a href="#m3" class="nav-btn">现在想对这个学校或老师或哪个人说什么呢</a>
-        <a href="#m4" class="nav-btn">那些年的偷偷摸摸，你们应该都有</a>
-        <a href="#m5" class="nav-btn">在大学怎么样啊！</a>
-    </div>
+        <div class="sidebar">
+            <p style="text-align: center;font-size: 1.2rem;">目录</p>
+            <a href="#home" class="nav-btn active" data-target="home">Home</a>
+            <a href="#m1" class="nav-btn" data-target="m1">多发表正能量的内容，让我们继续努力前进！</a>
+            <a href="#m2" class="nav-btn" data-target="m2">高中有留下遗憾吗？</a>
+            <a href="#m3" class="nav-btn" data-target="m3">想对这个学校、老师或哪个人说什么呢</a>
+            <a href="#m4" class="nav-btn" data-target="m4">那些年的偷偷摸摸，你们应该都有</a>
+            <a href="#m5" class="nav-btn" data-target="m5">在大学怎么样！</a>
+        </div>
     <div class="content">
-        <h1>林州市第三中学-当时只道是寻常</h1>
-        <blockquote>同学们好，欢迎来到我们的回忆录！◠‿◠</blockquote>
+        <h1 style="font-family: 楷体;">林州市第三中学-当时只道是寻常</h1>
+        <blockquote style="color: red;">同学们好，欢迎来到我们的回忆录！◠‿◠</blockquote>
         <h3 id="home">在那个艳阳高照的季节 我们走出考场 结束了我们的青春 从此踏上了新的征程 怀揣着希望与理想迈入大学。</h3>
-        <p>青春是无解的命题 人和人无法同时拥有青春和对青春的感受 我们也无法预知某个片刻的价值  高中是我们这辈子最怀念的青春时光 记忆会变得模糊 但感觉只会越来越深 而现在无数个时刻都能让我们联想到那平平淡淡又很特别的三年 ，渴望回到那个地方，见到那些人，很喜欢高三晚自习的嬉戏打闹，喜欢一排排传递的小纸条，也喜欢和朋友放肆的大笑，以前所讨厌的部分好像都不太记得了，以至于高中的好一直在被无限放大。</p>
+        <span class="quote">青春是无解的命题 人和人无法同时拥有青春和对青春的感受 我们也无法预知某个片刻的价值  高中是我们这辈子最怀念的青春时光 记忆会变得模糊 但感觉只会越来越深 而现在无数个时刻都能让我们联想到那平平淡淡又很特别的三年 ，渴望回到那个地方，见到那些人，很喜欢高三晚自习的嬉戏打闹，喜欢一排排传递的小纸条，也喜欢和朋友放肆的大笑，以前所讨厌的部分好像都不太记得了，以至于高中的好一直在被无限放大。</span>
         <div class="img"><img data-src="img/san.jpeg" alt=""></div>
-        <p>欢迎各位同学在这个文档里分享和回忆自己的青春，青春肆意张扬，热爱经久不息，我们致死怀念青春，踏入高中学校的那刻，你还记得吗？</p>
+        <h3>欢迎各位同学在这个文档里分享和回忆自己的青春，青春肆意张扬，热爱经久不息，我们致死怀念青春，踏入高中学校的那刻，你还记得吗？</h3>
         <ol class="r">
-            <li>高中有留下遗憾吗？</li>
-            <li>现在想对这个学校或老师或哪个人说什么呢</li>
-            <li>那些年的偷偷摸摸，你们应该都有</li>
-            <li>在大学怎么样啊！</li>
+            <li>请按顺序依次往下进行</li>
+            <li>不要删除前面同学的美好回忆</li>
+            <li>不得出现谩骂、侮辱老师同学的言论</li>
+            <li>多发表正能量的内容，让我们继续努力前进！</a></li>
         </ol>
-        <div id="m1">
+        <section id="m1">
             <div class="img">
                 <div class="h" style="text-shadow: 3px 3px antiquewhite;">最封神的一张</div>
                 <img data-src="img/image.jpeg" alt="">
@@ -60,18 +57,28 @@
             <div class="img">
                 <div class="h">可汗大点兵</div>
                 <img data-src="img/可汗大点兵.jpeg" alt="">
-            </div>
-            <div class="img">
                 <div>铲雪</div>
                 <img data-src="img/铲雪.jpeg" alt="">
+                <div class="h">照片太多了......</div>
+                <img data-src="img/image (2).jpeg" alt="">
             </div>
             <div class="img">
-                <img data-src="img/image (2).jpeg" alt="">
                 <img data-src="img/image (3).jpeg" alt="">
             </div>
-        </div>
-        <div id="m2">
-            <t>高中有留下遗憾吗？</t>
+            <div class="img">
+                <div class="h">距离高考还有365天，又陌生又熟悉，看到这张照片，你们是什么感受呢</div>
+                <img src="img/image (67).jpeg" alt="">
+                <img src="img/image (68).jpeg" alt="">
+                <img src="img/image (69).jpeg" alt="">
+                <img src="img/image (70).jpeg" alt="">
+                <img src="img/image (71).jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/image (72).jpeg" alt="">
+            </div>
+        </section>
+        <section id="m2">
+            <span class="fig">高中有留下遗憾吗？</span>
             <ol>
                 <li>唯一遗憾就是好朋友不能常见了</li>
                 <li>大学一点都不好 想回我大林州 周口的胡辣汤一点都不好喝😭😭😭😭</li>
@@ -114,9 +121,18 @@
                 <div class="h"></div>
                 <img data-src="img/k1.jpeg" alt="">
             </div>
-        </div>
-        <div id="m3">
-            <t>现在想对这个学校或老师或哪个人说什么呢</t>
+            <div class="img">
+                <div class="h">刚高考结束</div>
+                <img src="https://cdn.img2ipfs.com/ipfs/QmVYFntCJdaJz9NqRBstRM5Gp2yq3w1oDprSy9jMWL9it4?filename=image%20(63).jpeg" alt="image(63)">
+                <img src="img/image (64).jpeg" alt="">
+                <img src="img/image (65).jpeg" alt="">
+            </div>
+            <div class="img">
+                <img src="img/image (66).jpeg" alt="">
+            </div>
+        </section>
+        <section id="m3">
+            <span class="fig">现在想对这个学校或老师或哪个人说什么呢</span>
             <ol>
                 <li>雪荣荣，想你了，老师😭</li>
                 <li>老师们，我想回去😭😭😭😭😭</li>
@@ -141,12 +157,12 @@
                 <div class="h">东方伟人</div>
                 <img src="" alt="">
             </div>
-        </div>
-        <div id="m4">
-            <t>那些年的偷偷摸摸，你们应该都有</t>
-        </div>
-        <div id="m5">
-            <t style="background: linear-gradient(to right, #FF0000, #00FF00, #0000FF);background-clip: text;color: transparent;">在大学怎么样啊！</t>
+        </section>
+        <section id="m4">
+            <span class="fig">那些年的偷偷摸摸，你们应该都有</span>
+        </section>
+        <section id="m5">
+            <span class="fig" style="background: linear-gradient(to right, #FF0000, #00FF00, #0000FF);background-clip: text;color: transparent;">在大学怎么样啊！</span>
             <ul>
                 <li>虽然在郑州，但是学校很偏，去市中心不太方便，最重要的是回家不方便，好想回家！前几天郑州很冷，感觉都可以穿棉袄了，想念高中的时候了，想回家就可以回。</li>
                 <li>都挺好的 室友也挺好的 就是没有了高中的感觉 (re:是的，到了大学感觉大家都不会真正的认识彼此)</li>      
@@ -256,8 +272,8 @@
             </div>
             <div class="img">
                 <div class="h">大美林州</div>
-                <img data-src="https://cdn.img2ipfs.com/ipfs/QmeksiMmmdjzqNr4JZ4bn36GresLAiQNTMUAeDx9mmtTjV?filename=image%20(55).jpeg" alt="image(55)">
-                <img data-src="https://cdn.img2ipfs.com/ipfs/QmQqPnpCZeFf8tPBchE4B8812Xz8YjwiPkkW66mgu1ycFa?filename=image%20(56).jpeg" alt="image(56)">
+                <img data-src="https://cdn.img2ipfs.com/ipfs/QmeksiMmmdjzqNr4JZ4bn36GresLAiQNTMUAeDx9mmtTjV?filename=image%20(55).jpeg" data-laip="../../img/loading/loading.gif" alt="image(55)">
+                <img data-src="https://cdn.img2ipfs.com/ipfs/QmQqPnpCZeFf8tPBchE4B8812Xz8YjwiPkkW66mgu1ycFa?filename=image%20(56).jpeg" data-laip="../../img/loading/loading.gif" alt="image(56)">
             </div>
             <div class="img">
                 <div class="h">放学前的片刻宁静</div>
@@ -275,7 +291,7 @@
                 <div class="h">每逢开学必迟到</div>
                 <img data-src="img/image (60).jpeg" alt="">
             </div>
-        </div>
+        </>
     </div>
     <script src="san.js"></script>
 </body>
