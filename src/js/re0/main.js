@@ -218,42 +218,42 @@ window.addEventListener("popstate", (e) => {
   }
 });
 
-// 预存滚动位置（适用于静态页面）
-const scrollPositions = {};
-document.querySelectorAll("[id]").forEach((el) => {
-  scrollPositions[el.id] = el.offsetTop;
-});
-// 监听锚点链接点击事件
-document.querySelectorAll("nav a").forEach((link) => {
-  link.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
-    // 仅处理以#开头的锚点链接
-    if (href.startsWith("#")) {
-      const targetId = href.slice(1);
-      const targetElement = document.getElementById(targetId);
-      // 确认目标元素存在
-      if (targetElement) {
-        e.preventDefault(); // 阻止默认跳转
-        // 使用 scrollIntoView 实现平滑滚动
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }
-    // 其他链接（非#开头）保持默认行为
+// 保存滚动位置到localStorage
+function saveScrollPosition() {
+  // 使用当前页面URL作为键名的一部分，确保不同页面独立保存
+  const scrollKey = `pageScrollPosition:${window.location.href}`;
+  const yPosition = window.scrollY;
+  localStorage.setItem(scrollKey, yPosition);
+}
+
+// 恢复滚动位置
+function restoreScrollPosition() {
+  const scrollKey = `pageScrollPosition:${window.location.href}`;
+  const savedPosition = localStorage.getItem(scrollKey);
+
+  if (savedPosition !== null) {
+      // 添加微任务延迟确保滚动执行在页面加载完成后
+      Promise.resolve().then(() => {
+          window.scrollTo(0, parseInt(savedPosition));
+      });
+  }
+}
+
+// 添加事件监听
+window.addEventListener('load', function() {
+  // 先尝试恢复滚动位置
+  restoreScrollPosition();
+  
+  // 设置防抖函数减少频繁存储
+  let isScrolling;
+  window.addEventListener('scroll', function() {
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(saveScrollPosition, 100);
   });
 });
-// 添加防抖避免快速点击
-let isScrolling = false;
-function handleScroll() {
-  if (isScrolling) return;
-  isScrolling = true;
-  // ... 滚动逻辑
-  setTimeout(() => {
-    isScrolling = false;
-  }, 500);
-}
+// 可选：离开页面时保存（处理快速关闭的情况）
+window.addEventListener('beforeunload', saveScrollPosition);
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // 获取所有导航项

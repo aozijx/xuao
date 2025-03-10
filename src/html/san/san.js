@@ -193,3 +193,41 @@ async function loadContent(sectionId) {
   const container = document.getElementById(sectionId)
   container.innerHTML = await res.text()
 }
+
+
+// 保存滚动位置到localStorage
+function saveScrollPosition() {
+  // 使用当前页面URL作为键名的一部分，确保不同页面独立保存
+  const scrollKey = `pageScrollPosition:${window.location.href}`;
+  const yPosition = window.scrollY;
+  localStorage.setItem(scrollKey, yPosition);
+}
+
+// 恢复滚动位置
+function restoreScrollPosition() {
+  const scrollKey = `pageScrollPosition:${window.location.href}`;
+  const savedPosition = localStorage.getItem(scrollKey);
+
+  if (savedPosition !== null) {
+      // 添加微任务延迟确保滚动执行在页面加载完成后
+      Promise.resolve().then(() => {
+          window.scrollTo(0, parseInt(savedPosition));
+      });
+  }
+}
+
+// 添加事件监听
+window.addEventListener('load', function() {
+  // 先尝试恢复滚动位置
+  restoreScrollPosition();
+  
+  // 设置防抖函数减少频繁存储
+  let isScrolling;
+  window.addEventListener('scroll', function() {
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(saveScrollPosition, 100);
+  });
+});
+
+// 可选：离开页面时保存（处理快速关闭的情况）
+window.addEventListener('beforeunload', saveScrollPosition);
