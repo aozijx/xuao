@@ -26,12 +26,20 @@ html, body {
     margin: 7px auto;
     cursor: pointer;
     background: #fff;
-    box-shadow: 1px 2px 2px #0000009c;
+    box-shadow: 1px 1px 1px #0000009c;
     border-radius: 5px;
     text-align: left;
 }
+.nav-btn:hover {
+    color: aquamarine;
+    box-shadow: 1px 2px 4px #000;
+}
+.nav-btn:active {
+    box-shadow: 1px 2px 5px #000;
+    transform: translateY(3px);
+}
 .nav-btn.active {
-    background-color: antiquewhite !important;
+    background-color: antiquewhite;
     color: hotpink !important;
     position: relative;
 }
@@ -45,13 +53,6 @@ html, body {
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
-}
-.nav-btn:hover {
-    color: aquamarine;
-}
-.nav-btn:active {
-    box-shadow: 1px 2px 5px #000;
-    transform: translateY(5px);
 }
 .quote {
     line-height: 25px;
@@ -85,6 +86,9 @@ img[data-src] {
     background: linear-gradient(45deg, #f0f0f0 25%, #ffffff 50%, #f0f0f0 75%);
     background-size: 200% 200%;
     animation: placeholderShimmer 1.5s linear infinite;
+    height: auto;
+    min-height: 200px;
+    object-fit: cover;
 }
   
 @keyframes placeholderShimmer {
