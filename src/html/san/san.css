@@ -83,7 +83,7 @@ img {
     border-radius: 10px;
 }
 img[data-src] {
-    background: linear-gradient(45deg, #f0f0f0 25%, #ffffff 50%, #f0f0f0 75%);
+    background: linear-gradient(45deg, #f0f0f0 25%, #bfbfbf 50%, #f0f0f0 75%);
     background-size: 200% 200%;
     animation: placeholderShimmer 1.5s linear infinite;
     height: auto;

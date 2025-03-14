@@ -172,7 +172,7 @@ class LazyLoader {
   loadImage(img) {
     if (!img.dataset.src) return;
     // 统一添加加载动画
-    img.style.backgroundSize = '200% 200%';
+    img.style.backgroundSize = '400% 400%';
     img.animate(
       [{ backgroundPosition: '100% 100%' }, { backgroundPosition: '0% 0%' }],
       { duration: 1500, iterations: Infinity }
@@ -183,7 +183,7 @@ class LazyLoader {
       img.src = img.dataset.src
       if (img.dataset.srcset) img.srcset = img.dataset.srcset
       img.classList.add('loaded')
-      img.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, fill: 'forwards'  })
+      img.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, fill: 'forwards'})
       // 清理占位背景
       img.style.background = 'none';
     }
