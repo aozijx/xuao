@@ -266,17 +266,6 @@ c {
     background: #e5e5e5;
     margin: 5px 0;
 }
-.unfold {
-    max-height: 200px;
-    overflow: hidden;
-    transition: all 1s ease-in-out;
-}
-.unfold:hover {
-    max-height: 900px;
-}
-.unfold img {
-    width: 100%;
-}
 .circle {
     width: 150px;
     height: 150px;
