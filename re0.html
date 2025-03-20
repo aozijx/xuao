@@ -34,7 +34,6 @@
     html {
       scroll-behavior: smooth;
     }
-
     body {
       margin: 0;
       padding: 0;
@@ -46,7 +45,6 @@
       color: var(--primary-text);
       transition: background-color 2s ease-in-out, color 0.8s ease;
     }
-
     @keyframes fadeBackground {
       0% {
         background-color: var(--primary-bg);
@@ -56,7 +54,6 @@
         background-color: var(--primary-bg);
       }
     }
-
     #dark {
       color: var(--primary-text);
       font-family: XuandongKaishu;
@@ -64,11 +61,9 @@
       background-color: transparent;
       border: none;
     }
-
     #dark:hover {
       color: pink;
     }
-
     .splash-screen {
       position: fixed;
       top: 0;
@@ -82,7 +77,6 @@
       background: rgba(0, 0, 0, 1);
       animation: fadeOut 1.5s ease-out 1s forwards;
     }
-
     /* 开屏动画消失效果 */
     @keyframes fadeOut {
       to {
@@ -90,14 +84,12 @@
         visibility: hidden;
       }
     }
-
     .splash-title {
       font-size: 3rem;
       color: white;
       opacity: 1;
       animation: slideDown 1.5s ease-in-out;
     }
-
     /* 开屏标题向下滑动 */
     @keyframes slideDown {
       0% {
@@ -110,7 +102,6 @@
         opacity: 1;
       }
     }
-
     .welcome-container {
       display: flex;
       flex-direction: column;
@@ -124,14 +115,12 @@
       box-shadow: inset 0px -20px 40px 10px rgba(0, 0, 0);
       z-index: -1;
     }
-
     .welcome-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-
     .welcome-title {
       font-size: 3rem;
       font-size: 4em;
@@ -140,7 +129,6 @@
       animation: float 3s infinite ease-in-out;
       text-shadow: 1px 4px 15px rgba(0, 0, 0, 0.8);
     }
-
     /* 浮动动画 */
     @keyframes float {
 
@@ -153,14 +141,12 @@
         transform: translate(0, 15px)
       }
     }
-
     .welcome-text {
       font-size: 1.2rem;
       max-width: 600px;
       line-height: 1.5;
       animation: fadeIn 2.5s ease-out;
     }
-
     /* 淡入动画 */
     @keyframes fadeIn {
       0% {
@@ -179,8 +165,6 @@
   <link rel="preload" href="src/css/re0/main.css" as="style" onload="this.onload='null';this.rel='stylesheet'">
   <link rel="preload" href="src/css/re0/mini.css" as="style" media="(max-width: 1080px)"
     onload="this.onload='null';this.rel='stylesheet'">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> -->
   <noscript>
     <link rel="stylesheet" href="src/css/re0/main.css">
   </noscript>
@@ -193,7 +177,6 @@
     as="style" onload="this.rel='stylesheet'" />
   <script src="https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.global.min.js"></script>
 </head>
-
 <body>
   <div class="splash-screen" id="splash-screen">
     <h1 class="splash-title">Welcome to the Website!</h1>
@@ -211,7 +194,6 @@
           <a>更多</a>
           <ul class="subnav">
             <li><a href="src/html/table">表格</a></li>
-            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">MDN</a></li>
             <li><a href="src/html/fireworks.html">烟花</a></li>
             <li><a href="src/html/canvas">万花筒</a></li>
             <li><a href="src/html/gobang">五子棋</a></li>
@@ -236,35 +218,6 @@
     </div>
   </div>
   <div class="deep-container" id="c">
-    <div class="deep" style="width: 700px;height: 500px;">
-      <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline">[outline]</a></span>
-      <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">[cursor]</a></span>
-      <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration">[text-decoration]</a></span>
-      <span><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow">[text-shadow]</a></span>
-      <span><a
-          href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#%E7%BD%91%E9%A1%B5%E5%AE%89%E5%85%A8%E5%AD%97%E4%BD%93">[文本和字体样式]</a></span>
-      </span>
-    </div>
-    <div class="deep" style="width: 700px;height: 500px;">
-      <div class="qin">
-        <div class="ph">
-          <img src="src/img/love/Violet b.jpg" alt="">
-        </div>
-        <div class="ph">
-          <img src="src/img/love/Frieren.jpg" alt="">
-          <span>芙莉莲</span>
-        </div>
-        <div class="ph">
-          <img src="src/img/love/jun.jpg" alt="">
-        </div>
-        <div class="ph">
-          <img src="src/img/love/02.jpg" alt="">
-        </div>
-        <div class="ph">
-          <img src="src/img/love/Violet.jpg" alt="">
-        </div>
-      </div>
-    </div>
     <div class="deep" style="display: flex;flex-direction: column;">
       <span>translate3d(x, y, z)：沿 X/Y/Z 轴平移元素。</span>
       <span>rotate3d(x, y, z, angle)：绕自定义轴旋转。</span>
@@ -272,39 +225,16 @@
       <span>perspective（透视）定义观察者与 3D 空间的“距离”，数值越小，透视效果越强（类似镜头），可在transform中设置</span>
       <span>transform-style: preserve-3d，让子元素在 3D 空间中保持位置（默认是 flat，子元素会被拍平到 2D 平面），必须设置在父容器</span>
       <span>backface-visibility,控制元素背面是否可见（如翻转卡片时隐藏背面）。</span>
-      <a
-        href="https://www.douyin.com/user/MS4wLjABAAAAv5dMS3jnj26vakUawq3vO4WgKsEfDlVVeNM8mFOJDwA?from_tab_name=main&vid=7477217325410700585"><img
-          src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_629af5b3f8649597f236523b67463020~c5_300x300.jpeg?from=2956013662"
-          width="100px" alt=""></a>
-    </div>
-    <div class="deep" style="width: 940px;">
-      <div class="qin">
-        <div class="box">
-          <img src="https://cdn.img2ipfs.com/ipfs/QmVfYmRkDZ7fGdSmeU5UZFR6rQ5GdSihrqrPLhLAF3mm4Y?filename=th%20(1).jpg"
-            alt="">
-        </div>
-        <div class="box">
-          <img src="https://cdn.img2ipfs.com/ipfs/QmWAYybyJT7KK1e55HBoSDKvQnCY3ZtcLwEXsNPaw8Mawu?filename=th%20(2).jpg"
-            alt="">
-        </div>
-        <div class="box">
-          <img src="https://cdn.img2ipfs.com/ipfs/Qmex3uRVbg6eRcnxPBkoBFP8VCSkbteZU4NMsskuQ3udNY?filename=th%20(6).jpg"
-            alt="">
-        </div>
-        <div class="box">
-          <img src="https://cdn.img2ipfs.com/ipfs/QmTVBiPQZGiRk19uMoeDTuD4SVzWFonx1wjNvk869Wcmtw?filename=th%20(4).jpg"
-            alt="">
-        </div>
-        <div class="box">
-          <img src="https://cdn.img2ipfs.com/ipfs/QmRTgvKcPYsiabGx9qEL5FAuhRUmdz8h6jSLEVFE5Y6KUj?filename=th%20(5).jpg"
-            alt="">
-        </div>
-      </div>
-    </div>
-    <div class="deep" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
-      <div class="tu">
-        <img src="src/img/love/RachelMoore.jpg" class="tu-role" alt="">
-        <img src="" class="tu-cover" alt="">
+      <div>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline">[outline]</a>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">[cursor]</a>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration">[text-decoration]</a>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow">[text-shadow]</a>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#%E7%BD%91%E9%A1%B5%E5%AE%89%E5%85%A8%E5%AD%97%E4%BD%93">[文本和字体样式]</a></span>
+        <a href="https://www.douyin.com/user/MS4wLjABAAAAv5dMS3jnj26vakUawq3vO4WgKsEfDlVVeNM8mFOJDwA?from_tab_name=main&vid=7477217325410700585"><img
+            src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_629af5b3f8649597f236523b67463020~c5_300x300.jpeg?from=2956013662"
+            width="100px" alt=""></a>
+        <a href="src/html/4">exhibation</a>
       </div>
     </div>
     <div class="deep">
@@ -319,29 +249,6 @@
           continuity." Environmentalism must evolve from "saving Earth" to redefining humanity’s role as stewards of a
           shared biological legacy. Only by honoring this planetary covenant can we safeguard tomorrow’s world.
         </div>
-      </div>
-    </div>
-    <div class="deep" style="display: flex;flex-direction: column;">
-      <div class="carousel">
-        <div class="slider-container">
-          <div class="slide"><img
-              src="https://cdn.img2ipfs.com/ipfs/QmT4YXQetKUrp7DAy4Ct6mBojHwbssgmLNWk6JpxG8YPfT?filename=th.jpg" alt="">
-          </div>
-          <div class="slide"><img
-              src="https://cdn.img2ipfs.com/ipfs/QmZifA7EcBZCmapkuN2zPJVu9wr952UnQ134ivPEGQ7m52?filename=th%20(3).jpg"
-              alt=""></div>
-          <div class="slide"><img
-              src="https://cdn.img2ipfs.com/ipfs/QmTVBiPQZGiRk19uMoeDTuD4SVzWFonx1wjNvk869Wcmtw?filename=th%20(4).jpg"
-              alt=""></div>
-          <div class="slide"><img
-              src="https://cdn.img2ipfs.com/ipfs/QmRTgvKcPYsiabGx9qEL5FAuhRUmdz8h6jSLEVFE5Y6KUj?filename=th%20(5).jpg"
-              alt=""></div>
-        </div>
-        <div class="l-controls">
-          <div class="prev">←</div>
-          <div class="next">→</div>
-        </div>
-        <div class="dots"></div>
       </div>
     </div>
     <div class="deep">
@@ -368,7 +275,6 @@
         <div class="jiu-item"></div>
         <div class="jiu-item"></div>
       </div>
-      <p style="position: fixed;bottom: -14px;">点击也有效果,想通过按钮来切换,奈何不才</p>
     </div>
     <div class="deep ro" style="gap: 10px;">
       <div class="flip-card">
@@ -385,7 +291,6 @@
           <span>Slience</span>
         </div>
       </div>
-      <p style="position: fixed;bottom: 0;">背景也可换为图片等等其他样式,需要更改选择器或者bgi</p>
     </div>
     <div class="deep">
       <div class="color">
@@ -463,27 +368,16 @@
           您的浏览器不支持音频播放。
       </audio>
     </div>
-    <div class="deep">
-      <div class="stardew">
-        <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.1.10">SMAPI</a>
-        <a href="https://www.nexusmods.com/stardewvalley/mods/25395">N网25395</a>
-        <img src="https://staticdelivery.nexusmods.com/mods/1303/images/headers/25395_1719048617.jpg" width="450px">
-        <a href="https://www.nexusmods.com/stardewvalley/mods/15234">N网15234</a>
-        <div>
-          <img
-            src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1675604855-1750177193.jpeg"
-            width="200px">
-          <img
-            src="https://staticdelivery.nexusmods.com/mods/1303/images/thumbnails/15234/15234-1712295321-202562341.png"
-            width="200px">
-        </div>
-      </div>
-    </div>
     <div class="deep bg-img"
       style="background-image: url(http://mms1.baidu.com/it/u=220292365,339117733&fm=253&app=120&f=JPEG?w=800&h=800);">
       <a href="src/HTML/fw.html">第五人格</a>
       <div id="app" style="margin: 0, auto;">
         <button @click="pop">123</button>
+      </div>
+      <div class="stardew">
+        <a href="https://github.com/Pathoschild/SMAPI/releases/tag/4.1.10">SMAPI</a>
+        <a href="https://www.nexusmods.com/stardewvalley/mods/25395">N网25395</a>
+        <a href="https://www.nexusmods.com/stardewvalley/mods/15234">N网15234</a>
       </div>
     </div>
   </div>
@@ -628,5 +522,4 @@
     }
   </script>
 </body>
-
 </html>
