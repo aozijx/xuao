@@ -60,32 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let isF12Blocked = true; // 初始状态：禁用 F12
 // 创建右上角按钮
-const toggleButton = document.createElement("button");
-toggleButton.id = "f12-toggle"; // 添加 ID
-toggleButton.textContent = "启用防护";
-toggleButton.style.position = "fixed";
-toggleButton.style.top = "6px";
-toggleButton.style.right = "5px";
-toggleButton.style.backgroundColor = "#28a745";
-toggleButton.style.color = "white";
-toggleButton.style.border = "none";
-toggleButton.style.padding = "10px 20px";
-toggleButton.style.borderRadius = "5px";
-toggleButton.style.cursor = "pointer";
-toggleButton.style.fontFamily = "Arial, sans-serif";
-toggleButton.style.fontSize = "12px";
-toggleButton.style.zIndex = "6666";
-document.body.appendChild(toggleButton);
+const F12Button = document.createElement("button");
+F12Button.id = "f12-toggle"; // 添加 ID
+F12Button.textContent = "启用防护";
+F12Button.style.position = "fixed";
+F12Button.style.top = "6px";
+F12Button.style.right = "5px";
+F12Button.style.backgroundColor = "#28a745";
+F12Button.style.color = "white";
+F12Button.style.border = "none";
+F12Button.style.padding = "10px 20px";
+F12Button.style.borderRadius = "5px";
+F12Button.style.cursor = "pointer";
+F12Button.style.fontFamily = "Arial, sans-serif";
+F12Button.style.fontSize = "12px";
+F12Button.style.zIndex = "6666";
+document.body.appendChild(F12Button);
 // 添加按钮点击事件
-toggleButton.addEventListener("click", () => {
+F12Button.addEventListener("click", () => {
   isF12Blocked = !isF12Blocked; // 切换开关状态
   // 更新按钮的显示内容和样式
   if (isF12Blocked) {
-    toggleButton.textContent = "启用防护";
-    toggleButton.style.backgroundColor = "#28a745"; // 绿色
+    F12Button.textContent = "启用防护";
+    F12Button.style.backgroundColor = "#28a745"; // 绿色
   } else {
-    toggleButton.textContent = "禁用防护";
-    toggleButton.style.backgroundColor = "#dc3545"; // 红色
+    F12Button.textContent = "禁用防护";
+    F12Button.style.backgroundColor = "#dc3545"; // 红色
   }
 });
 // 检测 F12 按键
@@ -127,42 +127,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// 保存播放进度
-window.addEventListener('DOMContentLoaded', () => {
-  let ap, isRecover = false;
-  const metingElement = document.querySelector("meting-js");
-  
-  if (!metingElement) {
-    console.error("找不到 meting-js 元素");
-    return;
-  }
-
-  Object.defineProperty(metingElement, "aplayer", {
-    set(a) {
-      ap = a;
-      ap.on("canplay", () => {
-        if (isRecover) return;
-        const idx = localStorage.getItem("musicIndex");
-        if (idx !== null) {
-          const time = localStorage.getItem("musicTime");
-          ap.list.index != idx
-            ? ap.list.switch(idx)
-            : (ap.seek(time), ap.play(), localStorage.clear(), (isRecover = true));
-        } else {
-          isRecover = true;
-        }
-      });
-    }
-  });
-
-  window.onbeforeunload = () => {
-    if (ap && !ap.audio.paused) {
-      localStorage.setItem("musicIndex", ap.list.index);
-      localStorage.setItem("musicTime", ap.audio.currentTime);
-    }
-  };
-});
-
 var now = new Date();
 function createtime() {
   now.setTime(now.getTime() + 1000); // 每秒更新
@@ -183,23 +147,6 @@ function createtime() {
     (document.getElementById("workboard").innerHTML = currentTimeHtml);
 }
 setInterval(createtime, 1000); // 每秒更新一次
-
-// 缓存已加载的页面（使用LRU缓存策略）
-const cache = new Map(); // 改用Map提高性能及维护键的顺序
-const MAX_CACHE_SIZE = 20;
-function maintainCache(url) {
-  // 确保URL已缓存
-  if (!cache.has(url)) return;
-  // 删除并重新插入以更新为最近使用
-  cache.delete(url);
-  cache.set(url, cache.get(url)); // 重新插入到Map末尾
-  // 维护缓存大小
-  if (cache.size > MAX_CACHE_SIZE) {
-    // Map的keys()是按插入顺序的迭代器，首个元素即最旧
-    const oldestKey = cache.keys().next().value;
-    cache.delete(oldestKey);
-  }
-}
 
 // 处理浏览器前进/后退
 window.addEventListener("popstate", (e) => {

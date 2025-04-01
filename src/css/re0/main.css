@@ -139,17 +139,6 @@ section p {
     border-radius: 6px;
     box-shadow: var(--box-shadow);
 }
-.deep:hover .pop {
-    transform: translateY(0);
-    opacity: 1;
-}
-.pop {
-    position: absolute;
-    backdrop-filter: blur(8px);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 1s ease-in-out;
-}
 .ro {
     display: flex;
     justify-content: center;
@@ -213,9 +202,6 @@ footer a {
 }
 c {
     color: rgb(235, 211, 27);
-}
-.stardew a {
-    font-size: 16px;
 }
 #menu {
     display: none;
@@ -433,65 +419,4 @@ c {
 .letter div::selection {
     background-color: palevioletred;
     text-decoration: underline;
-}
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-.slider-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
-.slide {
-    flex: 0 0 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    object-fit: cover;
-}
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-.l-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    
-}
-.prev,.next {
-    background: rgba(0,0,0,0.3);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 15px;
-    cursor: pointer;
-    user-select: none;
-}
-.dots {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    cursor: pointer;
-}
-.dot.active {
-    background: white;
 }
