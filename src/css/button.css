@@ -18,7 +18,7 @@
     position: relative;
     width: 220px;
     height: 80px;
-    /* transform: rotate(353deg) skewX(4deg); */
+    transform: rotate(353deg) skewX(4deg);
   }
   
   .bg {
