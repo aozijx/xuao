@@ -19,14 +19,6 @@
     .nav-item>a {
         font-size: 13px;
     }
-    .flip-front {
-        width: 320px;
-        height: 320px;
-    }
-    .flip-front, .flip-back {
-        width: 320px;
-        height: 320px;
-    }
     footer {
         font-size: 10px;
         bottom: 80px;
@@ -40,9 +32,6 @@
     }
     .view img {
         height: 200px;
-    }
-    .stardew img {
-        width: 100%;
     }
 }
 
@@ -60,20 +49,7 @@
     .deep {
         height: auto;
         min-height: 250px;
-    }
-    .deep {
         font-size: 1em;
-    }
-    .pop {
-        font-size: 0.8em;
-    }
-    .flip-front {
-        width: 120px;
-        height: 120px;
-    }
-    .flip-front, .flip-back {
-        width: 120px;
-        height: 120px;
     }
     #f12-toggle {
         display: none;

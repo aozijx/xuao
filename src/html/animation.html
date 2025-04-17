@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片动画演示</title>
+    <style>
+      /* 定义动画 */
+      @keyframes barrageIn {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes to_show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes bottom-top {
+        0% {
+          opacity: 0;
+          margin-top: 50px;
+        }
+        100% {
+          opacity: 1;
+          margin-top: 0;
+        }
+      }
+
+      @keyframes titlescale {
+        0% {
+          opacity: 0;
+          transform: scale(0.7);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slide-in {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide-in-op {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes ribbon_to_show {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0.6;
+        }
+      }
+
+      @keyframes header-effect {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes sub_menus {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes donate_effcet {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes commonTipsIn {
+        0% {
+          top: -50px;
+          opacity: 0;
+        }
+        100% {
+          top: -60px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes commonTriangleIn {
+        0% {
+          transform: translate(-50%, -36px);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -46px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes owoIn {
+        0% {
+          transform: translate(0, -95%);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(0, -105%);
+          opacity: 1;
+        }
+      }
+
+      /* 应用动画到图片 */
+      img {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+      }
+
+      .barrageIn {
+        animation: barrageIn 1s ease-in-out forwards;
+      }
+
+      .to_show {
+        animation: to_show 1s ease-in-out forwards;
+      }
+
+      .bottom-top {
+        animation: bottom-top 1s ease-in-out forwards;
+      }
+
+      .titlescale {
+        animation: titlescale 1s ease-in-out forwards;
+      }
+
+      .slide-in {
+        animation: slide-in 1s ease-in-out forwards;
+      }
+
+      .slide-in-op {
+        animation: slide-in-op 1s ease-in-out forwards;
+      }
+
+      .ribbon_to_show {
+        animation: ribbon_to_show 1s ease-in-out forwards;
+      }
+
+      .header-effect {
+        animation: header-effect 1s ease-in-out forwards;
+      }
+
+      .sub_menus {
+        animation: sub_menus 1s ease-in-out forwards;
+      }
+
+      .donate_effcet {
+        animation: donate_effcet 1s ease-in-out forwards;
+      }
+
+      .commonTipsIn {
+        position: relative;
+        animation: commonTipsIn 1s ease-in-out forwards;
+      }
+
+      .commonTriangleIn {
+        position: relative;
+        animation: commonTriangleIn 1s ease-in-out forwards;
+      }
+
+      .owoIn {
+        position: relative;
+        animation: owoIn 1s ease-in-out forwards;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img
+      class="barrageIn"
+      src="https://picsum.photos/200/200?random=1"
+      alt="图片 1"
+    />
+    <img
+      class="to_show"
+      src="https://picsum.photos/200/200?random=2"
+      alt="图片 2"
+    />
+    <img
+      class="bottom-top"
+      src="https://picsum.photos/200/200?random=3"
+      alt="图片 3"
+    />
+    <img
+      class="titlescale"
+      src="https://picsum.photos/200/200?random=4"
+      alt="图片 4"
+    />
+    <img
+      class="slide-in"
+      src="https://picsum.photos/200/200?random=5"
+      alt="图片 5"
+    />
+    <img
+      class="slide-in-op"
+      src="https://picsum.photos/200/200?random=6"
+      alt="图片 6"
+    />
+    <img
+      class="ribbon_to_show"
+      src="https://picsum.photos/200/200?random=7"
+      alt="图片 7"
+    />
+    <img
+      class="header-effect"
+      src="https://picsum.photos/200/200?random=8"
+      alt="图片 8"
+    />
+    <img
+      class="sub_menus"
+      src="https://picsum.photos/200/200?random=9"
+      alt="图片 9"
+    />
+    <img
+      class="donate_effcet"
+      src="https://picsum.photos/200/200?random=10"
+      alt="图片 10"
+    />
+    <img
+      class="commonTipsIn"
+      src="https://picsum.photos/200/200?random=11"
+      alt="图片 11"
+    />
+    <img
+      class="commonTriangleIn"
+      src="https://picsum.photos/200/200?random=12"
+      alt="图片 12"
+    />
+    <img
+      class="owoIn"
+      src="https://picsum.photos/200/200?random=13"
+      alt="图片 13"
+    />
+  </body>
+</html>
