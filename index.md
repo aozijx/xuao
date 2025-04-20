@@ -1,10 +1,7 @@
 欢迎来到我的个人博客！这是我记录学习、成长与生活点滴的地方。
 
 **随便写点 HTML 和 CSS，记一点教程和网站**
-- **HTML**
-  [WebAIM：颜色对比度检查器](https://webaim.org/resources/contrastchecker/)
 
----
 ### 足迹
 - [个站千日总结报告](https://blog.konpaku.cn/Something-Else/%E7%AB%99%E7%82%B9%E5%8D%83%E6%97%A5%E6%8A%A5%E5%91%8A/)
 - 说起来好笑，从[Cute-Dress](https://github.com/Cute-Dress/Dress)仓库 B->big_cake 的[about.md](https://github.com/Cute-Dress/Dress/blob/master/B/Big_Cake/about.md)到[blog](https://www.lihaoyu.cn/)，通过友链到[杰帕斯](https://japerz.com/),再通过友链到[KawaiiYoumu](https://blog.konpaku.cn/)
@@ -14,11 +11,7 @@
   - [如何从网站中删除未使用的 CSS？](https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/)
 
 ---
-## 书
-- [编码：隐匿在计算机软硬件背后的语言](https://weread.qq.com/web/bookDetail/64e32bf071fd5a9164ece6b)
-
----
-### 我的[网页](re0)，看了很多网站后，我感觉我的好简陋。
-[项目仓库](https://github.com/aozijx/xuao) | [友](assistance/yang) | [试验](posts/test) | [history](posts/history) | [note](posts/diary)
+### 我的[网页](re0)
+[项目仓库](https://github.com/aozijx/xuao) | [友](assistance/yang) | [试验](posts/test) | [history](posts/history)
 
 > 感谢访问我的博客，期待与你一起分享更多的知识与经验！

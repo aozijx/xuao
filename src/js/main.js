@@ -11,32 +11,8 @@ function toggleDarkMode(event) {
   localStorage.setItem("theme", newTheme);
   button.textContent = newTheme === "dark" ? "Light" : "Dark";
   button.title = newTheme === 'dark' ? '切换到浅色模式' : '切换到深色模式'; // 更新 title
-  // **切换主题后，立即更新 navbar 颜色**
   updateNavbarBackground();
-  // 强制触发重绘（如果过渡无效）
-  document.body.offsetHeight;
 }
-function updateNavbarBackground() {
-  const navbar = document.querySelector(".navbar");
-  const scrollY = window.scrollY;
-  const windowHeight = window.innerHeight;
-
-  let opacity = Math.min(1, Math.max(0, scrollY / windowHeight));
-  if (scrollY === 0) opacity = 0; // 滚动到顶部时透明度为 0
-  // 检查暗色主题
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-  // 选择不同的背景颜色
-  const bgColor = isDark
-    ? `rgba(26, 26, 26, ${opacity})`
-    : `rgba(255, 255, 255, ${opacity})`;
-  // 立即更新 navbar 背景色
-  navbar.style.backgroundColor = bgColor;
-  // navbar.style.transition = "background-color 2s ease-in-out"
-}
-// **页面加载时立即执行**
-document.addEventListener("DOMContentLoaded", updateNavbarBackground);
-// **滚动时动态更新**
-window.onscroll = updateNavbarBackground;
 // 初始化主题（页面加载时检查）
 function initTheme() {
   const savedTheme = localStorage.getItem("theme");
@@ -51,12 +27,32 @@ function initTheme() {
   darkModeButton.textContent = theme === "dark" ? "Light" : "Dark";
   darkModeButton.title = savedTheme === 'dark' ? '切换到浅色模式' : '切换到深色模式';
 }
+
 // DOM加载完成后初始化
 document.addEventListener("DOMContentLoaded", () => {
   const darkModeButton = document.getElementById("dark");
   darkModeButton.addEventListener("click", toggleDarkMode);
   initTheme();
 });
+
+function updateNavbarBackground() {
+  const navbar = document.querySelector(".navbar");
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+
+  let opacity = Math.min(1, Math.max(0, scrollY / windowHeight));
+  if (scrollY === 0) opacity = 0; // 滚动到顶部时透明度为 0
+  // 检查暗色主题
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  // 选择不同的背景颜色
+  const bgColor = isDark ? `rgba(26, 26, 26, ${opacity})` : `rgba(255, 255, 255, ${opacity})`;
+  navbar.style.backgroundColor = bgColor;
+  navbar.style.transition = "background-color 2s ease-in-out"
+}
+// 页面加载时立即执行
+document.addEventListener("DOMContentLoaded", updateNavbarBackground);
+// 滚动时动态更新
+window.onscroll = updateNavbarBackground;
 
 let isF12Blocked = true; // 初始状态：禁用 F12
 // 创建右上角按钮
@@ -89,10 +85,10 @@ F12Button.addEventListener("click", () => {
   }
 });
 // 检测 F12 按键
-document.addEventListener("keydown", function (event) {
-  if (event.key === "F12") {
+document.addEventListener("keydown", function (e) {
+  if (e.key === "F12") {
     if (isF12Blocked) {
-      event.preventDefault(); // 禁用 F12 默认行为
+      e.preventDefault(); // 禁用 F12 默认行为
       console.log("F12 被禁用");
       // 创建提示框逻辑
       const warningDiv = document.createElement("div");
@@ -316,18 +312,14 @@ const menu = document.getElementById('menu');
   // 窗口大小改变时隐藏菜单
   window.addEventListener('resize', hideMenu);
 
-const items = document.querySelectorAll('.jiu-item');
-for (let i = 0; i < items.length; i++) {
-  const item = items[i];
-  const r = Math.floor(i / 3);
-  const c = i % 3;
-  const bgX = -c * 100 + '%';  // 每格宽度 100px
-  const bgY = -r * 100 + '%';  // 每格高度 100px
-  // 鼠标悬停时每个格子向外偏移20px，中心格（c=1, r=1）不动
-  const disX = (c - 1) * 20 + 'px';
-  const disY = (r - 1) * 20 + 'px';
-  item.style.setProperty('--bgX', bgX);
-  item.style.setProperty('--bgY', bgY);
-  item.style.setProperty('--disX', disX);
-  item.style.setProperty('--disY', disY);
-}
+// 创建一个 Vue 应用实例
+const app = Vue.createApp({
+  methods: {
+    // 定义 pop 方法
+    pop() {
+      alert("123");
+    }
+  }
+});
+// 挂载 Vue 应用到 id 为 app 的元素上
+app.mount('#app');
