@@ -162,11 +162,9 @@
   </style>
   <!--通过 onload 将 rel 设置为 null，避免某些浏览器多次触发-->
   <link rel="icon" href="src/img/logo.png">
-  <link rel="preload" href="src/css/re0/main.css" as="style" onload="this.onload='null';this.rel='stylesheet'">
-  <link rel="preload" href="src/css/re0/mini.css" as="style" media="(max-width: 1080px)"
-    onload="this.onload='null';this.rel='stylesheet'">
+  <link rel="preload" href="src/css/main.css" as="style" onload="this.onload='null';this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="src/css/re0/main.css">
+    <link rel="stylesheet" href="src/css/main.css">
   </noscript>
   <!--APlayer-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
@@ -194,17 +192,8 @@
           <a>更多</a>
           <ul class="subnav">
             <li><a href="src/html/table">表格</a></li>
-            <li><a href="src/html/fireworks.html">烟花</a></li>
             <li><a href="src/html/canvas">万花筒</a></li>
             <li><a href="src/html/gobang">五子棋</a></li>
-            <li><a href="https://www.jyshare.com/examples">菜鸟教程</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a>关于</a>
-          <ul class="subnav">
-            <li><a href="https://aozijx.github.io/xuao/src/html/me.html">ME</a></li>
-            <li><a href="src/html/welcome">test</a></li>
           </ul>
         </li>
         <button id="dark" title="切换模式"></button>
@@ -218,25 +207,6 @@
     </div>
   </div>
   <div class="deep-container" id="c">
-    <div class="deep" style="display: flex;flex-direction: column;">
-      <span>translate3d(x, y, z)：沿 X/Y/Z 轴平移元素。</span>
-      <span>rotate3d(x, y, z, angle)：绕自定义轴旋转。</span>
-      <span>scale3d(x, y, z)：沿 X/Y/Z 轴缩放。</span>
-      <span>perspective（透视）定义观察者与 3D 空间的“距离”，数值越小，透视效果越强（类似镜头），可在transform中设置</span>
-      <span>transform-style: preserve-3d，让子元素在 3D 空间中保持位置（默认是 flat，子元素会被拍平到 2D 平面），必须设置在父容器</span>
-      <span>backface-visibility,控制元素背面是否可见（如翻转卡片时隐藏背面）。</span>
-      <div>
-        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline">[outline]</a>
-        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/cursor">[cursor]</a>
-        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration">[text-decoration]</a>
-        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow">[text-shadow]</a>
-        <a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#%E7%BD%91%E9%A1%B5%E5%AE%89%E5%85%A8%E5%AD%97%E4%BD%93">[文本和字体样式]</a></span>
-        <a href="https://www.douyin.com/user/MS4wLjABAAAAv5dMS3jnj26vakUawq3vO4WgKsEfDlVVeNM8mFOJDwA?from_tab_name=main&vid=7477217325410700585"><img
-            src="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_629af5b3f8649597f236523b67463020~c5_300x300.jpeg?from=2956013662"
-            width="100px" alt=""></a>
-        <a href="src/html/4">exhibation</a>
-      </div>
-    </div>
     <div class="deep">
       <div class="letter">
         <h3>A Covenant Between Civilization and Nature</h3>
@@ -251,9 +221,6 @@
         </div>
       </div>
     </div>
-    <div class="deep">
-      <div class="shan" style="margin: 20px auto;"></div>
-    </div>
     <div class="deep" style="overflow: hidden;" id="l">
       <div class="ltu">
         <img src="src/img/xinfamily.jpg" alt="">
@@ -264,36 +231,7 @@
       </div>
     </div>
     <div class="deep">
-      <div class="color">
-        <span>C</span>
-        <span>O</span>
-        <span>L</span>
-        <span>O</span>
-        <span>R</span>
-      </div>
-      <div style="width: 100%;height: 200px;filter: drop-shadow(1px 3px 5px black);">
-        <img src="https://patchwiki.biligame.com/images/dwrg/3/3e/si9um8evyf4fvjge76jpyxu06rrv954.png" height="300px"
-          alt="">
-      </div>
-      <div style="float: right;">CSS：filter: drop-shadow();<br>添加brightness(x)亮度，及scale(x)大小</div>
-    </div>
-    <div class="deep line">
-      <span>“The supreme happiness of life is the conviction that we are loved; loved for ourselves—say rather, loved in
-        spite of ourselves.”</span><br>
-      <span>“It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of
-        foolishness...”</span>
-      <p>可以更改下划线颜色为任意，纯色或多色渐变皆可</p>
-    </div>
-    <div class="deep" style="display: flex;flex-wrap: wrap;gap: 10px;justify-content: space-around;">
-      <div class="circle"
-        style="background: conic-gradient(from 0deg at 50% 50%,#ff0000 0%,#ff007f 8.33%,#ff00ff 16.66%,#7f00ff 25%,#0000ff 33.33%,#007fff 41.66%,#00ffff 50%,#00ff7f 58.33%,#00ff00 66.66%,#7fff00 75%,#ffff00 83.33%,#ff7f00 91.66%,#ff0000 100%);">
-      </div>
-      <div class="circle" style="background: conic-gradient(#00f 180deg, transparent);"></div>
-      <div class="circle" style="background: conic-gradient(#f00 90deg, transparent 90deg 360deg, #f00 0deg);"></div>
-      <div class="circle circlef"></div>
-    </div>
-    <div class="deep">
-      <a href="">水波效果</a>
+      水波效果
       引入 JavaScript jquery.ripples-min.js<br>
       初始化
       <pre style="white-space: pre-wrap;">
@@ -309,32 +247,30 @@
       <span>transform的skew</span>
       <span>mask、mask-image、mask-size、mix-blend-mode</span>
       <span>锥形渐变conic-gradient()</span>
-      <span>物体描边阴影filter:drop-shadow();</span>
       <span>animation的alternate,step</span>
       <span>animation-play-state</span>
       <span>letter-space、contrast</span>
-      <span>scale实现下拉菜单</span>
       <span>aspect-ratio: 16/9; 宽高比为 16:9 </span>
     </div>
     <div class="deep">
       <div id="aplayer01" style="height: 60px;"></div>
-      <audio controls preload="none">
+      <audio controls preload="auto">
         <src src="src/music/千与千寻轻音乐.mp3" type="audio/mp3">
           您的浏览器不支持音频播放。
       </audio>
-      <audio controls preload="none">
+      <audio controls preload="auto">
         <src src="src/music/AwayFromTheRain.mp3" type="audio/mp3">
           您的浏览器不支持音频播放。
       </audio>
-      <audio controls preload="none">
+      <audio controls preload="auto">
         <src src="src/music/night crusing.mp3" type="audio/mp3">
           您的浏览器不支持音频播放。
       </audio>
     </div>
     <div class="deep bg-img"
-      style="background-image: url(http://mms1.baidu.com/it/u=220292365,339117733&fm=253&app=120&f=JPEG?w=800&h=800);text-align: center;">
+      style="background-image: url(http://mms1.baidu.com/it/u=220292365,339117733&fm=253&app=120&f=JPEG?w=800&h=800);display: flex;flex-direction: column;text-align: center;">
       <a href="src/html/fw.html" style="text-decoration: none;">第五人格</a>
-      <a href="src/html/1.html" style="text-decoration: none;">时间</a>
+      <a href="src/html/countdown.html" style="text-decoration: none;">时间</a>
       <a href="src/html/4.html" style="text-decoration: none;">手风琴</a>
       <a href="src/html/38girl.html" style="text-decoration: none;">38妇女节</a>
       <a href="src/html/box.html" style="text-decoration: none;">推箱子</a>
@@ -345,37 +281,26 @@
         <button @click="pop">123</button>
       </div>
     </div>
-    <div class="deep ro">
-      <div class="jiu">
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmbfeX25TVCxyenXUPTjk9u8NVaZmonsnLpK4ch7j4oFYQ?filename=006upAuggy1i003t5jq48j30qo0qo0w6.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmWc2wEWkPMrcgWXuryxmzJz8nmSaHHox3sXQ1AnzQRLA9?filename=006upAuggy1i003tk67mnj30qo0qoq5x.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmfKrCXsc1mAU46SmhaZxzM943r93hzBxUBfthX1L1ETxw?filename=006upAuggy1i003tmbcvmj30qo0qowhq.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmRVy1iJEyKp8teSsmi1tsj3p6jsHoP62k1iA3TajvnDmX?filename=006upAuggy1i003tniw4tj30qo0qoq4e.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmSZDyzz1nJuxqNqMxZa8XGroSPRnzwZst8BxFhDf8G928?filename=006upAuggy1i003tq0mvpj30qo0qowem.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmdyFgCfUVtVWLPjE7G6Gjjm21j967U1KpbYZbn7kuZxFg?filename=006upAuggy1i003tv9nl1j30qo0qogmy.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmU9iHB2KEMAGxkwPToioQs4ZnLvcjZY34idSJqTXVadHs?filename=006upAuggy1i003txr1emj30qo0qon0b.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmTz8nctkqbMvZW17ernXvZ9egZPR9hed1FDubWDT4QGaL?filename=006upAuggy1i003tz7vf7j30qo0qogoi.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-        <div class="jiu-item" style="background-image: url(https://cdn.img2ipfs.com/ipfs/QmSruTMZTDCbZwivU9YLgKLypNLQrg5VBiRCPorBqdtnnq?filename=006upAuggy1i003u021suj30qo0qo77q.jpg);background-size: 100px;background-position: var(--bgXs, 0) var(--bgYs, 0);"></div>
-      </div>
-    </div>
   </div>
   <div class="view-container">
-    <div class="view">
+    <!-- 埃德·斯塔福特介绍 -->
+    <article class="view">
       <div>
         <img src="https://p0.pipi.cn/basicdata/54ecde717a3c7eb86051ba69302a462ab0f66.jpg?imageView2/1/w/464/h/644"
           alt="埃德·斯塔福特">
         <div>
-          <h2>埃德·斯塔福德</h2>
+          <h2>埃德·斯塔福特</h2>
           <p>Ed Stafford</p>
           <p>导演 | 演员 | 编剧</p>
           <p>1975-12-26</p>
         </div>
       </div>
-      <div>埃德·斯塔福德（Ed
-        Stafford，1976年-），出生于英国彼得伯勒，前驻阿富汗英国陆军上尉，被誉为“现代鲁宾逊”。2010年4月，斯塔福德独自穿越亚马逊河，耗时860天，创下吉尼斯世界纪录：第一个走完亚马逊全程的人。这段经历被写成《徒步亚马孙》一书，并被“探索”频道拍成纪录片。2011年，皇家苏格兰地理学会授予斯塔福德蒙戈·帕克奖。2013年，斯塔福德在南太平洋一个荒无人烟的小岛，独自生活60天。2014年-2019年，参加的节目《单挑荒野第三季》《求生之路》《街道流浪60天》等相继播出。2020年4月24日，参加的野外生存类节目《决胜荒野之华夏秘境》在哔哩哔哩播出。
+      <div>
+        埃德·斯塔福德（Ed Stafford，1976年-），出生于英国彼得伯勒，前驻阿富汗英国陆军上尉，被誉为“现代鲁宾逊”。2010年4月，斯塔福德独自穿越亚马逊河，耗时860天，创下吉尼斯世界纪录：第一个走完亚马逊全程的人。这段经历被写成《徒步亚马孙》一书，并被“探索”频道拍成纪录片。2011年，皇家苏格兰地理学会授予斯塔福德蒙戈·帕克奖。2013年，斯塔福德在南太平洋一个荒无人烟的小岛，独自生活60天。2014年-2019年，参加的节目《单挑荒野第三季》《求生之路》《街道流浪60天》等相继播出。2020年4月24日，参加的野外生存类节目《决胜荒野之华夏秘境》在哔哩哔哩播出。
       </div>
-    </div>
-    <div class="view">
+    </article>
+    <!-- 杰瑞米·维德介绍 -->
+    <article class="view">
       <div>
         <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20210810125402-1592366609_jpeg_1955_2444_1840509.jpg/800"
           alt="杰瑞米·维德">
@@ -386,11 +311,12 @@
           <p>1956-03-23</p>
         </div>
       </div>
-      <div>杰瑞米·瓦德（Jeremy
-        Wade，1956年3月23日-），出生于英国萨福德郡，毕业于布里斯托尔大学，英国男生物学家、主持人、极限钓鱼者、作家。2009年-2017年，主持电视系列节目《河中巨怪》第一季至第九季。2018年，主演的纪录片《狂野之河》播出。2022年8月，主演的纪录片《深海之谜第二季》播出
+      <div>
+        杰瑞米·瓦德（Jeremy Wade，1956年3月23日-），出生于英国萨福德郡，毕业于布里斯托尔大学，英国男生物学家、主持人、极限钓鱼者、作家。2009年-2017年，主持电视系列节目《河中巨怪》第一季至第九季。2018年，主演的纪录片《狂野之河》播出。2022年8月，主演的纪录片《深海之谜第二季》播出
       </div>
-    </div>
-    <div class="view">
+    </article>
+    <!-- 贝尔·格里尔斯介绍 -->
+    <article class="view">
       <div>
         <img src="https://pic.baike.soso.com/ugc/baikepic2/0/20220319103622-64309780_jpeg_353_456_41939.jpg/800"
           alt="贝尔·格里尔斯">
@@ -401,12 +327,11 @@
           <p>1974-6-7</p>
         </div>
       </div>
-      <div>贝尔·格里尔斯（Bear
-        Grylls，1974年6月7日-），出生于英国怀特岛本布里奇城，毕业于伦敦大学，英国男主持人、探险家、英国童子军总会的主席]。2006年-2011年，凭借真人秀《荒野求生》第一季至第七季走红。在主持节目中所食用的东西太过惊人，而被冠以“站在食物链顶端的男人”的称号。2016年-2017年，主持的真人秀《贝爷的求生学校》播出。2023年3月3日，主演的纪录片《圣母峰消失之谜》上映。
+      <div>
+        贝尔·格里尔斯（Bear Grylls，1974年6月7日-），出生于英国怀特岛本布里奇城，毕业于伦敦大学，英国男主持人、探险家、英国童子军总会的主席]。2006年-2011年，凭借真人秀《荒野求生》第一季至第七季走红。在主持节目中所食用的东西太过惊人，而被冠以“站在食物链顶端的男人”的称号。2016年-2017年，主持的真人秀《贝爷的求生学校》播出。2023年3月3日，主演的纪录片《圣母峰消失之谜》上映。
       </div>
-    </div>
-    <div class="view">
-    </div>
+    </article>
+    <article class="view"></article>
   </div>
   <div id="workboard"></div>
   <!-- 自定义右键菜单 -->
@@ -419,12 +344,11 @@
       <li><a href="#">设置</a></li>
     </ul>
   </div>
-  <footer id="b" style="color: black;">Copyright &copy 2025 Hiner | <a
+  <footer id="b">Copyright &copy 2025 Hiner | <a
       href="https://chinese-font.netlify.app/zh-cn/">中文网字计划</a>·<p>霞鹜文楷</p>|<p>玄冬楷书</p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/jquery.min.js@3.5.1/jquery.min.js"></script>
-  <script src="src/js/re0/main.js"></script>
-  <script src="src/js/re0/vue.js"></script>
+  <script src="src/js/main.js"></script>
   <!--live2d支持-->
   <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js" defer></script>
   <!--APlayer-->
@@ -451,19 +375,6 @@
         }]
       });
     };
-  </script>
-  <script>
-    function smoothScroll(event) {
-      event.preventDefault(); // 阻止默认行为
-      const targetId = event.currentTarget.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    }
   </script>
 </body>
 </html>
