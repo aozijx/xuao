@@ -4,19 +4,9 @@
 }
 /* 自动匹配用户系统主题 */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --primary-bg: #ffffff;
-        --primary-text: #000000;
-        --accent-color: #007bff;
-        --box-shadow: 1px 4px 10px rgb(255, 255, 255, 0.7);
-        --overlay-color: rgba(0, 0, 0, 0); /* 新增遮罩颜色变量 */
-    }
-    [data-theme="dark"] {
-        --primary-bg: #1a1a1a;
-        --primary-text: #e0e0e0;
-        --accent-color: #4dabf7;
-        --box-shadow: 0 4px 5px rgba(82, 75, 75, 0.5);
-        --overlay-color: rgba(0, 0, 0, 0.7);  /* 深色模式下的遮罩颜色 */
+    body {
+      background-image: url(src/img/liu.webp);
+      background-size: cover;
     }
     body::after {
         content: "";
@@ -30,6 +20,27 @@
         background-color: var(--overlay-color);
         transition: background-color 2s ease-in-out;
     }
+}
+:root {
+    --primary-bg: #1a1a1a;
+    --primary-text: #000000;
+    --accent-color: #007bff;
+    --box-shadow: 0 4px 5px rgba(82, 75, 75, 0.5);
+    --overlay-color: rgba(0, 0, 0, 0); /* 遮罩颜色 */
+}
+[data-theme="light"] {
+    --primary-bg: #1a1a1a;
+    --primary-text: #000000;
+    --accent-color: #007bff;
+    --box-shadow: 0 4px 5px rgba(82, 75, 75, 0.5);
+    --overlay-color: rgba(0, 0, 0, 0); /* 遮罩颜色 */
+}
+[data-theme="dark"] {
+    --primary-bg: #ffffff;
+    --primary-text: #e0e0e0;
+    --accent-color: #4dabf7;
+    --box-shadow: 1px 4px 10px rgb(255, 255, 255, 0.7);
+    --overlay-color: rgba(0, 0, 0, 0.7);  /* 深色模式下的遮罩颜色 */
 }
 .navbar {
     width: 100%;

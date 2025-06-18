@@ -38,12 +38,10 @@
       margin: 0;
       padding: 0;
       font-family: 'LXGW WenKai', Georgia, sans-serif;
-      background-image: url(src/img/liu.webp);
       background-attachment: fixed;
-      background-size: cover;
-      overflow-x: hidden;
       color: var(--primary-text);
       transition: background-color 2s ease-in-out, color 0.8s ease;
+      transition: background-image 1.5s ease-in-out infinite;
     }
     @keyframes fadeBackground {
       0% {
@@ -63,6 +61,10 @@
     }
     #dark:hover {
       color: pink;
+    }
+    .bg-img {
+      background-image: url(src/img/liu.webp);
+      background-size: cover;
     }
     .splash-screen {
       position: fixed;
@@ -358,10 +360,12 @@
   <meting-js server="tencent" type="playlist" id="9414564637" fixed="true" autoplay="false" loop="all" order="list" mutex="true">
   </meting-js>
   <script>
-    //APlayer
-    window.onload = function () {
-      const ap = new APlayer({
-        container: document.getElementById('aplayer01'),
+    document.addEventListener('DOMContentLoaded', function() {
+      const playerContainer = document.getElementById('aplayer01');
+      if (playerContainer) {
+        //APlayer
+        const ap = new APlayer({
+        container: playerContainer,
         autoplay: true,
         // mini: true,
         volume: 0.6,
@@ -373,8 +377,24 @@
           cover: 'https://y.qq.com/music/photo_new/T002R300x300M000002TOVre3tDgBD_2.jpg?max_age=2592000',
           lrc: ''
         }]
-      });
-    };
+        });
+      };
+    });
   </script>
+  <script>
+    const btn = document.getElementById('dark');
+    
+    btn.addEventListener('click', function() {
+        const body = document.body;
+        
+        if (btn.textContent.trim() === 'Dark') {
+            // 当按钮文本为"Light"时添加背景图
+            body.classList.add('bg-img');
+        } else {
+            // 当按钮文本为"Dark"时移除背景图
+            body.classList.remove('bg-img');
+        }
+    });
+</script>
 </body>
 </html>
