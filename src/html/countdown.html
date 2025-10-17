@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>倒计时</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #f0f8ff, #add8e6) no-repeat;
+        }
+        #countdown {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        input {
+            padding: 5px 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* 毛玻璃效果容器 */
+        #time {
+            height: 93vh;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #333;
+            
+        }
+        /* 彩色圆背景 */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+            animation: float 10s infinite ease-in-out;
+        }
+        /* 动画效果 */
+        @keyframes float {
+            0% {
+            transform: translateY(0);
+            }
+            50% {
+            transform: translateY(-20px);
+            }
+            100% {
+            transform: translateY(0);
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <!-- 彩色圆 -->
+    <div class="circle" style="width: 200px; height: 200px; top: 10%; left: 20%; background: radial-gradient(circle, #ff7e5f, transparent);"></div>
+    <div class="circle" style="width: 300px; height: 300px; top: 50%; left: 60%; background: radial-gradient(circle, #feb47b, transparent);"></div>
+    <div class="circle" style="width: 150px; height: 150px; top: 30%; left: 80%; background: radial-gradient(circle, #6a11cb, transparent);"></div>
+    <div class="circle" style="width: 250px; height: 250px; top: 70%; left: 40%; background: radial-gradient(circle, #11998e, transparent);"></div>
+    <div id="time">
+      <h1>倒计时</h1>
+      <h2>
+        距离 <input id="endtime" placeholder="YYYY-MM-DD 或 YYYY:MM:DD" />还有
+      </h2>
+      <p id="countdown" style="color: #ff4444; font-weight: bold"></p>
+    </div>
+    <script>
+      function normalizeDate(input) {
+        // 统一替换所有分隔符为短横线
+        const normalized = input.replace(/[:]/g, "-");
+        // 补全日期格式（处理只有年月的情况）
+        return normalized.split("-").length === 2 ? normalized + "-01" : normalized;
+      }
+      function formatTime(timeDiff) {
+        const d = Math.floor(timeDiff / 86400).toString().padStart(2, "0");
+        const h = Math.floor((timeDiff % 86400) / 3600) .toString()  .padStart(2, "0");
+        const m = Math.floor((timeDiff % 3600) / 60).toString().padStart(2, "0");
+        const s = Math.floor(timeDiff % 60) .toString().padStart(2, "0");
+        return `${d}天${h}小时${m}分钟${s}秒`;
+      }
+      function countdown(endtime) {
+        // 标准化输入格式
+        const normalized = normalizeDate(endtime);
+        const endTime = +new Date(normalized).getTime();
+        if (isNaN(endTime)) return "日期格式错误";
+        const nowTime = Date.now();
+        const timeDiff = Math.max(0, Math.floor((endTime - nowTime) / 1000));
+        return timeDiff > 0 ? formatTime(timeDiff) : "时间到！";
+      }
+      let timer;
+      document.getElementById("endtime").addEventListener("input", function () {
+        const countdownElement = document.getElementById("countdown");
+        clearInterval(timer);
+
+        const update = () =>
+          (countdownElement.textContent = countdown(this.value));
+        update();
+        timer = setInterval(update, 1000);
+      });
+    </script>
+  </body>
+</html>

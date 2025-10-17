@@ -162,7 +162,25 @@
             box-shadow: 0px 35px 35px -8px rgb(0, 0, 0, 0.75);
             transform: perspective(500px) rotateX(25deg);
         }
+        /* 优化后的样式 */
+        a {
+            transition: all 0.3s ease-out !important;
+        }
+        
+        a:hover {
+            transform: translateX(8px) scale(1.02);
+            background: rgba(255,255,255,0.2) !important;
+            box-shadow: 3px 3px 12px rgba(0,0,0,0.3);
+            color: #fff !important;
+        }
+        
+        a:hover i {
+            color: #fff !important;
+        }
     </style>
+    <!-- 引入FontAwesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
 </head>
 <body>
 <div class="deep-container">
@@ -314,22 +332,76 @@
             </div>
         </div>
     </div>
-    <div class="deep" style="gap: 20px;">
-        <div class="flip-card">
-            <img class="flip-front" src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/7159c16c1b438d62a20d93a868a3f3c6_1809545553848309616.png" alt="smile">
-            <div class="flip-back">
-                <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/3ee7ea6f865cba2efa18d002e6cefd86_4221626410979722325.png" alt="">
-            </div>
-        </div>
-        <div class="tu">
-            <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/3ee7ea6f865cba2efa18d002e6cefd86_4221626410979722325.png" class="tu-role" alt="">
-            <img src="https://upload-bbs.miyoushe.com/upload/2024/01/25/298130464/7159c16c1b438d62a20d93a868a3f3c6_1809545553848309616.png" class="tu-cover" alt="">
-        </div>
-        <div style="display: flex;flex-direction: column;">
-            <h2>图片来源</h2>
-            <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=298130464">米游社</a>
-            <a href="https://ys.mihoyo.com/main/character/mondstadt?char=0">原神官网</a>
-        </div>
-    </div>
+</div>
+<div style="
+    display: flex;
+    flex-direction: column;
+    background: rgba(25,28,36,0.95);
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,215,155,0.4);
+    margin: 20px;
+    position: relative;
+    left: 70%;
+">
+    <h2 style="
+        color: #FFD7A3;
+        margin: 0 0 18px 0;
+        font-family: 'Microsoft Yahei', sans-serif;
+        font-size: 20px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        padding-left: 32px;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjZmZkN2EzIj48cGF0aCBkPSJNMTIgMkM2LjQ3IDIgMiA2LjQ3IDIgMTJzNC40NyAxMCAxMCAxMCAxMC00LjQ3IDEwLTEwUzE3LjUzIDIgMTIgMm01LjUgMTUuNUg3Yy0uNDEgMC0uNzUtLjM0LS43NS0uNzVzLjM0LS43NS43NS0uNzVoMTAuNWMuNDEgMCAuNzUuMzQuNzUuNzVzLS4zNC43NS0uNzUuNzVNNi43NSA5LjI1YzAtLjQxLjM0LS43NS43NS0uNzVoOWMuNDEgMCAuNzUuMzQuNzUuNzVzLS4zNC43NS0uNzUuNzVoLTljLS40MSAwLS43NS0uMzQtLjc1LS43NU0xMiAxNi41Yy0uODMgMC0xLjUuNjctMS41IDEuNXMuNjcgMS41IDEuNSAxLjUgMS41LS42NyAxLjUtMS41LS42Ny0xLjUtMS41LTEuNXoiLz48L3N2Zz4=') no-repeat left center;
+        background-size: 20px;
+    ">图片来源</h2>
+
+    <a href="https://www.miyoushe.com/ys/accountCenter/postList?id=298130464" 
+    style="
+        color: #B8D6FF;
+        text-decoration: none;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 8px;
+        transition: all 0.3s;
+        background: rgba(88,133,255,0.15);
+        border: 1px solid rgba(88,133,255,0.3);
+        display: flex;
+        align-items: center;
+    ">
+    <i class="fas fa-book" style="
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        text-align: center;
+        color: #6A9CFF;
+    "></i>
+    米游社
+    </a>
+    
+    <a href="https://ys.mihoyo.com/main/character/mondstadt?char=0" 
+    style="
+        color: #FFD09E;
+        text-decoration: none;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 8px;
+        transition: all 0.3s;
+        background: rgba(255,173,96,0.15);
+        border: 1px solid rgba(255,173,96,0.3);
+        display: flex;
+        align-items: center;
+    ">
+    <i class="fas fa-globe" style="
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        text-align: center;
+        color: #FFB87A;
+    "></i>
+    原神官网
+    </a>
+</div>
 </body>
 </html>

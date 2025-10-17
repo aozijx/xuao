@@ -1,3 +1,3 @@
 ## 石尚知的名作
 
-<img src="../src/image/huo.jpg">
+<img src="/src/img/huo.jpg">

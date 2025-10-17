@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .deep {
+      width: 700px;
+      height: 340px;
+      padding: 10px;
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(82, 75, 75, 0.5);
+    }
+
+    .qin {
+      display: flex;
+      height: 100%;
+      flex: 1;
+      justify-content: space-evenly;
+    }
+
+    .qin div span {
+      font-size: 1.4rem;
+      height: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ph {
+      flex: 1;
+      overflow: hidden;
+      transition: 0.5s;
+      margin: 0 5px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      border: 4px solid #fff;
+      background-color: #e0e0e0;
+    }
+
+    .ph img {
+      width: 200%;
+      height: 85%;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: 0.5s ease-in-out;
+      filter: drop-shadow(2px 4px 10px #000);
+    }
+
+    .ph:hover {
+      flex-basis: 20%;
+    }
+
+    .ph:hover img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .box {
+      flex: 1;
+      overflow: hidden;
+      transition: 0.5s;
+      margin: 0 5px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      border: 4px solid #fff;
+      background-color: #e0e0e0;
+    }
+
+    .box img {
+      width: 200%;
+      height: 85%;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    .box:hover {
+      flex-basis: 70%;
+    }
+
+    .box:hover img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="deep" style="width: 700px; height: 500px">
+    <div class="qin">
+      <div class="ph">
+        <img src="https://aozijx.github.io/xuao/src/img/love/Violet b.jpg" alt="" />
+      </div>
+      <div class="ph">
+        <img src="https://aozijx.github.io/xuao/src/img/love/Frieren.jpg" alt="" />
+        <span>芙莉莲</span>
+      </div>
+      <div class="ph">
+        <img src="https://aozijx.github.io/xuao/src/img/love/jun.jpg" alt="" />
+      </div>
+      <div class="ph">
+        <img src="https://aozijx.github.io/xuao/src/img/love/02.jpg" alt="" />
+      </div>
+      <div class="ph">
+        <img src="https://aozijx.github.io/xuao/src/img/love/Violet.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="deep">
+    <div class="qin">
+      <div class="box">
+        <img src="../img/th (1).jpg" alt="" />
+      </div>
+      <div class="box">
+        <img src="../img/th (2).jpg" alt="" />
+      </div>
+      <div class="box">
+        <img src="../img/th (3).jpg" alt="" />
+      </div>
+      <div class="box">
+        <img src="../img/th (4).jpg" alt="" />
+      </div>
+      <div class="box">
+        <img src="../img/th (5).jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
